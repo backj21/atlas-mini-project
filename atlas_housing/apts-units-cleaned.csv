@@ -1,0 +1,18 @@
+apt_name,address,unit_name,beds,baths,sqft,sqft_max,rent_min,rent_max,total_min,total_max,available,lease_min_mo,lease_max_mo,unit_count,bed_label
+Latitude,608 E University Ave Champaign IL 61820 US,1BR,1,1,507,507,1539,1579,1685,1725,Available Now,11,18,141,1BR
+Latitude,608 E University Ave Champaign IL 61820 US,1BR - Master,1,1,625,625,1569,1719,1715,1865,Available Now,11,18,76,1BR
+Latitude,608 E University Ave Champaign IL 61820 US,Signature Series - 1 Bedroom w/ Patio,1,1,650,650,1929,1999,2075,2145,Available Now,11,18,1,1BR
+Latitude,608 E University Ave Champaign IL 61820 US,2 Bedroom,2,2,898,898,1049,1069,1195,1215,Available Now,11,18,63,2BR
+Latitude,608 E University Ave Champaign IL 61820 US,4 Bedroom,4,4,1604,1604,929,989,1075,1135,Available Now,11,18,44,4BR
+Seven07,707 S 4th St Champaign IL 61820 US,Studio - Type 2,0,1,422,422,1749,1749,1749,1749,Available Now,6,11,22,Studio
+Seven07,707 S 4th St Champaign IL 61820 US,Studio - Type 1,0,1,539,539,1939,1939,1939,1939,Available Now,6,11,11,Studio
+Seven07,707 S 4th St Champaign IL 61820 US,1BR/1BA,1,1,492,492,2049,2049,2049,2049,Aug 16,11,11,32,1BR
+Seven07,707 S 4th St Champaign IL 61820 US,2BR/2BA - Type 1,2,2,696,696,1349,1349,1349,1349,Available Now,6,11,11,2BR
+Seven07,707 S 4th St Champaign IL 61820 US,2BR/2BA - Type 2,2,2,788,788,1349,1349,1349,1349,Available Now,6,11,21,2BR
+Seven07,707 S 4th St Champaign IL 61820 US,2BR/2BA - Type 3,2,2,770,770,1399,1399,1399,1399,Available Now,6,11,22,2BR
+Seven07,707 S 4th St Champaign IL 61820 US,2BR/2BA - Type 4,2,2,888,888,1399,1399,1399,1399,Aug 15,11,11,10,2BR
+Seven07,707 S 4th St Champaign IL 61820 US,3BR/3BA,3,3,1149,1149,1339,1339,1339,1339,Available Now,6,11,1,3BR
+Seven07,707 S 4th St Champaign IL 61820 US,4BR/2BA,4,2,1228,1228,1089,1089,1089,1089,Available Now,6,11,11,4BR
+Seven07,707 S 4th St Champaign IL 61820 US,4BR/4BA - Type 1,4,4,1228,1228,1169,1169,1169,1169,Available Now,6,11,44,4BR
+Seven07,707 S 4th St Champaign IL 61820 US,4BR/4BA - Type 2,4,4,1228,1228,1129,1129,1129,1129,Aug 15,11,11,22,4BR
+Seven07,707 S 4th St Champaign IL 61820 US,4BR/4BA - Type 3,4,4,1228,1228,1159,1159,1159,1159,Aug 15,11,11,11,4BR

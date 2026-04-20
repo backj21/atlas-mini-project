@@ -1,0 +1,13 @@
+apt_name,property_name,address,lat,lng,rent_min,rent_max,beds_range,bath_min,bath_max,source,utilities_included,parking_options,one_time_fees,unit_amenities
+Latitude,Latitude | Student Housing,608 E University Ave Champaign IL 61820 US,40.11666,-88.22965,929,1999,4,1.0,4.0,apartments.com,"['Short Term Fee', 'Building Protection Fee', 'Utility Fee']",['Parking Fee'],"['Administrative Fee: 125', 'Application Fee Per Applicant: 49', 'Application Fee: 50', 'Admin Fee: 150']","['Sprinkler System', 'Large Bedrooms', 'Air Conditioning', 'Granite Countertops', 'Balcony', 'Private Bedroom & Bathroom', 'Disposal', 'Walk-In Closets', 'Microwave', 'Wheelchair Accessible (Rooms)', 'Carpet', 'Furnished', 'Ice Maker', 'Pantry', 'Eat-in Kitchen', 'Smoke Free', 'Oven', 'Wi-Fi', 'Double Pane Windows', 'Refrigerator', 'Vinyl Flooring', 'Washer/Dryer', 'Goose Neck Faucets in Kitchen', 'Freezer', 'Other', 'Trash Compactor', 'Ceiling Fans', 'Heating', '40 Inch TV in Unit', 'Dishwasher']"
+Seven07,Seven07,707 S 4th St Champaign IL 61820 US,40.10974,-88.23409,1089,2049,2,1.0,4.0,apartments.com,"['Utility - Water/Sewer', 'Utility - Electric']",['Parking Fee'],"['Administrative Fee: 150', 'Application Fee: 50', 'Utility - Admin Fee: 79', 'Lease Transfer Fee: 350', 'Admin Fee: 150']","['Views', 'Air Conditioning', 'Cable Ready', 'Granite Countertops', 'Grill', 'Disposal', 'Microwave', 'Stainless Steel Appliances', 'Free Cable and Internet', 'Furnished', 'Ice Maker', 'Kitchen', 'Eat-in Kitchen', 'Memory Foam Mattresses', 'Refrigerator', 'Washer/Dryer', ""Flat Panel Smart TV's in Living Rooms"", 'Pool', 'Heating', 'Dishwasher']"
+HERE,,308 E Green Champaign IL,,,,,,,,apartments.com,,,,
+HUB,,812 S 6th Champaign IL,,,,,,,,apartments.com,,,,
+DEAN,,708 S 6th Champaign IL,,,,,,,,apartments.com,,,,
+ICON,,309 E Springfield Champaign IL,,,,,,,,apartments.com,,,,
+Gregory,,1107 S 4th Champaign IL,,,,,,,,apartments.com,,,,
+Yugo,,410 N Lincoln Champaign IL,,,,,,,,apartments.com,,,,
+T3,,302 E John Champaign IL,,,,,,,,apartments.com,,,,
+Octave,,210 S 4th Champaign IL,,,,,,,,apartments.com,,,,
+75 Armory,,75 E Armory Champaign IL,,,,,,,,apartments.com,,,,
+Illini Manor,,401 E Chalmers Champaign IL,,,,,,,,apartments.com,,,,

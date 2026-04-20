@@ -1,0 +1,138 @@
+﻿apt_name,beds,baths,sqft,rent ($),per_person,notes
+Here,2,2,923,"1,619",Yes,2x2 Terrace
+Here,2,2,923,"1,669",Yes,2x2 Aerial
+Here,2,2,923,"1,729",Yes,2x2 Penthouse
+Here,4,2,"1,315","1,089",Yes,4x2 Terrace
+Here,4,2,"1,315","1,119",Yes,4x2 Aerial
+Here,4,2,"1,315","1,154",Yes,4x2 Penthouse
+Here,4,4,"1,325","1,154",Yes,"4x4 Terrace / Master(1,194)"
+Here,4,4,"1,325","1,169",Yes,"4x4 Aerial / Master (1,189)"
+Here,4,4,"1,325","1,179",Yes,"4x4 Penthouse / Master (1,199)"
+Hub,0,1,448,"1,999",Yes,Studio
+Hub,0,1,517,N/A,Yes,STUDIO CONVERTIBLE
+Hub,0,1,517,N/A,Yes,STUDIO CONVERTIBLE VIP
+Hub,0,1,667,N/A,Yes,STUDIO MANSION
+Hub,0,1,448,N/A,Yes,STUDIO VIP A
+Hub,0,1,381,1865,Yes,MURPHY
+Hub,0,1,407,1935,Yes,MURPHY CONVERTIBLE
+Hub,0,1,376,N/A,Yes,MURPHY VIP
+Hub,1,1,472,N/A,Yes,1X1
+Hub,1,1,894,N/A,Yes,1X1 MANSION
+Hub,2,1,615,N/A,Yes,2X1 
+Hub,2,1,668,1609,Yes,2X1 +
+Hub,2,1,668,N/A,Yes,2X1 VIP +
+Hub,2,2,779,1630,Yes,2X2
+Hub,3,2,"1,040",N/A,Yes,3X2
+Hub,3,2,"1,443",1525,Yes,3X2 MANSION
+Hub,4,2,"1,051",1154,Yes,4X2
+Hub,4,2,"1,184",1309,Yes,4X2 CORNER
+Hub,4,2,"1,184",N/A,Yes,4X2 CORNER VIP
+Hub,4,2,"1,354",1314,Yes,4X2 MANSION
+Hub,4,2,"1,197",N/A,Yes,4X2 SUITE
+Hub,4,2,"1,129",1094,Yes,4X2 SUITE VIP
+Hub,4,2,"1,092",1264,Yes,4X2 VIP
+Hub,4,3,"1,172",N/A,Yes,4X3
+Hub,4,3,"1,172",1325,Yes,4X3 VIP
+Hub,4,4,"1,287",1150,Yes,4X4
+Hub,4,4,"1,442",1310,Yes,4X4 MANSION
+Hub,4,4,"1,287",1385,Yes,4X4 VIP
+Dean,0,1,369,"1,750",Yes,M1
+Dean,0,1,454,"2,010",Yes,S1
+Dean,0,1,466,"2,055",Yes,S2
+Dean,0,1,614,"2,280",Yes,S3 XL
+Dean,1,1,533,N/A,Yes,A1
+Dean,1,1,533,N/A,Yes,A2 DELUXE
+Dean,2,1,736,N/A,Yes,B1
+Dean,2,2,888,N/A,Yes,B2
+Dean,2,2,"1,048","1,810",Yes,B3 XL
+Dean,2,2,"1,164","1,850",Yes,B4 XL
+Dean,4,4,"1,118","1,100",Yes,D1
+Dean,4,2,"1,134","1,115",Yes,D2
+Dean,4,4,"1,297","1,145",Yes,D3
+Dean,4,4,"1,303","1,185",Yes,D4
+Dean,4,4,"1,345","1,215",Yes,D5
+ICON,0,1,363,"1,500",Yes,A1
+ICON,0,1,368,"1,500",Yes,A2
+ICON,0,1,394,"1,500",Yes,A3
+ICON,0,1,374,"1,500",Yes,A4
+ICON,0,1,372,"1,500",Yes,A5
+ICON,1,1,468,1625 - 1675,Yes,1A
+ICON,1,1,519,1626 - 1675,Yes,1B
+ICON,1,1,564,1627 - 1675,Yes,1C
+ICON,1,1,531,1628 - 1675,Yes,1D
+ICON,1,1,563,1629 - 1675,Yes,1E
+ICON,1,1,424,1630 - 1675,Yes,1F
+ICON,1,1,563,1631 - 1675,Yes,1G
+ICON,1,1,441,1632 - 1675,Yes,1H
+ICON,1,1,570,1633 - 1675,Yes,1WA
+ICON,2,2,911,2100 - 2200,No,2A
+ICON,2,2,781,2101 - 2200,No,2B
+ICON,2,2,785,2102 - 2200,No,2C
+ICON,2,2,831,2103 - 2200,No,2D
+ICON,2,2,838,2104 - 2200,No,2E
+ICON,2,2,887,2105 - 2200,No,2F
+ICON,2,2,868,2106 - 2200,No,2WA
+ICON,2,2,950,2107 - 2200,No,2WB
+ICON,2,2,848,2108 - 2200,No,2WC
+ICON,3,3,984,3000 - 3050,No,3A
+ICON,3,3,992,3001 - 3050,No,3B
+ICON,3,3,912,3002 - 3050,No,3C
+ICON,3,3,968,3003 - 3050,No,3D
+ICON,3,3,"1,023",3004 - 3050,No,3WA
+ICON,4,4,"1,160",3750 - 3800,No,4A
+ICON,4,4,"1,288",3751 - 3800,No,4B
+ICON,4,4,"1,248",3752 - 3800,No,4WA
+Gregory,1,1,N/A,1550,Yes,
+Gregory,4,2,N/A,N/A,N/A,bi level
+Gregory,4,2,N/A,N/A,N/A,loft
+Yugo,0,1,N/A,"1,379",Yes,Studio Classic
+Yugo,0,1,N/A,"1,999",Yes,Studio Corner
+Yugo,1,1,N/A,"1,669",Yes,
+Yugo,2,2,N/A,"1,089",Yes,Corner
+Yugo,2,2,N/A,"1,089",Yes,Deluxe
+Yugo,2,2,N/A,"1,079",Yes,Classic
+Yugo,4,2,N/A,795,Yes,
+T3,1,1,N/A,"1,594",Yes,
+T3,2,1,N/A,"1,039",Yes,Bath A
+T3,2,1,N/A,"1,019",Yes,Bath B
+T3,2,1,N/A,984,Yes,Bath C
+T3,2,1,N/A,969,Yes,Bath D
+T3,3,1,N/A,969,Yes,
+Octave,1,1,550,"1,849",Yes,A2
+Octave,2,2,900,"1,349",Yes,B1
+Octave,2,2,882,"1,329",Yes,B2
+Octave,2,2,896,"1,369",Yes,B3
+Octave,3,3,1111,"1,209",Yes,C1
+Octave,4,4,"1,423","1,065",Yes,D1
+Octave,4,4,"1,474","1,114",Yes,D2
+Octave,4,4,"1,436","1,080",Yes,D3
+Octave,4,4,"1,506","1,090",Yes,D4
+75 Armory,2,2,753.48,"1,040",Yes,
+75 Armory,3,3,983.83,"1,040",Yes,A
+75 Armory,3,3,865.43,"1,015",Yes,B
+75 Armory,3,2,858.97,935,Yes,C
+75 Armory,4,3,1030.11,915,Yes,A
+75 Armory,4,2,983.83,900,Yes,B
+Illini Manor,0,1,177,875,Yes,Standard
+Illini Manor,0,1,177,815,Yes,B Standard
+Illini Manor,0,1,177,815,Yes,C Standard
+Illini Manor,0,1,182,835,Yes,Corner
+Illini Manor,1,1,310,975,Yes,Standard
+Illini Manor,1,1,330,985,Yes,Upgraded
+707,0,1,539,"1,939",Yes,TYPE 1
+707,0,1,422,"1,749",Yes,TYPE 2
+707,1,1,492,"2,049",Yes,
+707,2,2,696,"1,349",Yes,TYPE 1
+707,2,2,788,"1,349",Yes,TYPE 2
+707,2,2,770,"1,399",Yes,TYPE 3
+707,2,2,888,"1,399",Yes,TYPE 4
+707,3,3,1149,"1,339",Yes,
+707,4,2,1228,"1,089",Yes,
+707,4,4,1228,"1,169",Yes,TYPE 1
+707,4,4,1228,"1,129",Yes,TYPE 2
+707,4,4,1228,"1,159",Yes,TYPE 3
+Latitude,1,1,507,"1,579",Yes,
+Latitude,1,1,625,"1,659",Yes,Master
+Latitude,1,1,650,"1,999",Yes,Signature
+Latitude,2,2,898,"1,049",Yes,
+Latitude,4,4,"1,604",989,Yes,
