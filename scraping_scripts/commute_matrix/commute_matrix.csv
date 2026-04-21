@@ -1,0 +1,122 @@
+apartment,building,walking_min,transit_min,bicycling_min
+HERE Champaign,Grainger Engineering Library,11,7,3
+HERE Champaign,Siebel Center for CS,16,15,5
+HERE Champaign,Illini Union,10,4,3
+HERE Champaign,CRCE,17,11,4
+HERE Champaign,ARC,17,11,4
+HERE Champaign,Main Library,14,10,4
+HERE Champaign,Wohlers Hall,15,12,4
+HERE Champaign,Everitt Lab,7,7,2
+HERE Champaign,Loomis Lab,12,6,4
+HERE Champaign,Lincoln Hall,12,9,4
+HERE Champaign,Krannert Art Center,17,14,4
+Hub on Campus,Grainger Engineering Library,10,7,3
+Hub on Campus,Siebel Center for CS,15,8,4
+Hub on Campus,Illini Union,5,5,1
+Hub on Campus,CRCE,17,6,5
+Hub on Campus,ARC,17,6,5
+Hub on Campus,Main Library,6,6,2
+Hub on Campus,Wohlers Hall,7,7,2
+Hub on Campus,Everitt Lab,6,6,2
+Hub on Campus,Loomis Lab,10,7,4
+Hub on Campus,Lincoln Hall,3,3,1
+Hub on Campus,Krannert Art Center,12,6,3
+The Dean Campustown,Grainger Engineering Library,8,8,4
+The Dean Campustown,Siebel Center for CS,13,9,5
+The Dean Campustown,Illini Union,6,6,2
+The Dean Campustown,CRCE,19,8,5
+The Dean Campustown,ARC,19,8,5
+The Dean Campustown,Main Library,8,8,2
+The Dean Campustown,Wohlers Hall,10,8,2
+The Dean Campustown,Everitt Lab,4,4,3
+The Dean Campustown,Loomis Lab,9,9,4
+The Dean Campustown,Lincoln Hall,6,6,2
+The Dean Campustown,Krannert Art Center,14,8,3
+ICON Apartments,Grainger Engineering Library,10,10,3
+ICON Apartments,Siebel Center for CS,15,15,6
+ICON Apartments,Illini Union,13,7,4
+ICON Apartments,CRCE,21,13,5
+ICON Apartments,ARC,21,13,5
+ICON Apartments,Main Library,17,14,5
+ICON Apartments,Wohlers Hall,18,14,5
+ICON Apartments,Everitt Lab,10,8,3
+ICON Apartments,Loomis Lab,15,9,5
+ICON Apartments,Lincoln Hall,15,10,5
+ICON Apartments,Krannert Art Center,20,19,5
+Yugo Urbana,Grainger Engineering Library,17,14,6
+Yugo Urbana,Siebel Center for CS,10,10,2
+Yugo Urbana,Illini Union,20,14,6
+Yugo Urbana,CRCE,41,19,11
+Yugo Urbana,ARC,41,19,11
+Yugo Urbana,Main Library,29,17,8
+Yugo Urbana,Wohlers Hall,32,15,8
+Yugo Urbana,Everitt Lab,19,13,5
+Yugo Urbana,Loomis Lab,15,10,4
+Yugo Urbana,Lincoln Hall,25,13,8
+Yugo Urbana,Krannert Art Center,37,20,9
+Latitude Apartments,Grainger Engineering Library,9,8,3
+Latitude Apartments,Siebel Center for CS,10,10,3
+Latitude Apartments,Illini Union,14,9,4
+Latitude Apartments,CRCE,31,9,8
+Latitude Apartments,ARC,31,9,8
+Latitude Apartments,Main Library,19,9,6
+Latitude Apartments,Wohlers Hall,22,9,6
+Latitude Apartments,Everitt Lab,11,7,4
+Latitude Apartments,Loomis Lab,15,10,6
+Latitude Apartments,Lincoln Hall,16,10,6
+Latitude Apartments,Krannert Art Center,26,14,7
+The Tower at Third,Grainger Engineering Library,14,10,4
+The Tower at Third,Siebel Center for CS,20,11,6
+The Tower at Third,Illini Union,12,8,3
+The Tower at Third,CRCE,15,7,4
+The Tower at Third,ARC,15,7,4
+The Tower at Third,Main Library,13,7,3
+The Tower at Third,Wohlers Hall,15,9,4
+The Tower at Third,Everitt Lab,11,9,3
+The Tower at Third,Loomis Lab,15,9,5
+The Tower at Third,Lincoln Hall,11,6,3
+The Tower at Third,Krannert Art Center,16,11,4
+Seven07,Grainger Engineering Library,11,8,3
+Seven07,Siebel Center for CS,17,13,5
+Seven07,Illini Union,10,5,3
+Seven07,CRCE,16,10,3
+Seven07,ARC,16,10,3
+Seven07,Main Library,12,8,3
+Seven07,Wohlers Hall,13,11,3
+Seven07,Everitt Lab,8,8,2
+Seven07,Loomis Lab,12,6,4
+Seven07,Lincoln Hall,10,8,3
+Seven07,Krannert Art Center,15,13,4
+Octave,Grainger Engineering Library,11,9,4
+Octave,Siebel Center for CS,13,10,5
+Octave,Illini Union,16,7,5
+Octave,CRCE,25,15,7
+Octave,ARC,25,15,7
+Octave,Main Library,20,12,6
+Octave,Wohlers Hall,21,12,6
+Octave,Everitt Lab,13,8,4
+Octave,Loomis Lab,17,7,6
+Octave,Lincoln Hall,18,8,6
+Octave,Krannert Art Center,24,12,7
+75 Armory,Grainger Engineering Library,24,13,6
+75 Armory,Siebel Center for CS,30,12,8
+75 Armory,Illini Union,20,10,5
+75 Armory,CRCE,9,4,3
+75 Armory,ARC,9,4,3
+75 Armory,Main Library,12,7,3
+75 Armory,Wohlers Hall,14,9,4
+75 Armory,Everitt Lab,21,11,5
+75 Armory,Loomis Lab,25,11,8
+75 Armory,Lincoln Hall,14,7,4
+75 Armory,Krannert Art Center,14,7,4
+Illini Manor,Grainger Engineering Library,15,9,4
+Illini Manor,Siebel Center for CS,20,9,5
+Illini Manor,Illini Union,10,7,2
+Illini Manor,CRCE,12,8,3
+Illini Manor,ARC,12,8,3
+Illini Manor,Main Library,7,4,1
+Illini Manor,Wohlers Hall,8,8,2
+Illini Manor,Everitt Lab,11,8,3
+Illini Manor,Loomis Lab,15,8,5
+Illini Manor,Lincoln Hall,5,5,2
+Illini Manor,Krannert Art Center,11,11,3
