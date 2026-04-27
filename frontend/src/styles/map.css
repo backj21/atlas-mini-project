@@ -1,0 +1,17 @@
+/* IlliniNest abstract map styling */
+
+/* Map transitions for dark mode */
+.dark .map-grid {
+  opacity: 0.5;
+}
+
+.dark .map-campus {
+  background: rgba(90, 127, 168, 0.12) !important;
+  border-color: var(--blue) !important;
+}
+
+.dark .map-street {
+  background: var(--rule) !important;
+}
+
+/* Pin hover effects handled inline in component */

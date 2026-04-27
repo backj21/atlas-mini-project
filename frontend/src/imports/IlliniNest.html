@@ -1,0 +1,1387 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>IlliniNest — Apartment research for UIUC students</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;0,6..72,700;1,6..72,400;1,6..72,500&family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#1a1a1a;
+    --ink-2:#2a2a2a;
+    --ink-3:#555;
+    --ink-4:#8a8a8a;
+    --rule:#d9d2c4;
+    --rule-2:#ebe5d8;
+    --cream:#f5f1ea;
+    --cream-2:#efe9dc;
+    --paper:#faf7f1;
+    --orange:#e84a27;     /* Illini orange */
+    --orange-ink:#b33a1e;
+    --blue:#13294b;       /* Illini blue */
+    --blue-2:#1e3a6b;
+    --green:#2e6b3f;
+    --red:#9e2a2b;
+    --amber:#b57a1d;
+    --serif:"Newsreader", Georgia, serif;
+    --sans:"IBM Plex Sans", system-ui, sans-serif;
+    --mono:"IBM Plex Mono", ui-monospace, monospace;
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;padding:0}
+  body{
+    background:var(--cream);
+    color:var(--ink);
+    font-family:var(--sans);
+    font-size:15px;
+    line-height:1.5;
+    -webkit-font-smoothing:antialiased;
+    text-rendering:optimizeLegibility;
+  }
+  a{color:inherit}
+  ::selection{background:var(--orange);color:#fff}
+
+  /* ------------ shared chrome ------------ */
+  .wrap{max-width:1280px;margin:0 auto;padding:0 32px}
+  .mono{font-family:var(--mono);font-size:11px;letter-spacing:.04em;text-transform:uppercase;color:var(--ink-3)}
+  .rule{height:1px;background:var(--ink);border:0;margin:0}
+  .rule-soft{height:1px;background:var(--rule);border:0;margin:0}
+  .serif{font-family:var(--serif);font-weight:500;letter-spacing:-.01em}
+
+  /* masthead */
+  .masthead{
+    border-bottom:1px solid var(--ink);
+    background:var(--cream);
+    position:sticky;top:0;z-index:40;
+  }
+  .masthead-top{
+    display:flex;align-items:center;justify-content:space-between;
+    padding:10px 32px;border-bottom:1px solid var(--rule);
+    font-family:var(--mono);font-size:11px;letter-spacing:.05em;text-transform:uppercase;color:var(--ink-3);
+  }
+  .masthead-top .dateline{display:flex;gap:18px;align-items:center}
+  .masthead-top .dot{width:6px;height:6px;background:var(--orange);border-radius:50%;display:inline-block;margin-right:6px;vertical-align:1px}
+  .masthead-main{
+    display:grid;grid-template-columns:1fr auto 1fr;align-items:center;
+    padding:18px 32px 14px 32px;gap:24px;
+  }
+  .nav{display:flex;gap:22px;font-family:var(--mono);font-size:11.5px;letter-spacing:.08em;text-transform:uppercase}
+  .nav a{text-decoration:none;color:var(--ink);padding:4px 0;border-bottom:1px solid transparent;cursor:pointer}
+  .nav a.active{border-bottom-color:var(--orange)}
+  .nav a:hover{border-bottom-color:var(--ink)}
+  .brand{
+    font-family:var(--serif);font-weight:600;font-size:40px;letter-spacing:-.02em;text-align:center;
+    line-height:1;cursor:pointer;
+  }
+  .brand .dot-orange{color:var(--orange)}
+  .masthead-right{display:flex;justify-content:flex-end;gap:14px;align-items:center}
+  .mh-search{
+    font-family:var(--mono);font-size:11px;letter-spacing:.06em;text-transform:uppercase;
+    border:1px solid var(--ink);padding:6px 10px;background:transparent;cursor:pointer;
+  }
+  .mh-search:hover{background:var(--ink);color:var(--cream)}
+
+  /* footer */
+  .footer{
+    border-top:1px solid var(--ink);margin-top:80px;padding:40px 32px 60px;
+    font-family:var(--mono);font-size:11px;letter-spacing:.04em;color:var(--ink-3);
+  }
+  .footer .cols{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:40px;max-width:1280px;margin:0 auto}
+  .footer h4{font-family:var(--mono);font-size:11px;text-transform:uppercase;letter-spacing:.1em;margin:0 0 12px;color:var(--ink)}
+  .footer a{display:block;text-decoration:none;color:var(--ink-3);padding:3px 0;text-transform:none;letter-spacing:0;font-size:12px}
+  .footer a:hover{color:var(--ink)}
+  .footer .tagline{font-family:var(--serif);font-size:22px;color:var(--ink);line-height:1.3;letter-spacing:-.01em;max-width:360px;text-transform:none;font-weight:500}
+  .footer .bottom{max-width:1280px;margin:40px auto 0;padding-top:20px;border-top:1px solid var(--rule);display:flex;justify-content:space-between}
+
+  /* view routing */
+  .view{display:none}
+  .view.active{display:block}
+
+  /* ===================================================================
+     LANDING
+  =================================================================== */
+  .hero{padding:40px 0 28px}
+  .hero-kicker{
+    display:flex;align-items:center;gap:12px;
+    font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-3);
+    margin-bottom:22px;
+  }
+  .hero-kicker .tag{background:var(--ink);color:var(--cream);padding:3px 8px;letter-spacing:.12em}
+  .hero h1{
+    font-family:var(--serif);font-weight:500;
+    font-size:clamp(48px,7.2vw,104px);
+    line-height:.96;letter-spacing:-.025em;
+    margin:0 0 8px;
+    max-width:1100px;
+  }
+  .hero h1 em{font-style:italic;color:var(--blue)}
+  .hero h1 .strike{text-decoration:line-through;text-decoration-thickness:3px;color:var(--ink-4);font-style:normal}
+  .hero-lede{
+    display:grid;grid-template-columns:1fr 1fr 1fr;gap:40px;
+    padding-top:28px;border-top:1px solid var(--ink);
+    margin-top:32px;
+  }
+  .hero-lede .byline{font-family:var(--mono);font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-3);line-height:1.7}
+  .hero-lede .byline b{color:var(--ink);font-weight:500}
+  .hero-lede p{font-family:var(--serif);font-size:20px;line-height:1.5;margin:0;grid-column:span 2;letter-spacing:-.005em}
+  .hero-lede p .drop{float:left;font-size:58px;line-height:.85;padding:6px 8px 0 0;font-weight:600;color:var(--orange)}
+
+  /* stat strip */
+  .stat-strip{
+    display:grid;grid-template-columns:repeat(4,1fr);
+    border-top:1px solid var(--ink);border-bottom:1px solid var(--ink);
+    margin-top:48px;
+  }
+  .stat{padding:24px 24px;border-right:1px solid var(--rule)}
+  .stat:last-child{border-right:0}
+  .stat .num{font-family:var(--serif);font-size:56px;line-height:1;letter-spacing:-.03em;font-weight:500}
+  .stat .num .unit{font-family:var(--mono);font-size:13px;letter-spacing:.04em;color:var(--ink-3);margin-left:4px;vertical-align:4px}
+  .stat .lbl{font-family:var(--mono);font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-3);margin-top:10px;line-height:1.5}
+
+  /* how we score */
+  .section{padding:72px 0 0}
+  .section-head{display:grid;grid-template-columns:1fr 2fr;gap:40px;align-items:end;margin-bottom:32px}
+  .section-head .kicker{font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--orange);margin-bottom:14px}
+  .section-head h2{font-family:var(--serif);font-weight:500;font-size:44px;line-height:1.05;letter-spacing:-.02em;margin:0}
+  .section-head .blurb{font-family:var(--serif);font-size:18px;line-height:1.55;color:var(--ink-2);max-width:560px;margin-left:auto}
+
+  .score-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:0;border-top:1px solid var(--ink);border-bottom:1px solid var(--ink)}
+  .score-card{padding:28px 22px 28px;border-right:1px solid var(--rule);position:relative}
+  .score-card:last-child{border-right:0}
+  .score-card .n{font-family:var(--mono);font-size:11px;color:var(--ink-3);letter-spacing:.08em}
+  .score-card h3{font-family:var(--serif);font-weight:500;font-size:22px;line-height:1.15;margin:12px 0 10px;letter-spacing:-.01em}
+  .score-card p{font-size:13.5px;line-height:1.5;color:var(--ink-2);margin:0 0 18px}
+  .score-card .chip{
+    display:inline-block;font-family:var(--mono);font-size:10.5px;letter-spacing:.06em;
+    border:1px solid var(--ink);padding:3px 7px;text-transform:uppercase;
+  }
+  .score-card.hl{background:var(--cream-2)}
+
+  /* reddit pull */
+  .pull{
+    margin-top:72px;padding:44px 0;
+    border-top:1px solid var(--ink);border-bottom:1px solid var(--ink);
+    background:var(--paper);
+  }
+  .pull-inner{display:grid;grid-template-columns:1fr 2fr;gap:56px;padding:0 32px;max-width:1280px;margin:0 auto}
+  .pull-meta .mono{color:var(--orange)}
+  .pull-meta h3{font-family:var(--serif);font-weight:500;font-size:28px;line-height:1.15;margin:12px 0 12px;letter-spacing:-.015em}
+  .pull-meta p{font-size:13px;color:var(--ink-3);margin:0;line-height:1.55}
+  .quotes{display:grid;grid-template-columns:1fr 1fr;gap:24px 40px}
+  .quote{border-left:2px solid var(--orange);padding:2px 0 2px 18px}
+  .quote blockquote{font-family:var(--serif);font-size:18px;line-height:1.4;margin:0 0 10px;font-style:italic;color:var(--ink)}
+  .quote cite{font-family:var(--mono);font-size:10.5px;color:var(--ink-3);letter-spacing:.04em;font-style:normal}
+  .quote.neg{border-left-color:var(--red)}
+  .quote.pos{border-left-color:var(--green)}
+  .quote.neu{border-left-color:var(--ink-3)}
+
+  /* top neighborhoods chart */
+  .hood{padding:72px 0 0}
+  .hood-grid{display:grid;grid-template-columns:1.2fr 1fr;gap:64px;align-items:start}
+  .hood-list{display:flex;flex-direction:column;gap:0}
+  .hood-row{
+    display:grid;grid-template-columns:36px 1fr 90px 110px;gap:16px;align-items:center;
+    padding:14px 0;border-top:1px solid var(--rule);cursor:pointer;
+  }
+  .hood-row:hover{background:var(--paper)}
+  .hood-row:first-child{border-top:1px solid var(--ink)}
+  .hood-row:last-child{border-bottom:1px solid var(--ink)}
+  .hood-row .rank{font-family:var(--mono);color:var(--ink-3);font-size:12px}
+  .hood-row .name{font-family:var(--serif);font-size:20px;letter-spacing:-.01em}
+  .hood-row .bar{height:10px;background:var(--rule-2);position:relative;border-radius:0}
+  .hood-row .bar i{display:block;height:100%;background:var(--blue)}
+  .hood-row .price{font-family:var(--mono);font-size:12.5px;text-align:right;color:var(--ink-2)}
+  .hood-row .deltaP{color:var(--red)}
+  .hood-row .deltaN{color:var(--green)}
+
+  .chart-card{background:var(--paper);border:1px solid var(--ink);padding:22px}
+  .chart-card h4{font-family:var(--mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;margin:0 0 4px;color:var(--ink)}
+  .chart-card .sub{font-family:var(--serif);font-size:17px;color:var(--ink-2);margin:0 0 18px;font-style:italic}
+  .scatter{position:relative;height:240px;border-left:1px solid var(--ink);border-bottom:1px solid var(--ink)}
+  .scatter .pt{position:absolute;width:10px;height:10px;border-radius:50%;transform:translate(-50%,50%);border:1px solid var(--ink)}
+  .scatter .axL{position:absolute;left:-34px;top:50%;transform:rotate(-90deg) translateX(50%);font-family:var(--mono);font-size:10px;color:var(--ink-3);text-transform:uppercase;letter-spacing:.08em;white-space:nowrap}
+  .scatter .axB{position:absolute;bottom:-22px;left:50%;transform:translateX(-50%);font-family:var(--mono);font-size:10px;color:var(--ink-3);text-transform:uppercase;letter-spacing:.08em;white-space:nowrap}
+  .scatter .line{position:absolute;left:0;right:0;top:0;bottom:0;pointer-events:none}
+  .legend{display:flex;gap:18px;margin-top:30px;font-family:var(--mono);font-size:10.5px;color:var(--ink-3);text-transform:uppercase;letter-spacing:.06em}
+  .legend i{display:inline-block;width:10px;height:10px;border-radius:50%;margin-right:6px;vertical-align:middle;border:1px solid var(--ink)}
+
+  /* browse modes */
+  .browse{padding:72px 0 0}
+  .browse-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border-top:1px solid var(--ink);border-bottom:1px solid var(--ink)}
+  .browse-cell{padding:32px 28px;border-right:1px solid var(--rule);cursor:pointer;transition:background .15s}
+  .browse-cell:last-child{border-right:0}
+  .browse-cell:hover{background:var(--paper)}
+  .browse-cell .kn{font-family:var(--mono);font-size:11px;letter-spacing:.08em;color:var(--orange);text-transform:uppercase}
+  .browse-cell h3{font-family:var(--serif);font-weight:500;font-size:30px;line-height:1.1;letter-spacing:-.015em;margin:10px 0 14px}
+  .browse-cell p{font-size:13.5px;color:var(--ink-2);margin:0 0 18px;max-width:320px}
+  .browse-cell .go{font-family:var(--mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;display:inline-flex;gap:8px;align-items:center;border-bottom:1px solid var(--ink);padding-bottom:2px}
+
+  /* methodology */
+  .method{padding:72px 0 0}
+  .method-body{display:grid;grid-template-columns:1fr 1fr;gap:56px;padding-top:22px;border-top:1px solid var(--ink)}
+  .method-body h3{font-family:var(--serif);font-weight:500;font-size:28px;letter-spacing:-.01em;margin:0 0 14px}
+  .method-body p{font-size:14.5px;line-height:1.6;color:var(--ink-2);margin:0 0 14px}
+  .method-body ul{list-style:none;padding:0;margin:14px 0 0;font-family:var(--mono);font-size:11.5px;color:var(--ink-3);letter-spacing:.02em;text-transform:uppercase}
+  .method-body ul li{padding:8px 0;border-top:1px solid var(--rule);display:flex;justify-content:space-between}
+  .method-body ul li b{color:var(--ink);font-weight:500}
+  .method-body ul li:first-child{border-top:0}
+
+  /* ===================================================================
+     SEARCH VIEW
+  =================================================================== */
+  .search-head{border-bottom:1px solid var(--ink);padding:24px 0 18px}
+  .search-head h2{font-family:var(--serif);font-size:32px;font-weight:500;letter-spacing:-.02em;margin:0 0 4px}
+  .search-head .crumbs{font-family:var(--mono);font-size:11px;color:var(--ink-3);letter-spacing:.06em;text-transform:uppercase}
+  .search-controls{
+    display:flex;gap:10px;flex-wrap:wrap;padding:16px 0;
+    border-bottom:1px solid var(--rule);
+  }
+  .filter{
+    font-family:var(--mono);font-size:11.5px;letter-spacing:.05em;text-transform:uppercase;
+    border:1px solid var(--ink);padding:7px 11px;background:transparent;cursor:pointer;
+    display:inline-flex;gap:8px;align-items:center;
+  }
+  .filter:hover{background:var(--ink);color:var(--cream)}
+  .filter.on{background:var(--ink);color:var(--cream)}
+  .filter.on .x{border-left:1px solid rgba(255,255,255,.3);padding-left:8px;margin-left:2px}
+  .filter .caret{color:var(--ink-3);font-size:9px}
+  .filter.on .caret{color:var(--cream)}
+  .sort{margin-left:auto;display:flex;gap:10px;align-items:center}
+  .sort select{
+    font-family:var(--mono);font-size:11.5px;letter-spacing:.05em;text-transform:uppercase;
+    border:1px solid var(--ink);padding:7px 10px;background:var(--cream);cursor:pointer;
+  }
+
+  .search-body{display:grid;grid-template-columns:1.1fr 1fr;gap:32px;padding-top:20px}
+  .result-meta{font-family:var(--mono);font-size:11px;color:var(--ink-3);letter-spacing:.06em;text-transform:uppercase;margin-bottom:10px;display:flex;justify-content:space-between}
+  .result-meta b{color:var(--ink);font-weight:500}
+
+  .card{
+    border-top:1px solid var(--rule);padding:20px 0;cursor:pointer;
+    display:grid;grid-template-columns:140px 1fr auto;gap:22px;
+  }
+  .card:first-of-type{border-top:1px solid var(--ink)}
+  .card:last-of-type{border-bottom:1px solid var(--ink)}
+  .card:hover{background:var(--paper)}
+  .card .ph{
+    aspect-ratio:4/3;background:
+      repeating-linear-gradient(-45deg,var(--rule-2) 0 6px,var(--cream-2) 6px 12px);
+    border:1px solid var(--rule);position:relative;
+    display:flex;align-items:flex-end;justify-content:flex-start;
+    font-family:var(--mono);font-size:9.5px;color:var(--ink-3);letter-spacing:.04em;text-transform:uppercase;
+  }
+  .card .ph span{background:var(--cream);padding:2px 6px;margin:4px;border:1px solid var(--rule)}
+  .card .body h3{font-family:var(--serif);font-weight:500;font-size:22px;letter-spacing:-.01em;margin:0 0 3px}
+  .card .body .addr{font-family:var(--mono);font-size:11px;color:var(--ink-3);letter-spacing:.04em;text-transform:uppercase;margin:0 0 10px}
+  .card .chips{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:10px}
+  .chip{
+    display:inline-flex;align-items:center;gap:6px;
+    font-family:var(--mono);font-size:10.5px;letter-spacing:.04em;text-transform:uppercase;
+    border:1px solid var(--rule);padding:3px 7px;color:var(--ink-2);
+  }
+  .chip.good{border-color:var(--green);color:var(--green)}
+  .chip.bad{border-color:var(--red);color:var(--red)}
+  .chip.warn{border-color:var(--amber);color:var(--amber)}
+  .chip .d{width:5px;height:5px;border-radius:50%;background:currentColor}
+  .card .signals{display:flex;gap:16px;font-family:var(--mono);font-size:11px;color:var(--ink-2);letter-spacing:.03em}
+  .card .signals b{color:var(--ink);font-weight:500}
+  .card .rail{
+    min-width:140px;text-align:right;display:flex;flex-direction:column;gap:10px;align-items:flex-end;
+  }
+  .trust-badge{
+    display:inline-flex;flex-direction:column;align-items:flex-end;
+  }
+  .trust-badge .t-n{font-family:var(--serif);font-weight:600;font-size:36px;line-height:1;letter-spacing:-.02em}
+  .trust-badge .t-n small{font-family:var(--mono);font-size:11px;color:var(--ink-3);letter-spacing:.04em;margin-left:2px;vertical-align:6px}
+  .trust-badge .t-l{font-family:var(--mono);font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-3);margin-top:2px}
+  .card .rent{font-family:var(--serif);font-size:22px;font-weight:500;letter-spacing:-.01em}
+  .card .rent small{font-family:var(--mono);font-size:10.5px;color:var(--ink-3);margin-left:3px}
+  .card .deal{font-family:var(--mono);font-size:10.5px;letter-spacing:.04em;text-transform:uppercase}
+  .deal.good{color:var(--green)}
+  .deal.bad{color:var(--red)}
+  .deal.fair{color:var(--amber)}
+
+  /* map rail */
+  .map-rail{position:sticky;top:130px;align-self:start}
+  .map{
+    background:var(--paper);border:1px solid var(--ink);aspect-ratio:1/1.05;position:relative;overflow:hidden;
+  }
+  .map-grid{position:absolute;inset:0;background-image:
+    linear-gradient(var(--rule-2) 1px,transparent 1px),
+    linear-gradient(90deg,var(--rule-2) 1px,transparent 1px);
+    background-size:40px 40px;opacity:.7}
+  .map-campus{
+    position:absolute;left:30%;top:40%;width:34%;height:28%;
+    background:rgba(19,41,75,.06);border:1px dashed var(--blue);
+  }
+  .map-campus::after{
+    content:"MAIN QUAD"; position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);
+    font-family:var(--mono);font-size:10px;color:var(--blue);letter-spacing:.12em;
+  }
+  .map-street{position:absolute;background:var(--rule)}
+  .sL{left:0;right:0;height:1.5px}
+  .sV{top:0;bottom:0;width:1.5px}
+  .map-pin{
+    position:absolute;width:28px;height:28px;border-radius:50%;transform:translate(-50%,-50%);
+    border:1.5px solid var(--ink);background:var(--cream);cursor:pointer;
+    display:flex;align-items:center;justify-content:center;
+    font-family:var(--mono);font-size:11px;font-weight:600;color:var(--ink);
+    transition:transform .15s;
+  }
+  .map-pin:hover{transform:translate(-50%,-50%) scale(1.15);z-index:5}
+  .map-pin.hi{background:var(--orange);color:#fff;border-color:var(--ink)}
+  .map-pin.mid{background:var(--cream)}
+  .map-pin.lo{background:var(--ink-4);color:#fff}
+  .map-label{
+    position:absolute;font-family:var(--mono);font-size:9.5px;color:var(--ink-3);
+    letter-spacing:.08em;text-transform:uppercase;transform:translate(-50%,8px);
+    white-space:nowrap;
+  }
+  .map-legend{
+    display:flex;gap:14px;justify-content:space-between;align-items:center;
+    font-family:var(--mono);font-size:10.5px;text-transform:uppercase;letter-spacing:.06em;color:var(--ink-3);
+    padding:10px 0 0;
+  }
+  .legend-swatches{display:flex;gap:14px}
+  .legend-swatches span{display:inline-flex;align-items:center;gap:5px}
+  .legend-swatches i{width:10px;height:10px;border-radius:50%;border:1px solid var(--ink);display:inline-block}
+
+  /* ===================================================================
+     DETAIL VIEW
+  =================================================================== */
+  .d-crumbs{font-family:var(--mono);font-size:11px;color:var(--ink-3);letter-spacing:.06em;text-transform:uppercase;padding:22px 0 6px}
+  .d-crumbs a{color:var(--ink-3);text-decoration:none;cursor:pointer}
+  .d-crumbs a:hover{color:var(--ink)}
+  .d-head{
+    display:grid;grid-template-columns:1fr 300px;gap:40px;align-items:end;
+    padding:10px 0 24px;border-bottom:1px solid var(--ink);
+  }
+  .d-head h1{font-family:var(--serif);font-weight:500;font-size:clamp(44px,6vw,72px);line-height:.98;letter-spacing:-.025em;margin:0 0 10px}
+  .d-head .addr{font-family:var(--mono);font-size:12px;color:var(--ink-3);letter-spacing:.04em;text-transform:uppercase}
+  .d-head .kicker{font-family:var(--mono);font-size:11px;color:var(--orange);letter-spacing:.1em;text-transform:uppercase;margin-bottom:10px}
+  .d-trust{
+    border:1px solid var(--ink);padding:18px;background:var(--paper);
+    display:flex;flex-direction:column;gap:2px;
+  }
+  .d-trust .big{font-family:var(--serif);font-weight:600;font-size:88px;line-height:.85;letter-spacing:-.04em;color:var(--ink)}
+  .d-trust .big small{font-family:var(--mono);font-size:14px;color:var(--ink-3);vertical-align:38px;letter-spacing:.02em;margin-left:2px}
+  .d-trust .lbl{font-family:var(--mono);font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-3);margin-top:8px}
+  .d-trust .verdict{font-family:var(--serif);font-size:17px;font-style:italic;color:var(--ink-2);margin-top:6px;line-height:1.3}
+
+  .d-gallery{
+    display:grid;grid-template-columns:2fr 1fr 1fr;grid-template-rows:200px 200px;gap:6px;
+    margin:20px 0 0;
+  }
+  .d-gallery .g{
+    background:repeating-linear-gradient(-45deg,var(--rule-2) 0 6px,var(--cream-2) 6px 12px);
+    border:1px solid var(--rule);position:relative;
+    display:flex;align-items:flex-end;justify-content:flex-start;
+    font-family:var(--mono);font-size:9.5px;color:var(--ink-3);letter-spacing:.04em;text-transform:uppercase;
+  }
+  .d-gallery .g:first-child{grid-row:span 2}
+  .d-gallery .g span{background:var(--cream);padding:2px 6px;margin:4px;border:1px solid var(--rule)}
+
+  .d-key{
+    display:grid;grid-template-columns:repeat(5,1fr);margin-top:24px;
+    border-top:1px solid var(--ink);border-bottom:1px solid var(--ink);
+  }
+  .d-key .k{padding:18px 20px;border-right:1px solid var(--rule)}
+  .d-key .k:last-child{border-right:0}
+  .d-key .k .v{font-family:var(--serif);font-size:28px;font-weight:500;letter-spacing:-.015em;line-height:1}
+  .d-key .k .v small{font-family:var(--mono);font-size:11px;color:var(--ink-3);margin-left:3px;vertical-align:3px}
+  .d-key .k .l{font-family:var(--mono);font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-3);margin-top:8px}
+
+  .d-grid{display:grid;grid-template-columns:2fr 1fr;gap:56px;padding-top:40px}
+
+  .tabs{display:flex;gap:4px;border-bottom:1px solid var(--ink);margin-bottom:26px}
+  .tab{
+    font-family:var(--mono);font-size:11.5px;letter-spacing:.06em;text-transform:uppercase;
+    padding:12px 18px;border:1px solid transparent;border-bottom:none;cursor:pointer;
+    background:transparent;color:var(--ink-3);margin-bottom:-1px;
+  }
+  .tab.on{background:var(--cream);border-color:var(--ink);color:var(--ink)}
+  .tab:hover:not(.on){color:var(--ink)}
+
+  .panel{display:none}
+  .panel.on{display:block}
+
+  /* trust breakdown */
+  .breakdown{display:flex;flex-direction:column;gap:0}
+  .bd-row{
+    display:grid;grid-template-columns:22px 1fr 200px 70px;gap:16px;align-items:center;
+    padding:16px 0;border-top:1px solid var(--rule);
+  }
+  .bd-row:first-child{border-top:1px solid var(--ink)}
+  .bd-row:last-child{border-bottom:1px solid var(--ink)}
+  .bd-row .n{font-family:var(--mono);font-size:11px;color:var(--ink-3);letter-spacing:.05em}
+  .bd-row .name{font-family:var(--serif);font-size:19px;letter-spacing:-.005em}
+  .bd-row .desc{font-size:12.5px;color:var(--ink-3);margin-top:2px;font-family:var(--sans)}
+  .bd-bar{height:8px;background:var(--rule-2);position:relative}
+  .bd-bar i{display:block;height:100%;background:var(--blue)}
+  .bd-bar.lo i{background:var(--red)}
+  .bd-bar.mid i{background:var(--amber)}
+  .bd-bar.hi i{background:var(--green)}
+  .bd-row .score{font-family:var(--mono);font-size:13px;text-align:right;font-weight:500}
+
+  /* reddit block */
+  .reddit-block{margin-top:36px;padding:24px 24px 18px;background:var(--paper);border:1px solid var(--ink)}
+  .reddit-block h4{font-family:var(--mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;margin:0 0 4px;color:var(--ink)}
+  .reddit-block .sub{font-family:var(--serif);font-size:17px;font-style:italic;color:var(--ink-2);margin:0 0 16px}
+  .rb-sentiment{display:flex;height:8px;margin:4px 0 14px;border:1px solid var(--ink)}
+  .rb-sentiment span{display:block;height:100%}
+  .rb-sentiment .pos{background:var(--green)}
+  .rb-sentiment .neu{background:var(--ink-4)}
+  .rb-sentiment .neg{background:var(--red)}
+  .rb-legend{display:flex;gap:18px;font-family:var(--mono);font-size:10.5px;color:var(--ink-3);letter-spacing:.05em;text-transform:uppercase;margin-bottom:18px}
+  .rb-legend i{display:inline-block;width:9px;height:9px;margin-right:5px;vertical-align:middle}
+  .rb-quotes{display:grid;grid-template-columns:1fr 1fr;gap:20px 28px}
+
+  /* commute widget */
+  .commute{margin-top:36px}
+  .commute .controls{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:18px;padding:14px 0;border-top:1px solid var(--rule);border-bottom:1px solid var(--rule)}
+  .commute-table{display:grid;grid-template-columns:1fr 70px 70px 70px 70px;gap:0;border-top:1px solid var(--ink)}
+  .commute-table .h{font-family:var(--mono);font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-3);padding:10px 6px;border-bottom:1px solid var(--ink)}
+  .commute-table .h:not(:first-child){text-align:right}
+  .commute-table .r{padding:12px 6px;border-bottom:1px solid var(--rule);font-family:var(--mono);font-size:12px;color:var(--ink-2);display:flex;align-items:center;justify-content:flex-end}
+  .commute-table .r.first{font-family:var(--serif);font-size:16.5px;justify-content:flex-start;color:var(--ink);letter-spacing:-.005em}
+  .commute-table .r.first small{font-family:var(--mono);font-size:10.5px;color:var(--ink-3);margin-left:8px;text-transform:uppercase;letter-spacing:.06em}
+  .commute-table .r b{color:var(--ink);font-weight:500;margin-right:4px}
+  .commute-table .best{background:rgba(46,107,63,.08)}
+
+  /* red flags */
+  .flags{margin-top:36px;display:grid;grid-template-columns:1fr 1fr;gap:14px}
+  .flag{border:1px solid var(--rule);padding:16px 18px;position:relative}
+  .flag.red{border-color:var(--red);background:rgba(158,42,43,.03)}
+  .flag.amber{border-color:var(--amber);background:rgba(181,122,29,.04)}
+  .flag.ok{border-color:var(--green);background:rgba(46,107,63,.04)}
+  .flag .f-k{font-family:var(--mono);font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;margin-bottom:6px}
+  .flag.red .f-k{color:var(--red)}
+  .flag.amber .f-k{color:var(--amber)}
+  .flag.ok .f-k{color:var(--green)}
+  .flag h5{font-family:var(--serif);font-size:18px;font-weight:500;margin:0 0 4px;letter-spacing:-.005em}
+  .flag p{font-size:13px;color:var(--ink-2);margin:0;line-height:1.45}
+
+  /* price history */
+  .price-card{background:var(--paper);border:1px solid var(--ink);padding:22px}
+  .price-card h4{font-family:var(--mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;margin:0 0 4px}
+  .price-card .sub{font-family:var(--serif);font-size:17px;color:var(--ink-2);margin:0 0 14px;font-style:italic}
+  .price-chart{position:relative;height:160px;margin:8px 0 10px}
+  .price-chart svg{width:100%;height:100%;overflow:visible}
+  .price-verdict{
+    display:flex;justify-content:space-between;align-items:baseline;padding-top:10px;border-top:1px solid var(--rule);
+    font-family:var(--mono);font-size:11px;text-transform:uppercase;letter-spacing:.06em;color:var(--ink-3);
+  }
+  .price-verdict b{font-family:var(--serif);font-size:22px;letter-spacing:-.01em;text-transform:none;font-weight:500;color:var(--green)}
+  .price-verdict b.b{color:var(--red)}
+
+  /* sidebar */
+  .side{position:sticky;top:130px;align-self:start;display:flex;flex-direction:column;gap:18px}
+  .side-card{border:1px solid var(--ink);padding:18px 18px 16px;background:var(--cream)}
+  .side-card h4{font-family:var(--mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;margin:0 0 10px;color:var(--ink)}
+  .kv{display:flex;justify-content:space-between;padding:8px 0;border-top:1px solid var(--rule);font-family:var(--mono);font-size:11.5px;color:var(--ink-2)}
+  .kv:first-of-type{border-top:0}
+  .kv b{color:var(--ink);font-weight:500}
+  .btn{
+    display:block;width:100%;text-align:center;
+    padding:13px;margin-top:10px;
+    font-family:var(--mono);font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;
+    border:1px solid var(--ink);background:var(--ink);color:var(--cream);
+    cursor:pointer;text-decoration:none;
+  }
+  .btn.ghost{background:transparent;color:var(--ink)}
+  .btn:hover{background:var(--orange);border-color:var(--orange);color:#fff}
+
+  .google-block{border:1px solid var(--rule);padding:14px;background:var(--cream)}
+  .google-block .gr-row{display:flex;justify-content:space-between;padding:6px 0;border-top:1px solid var(--rule);font-family:var(--mono);font-size:11px;color:var(--ink-2)}
+  .google-block .gr-row:first-of-type{border-top:0}
+  .google-block .gr-row b{color:var(--ink);font-weight:500}
+  .fake-meter{height:8px;background:var(--rule-2);margin-top:6px;position:relative}
+  .fake-meter i{display:block;height:100%;background:var(--red)}
+
+  /* small */
+  .micro{font-family:var(--mono);font-size:10.5px;color:var(--ink-3);letter-spacing:.04em;text-transform:uppercase}
+
+  @media (max-width:980px){
+    .hero-lede,.score-grid,.browse-grid,.stat-strip,.d-key,.d-head,.search-body,.d-grid,.hood-grid,.pull-inner,.method-body,.flags,.rb-quotes,.quotes{grid-template-columns:1fr}
+    .score-grid,.browse-grid,.stat-strip,.d-key{border-left:0;border-right:0}
+    .score-card,.browse-cell,.stat,.d-key .k{border-right:0;border-bottom:1px solid var(--rule)}
+    .side,.map-rail{position:static}
+    .hero h1{font-size:52px}
+  }
+</style>
+</head>
+<body>
+
+<!-- MASTHEAD -->
+<header class="masthead">
+  <div class="masthead-top">
+    <div class="dateline">
+      <span><span class="dot"></span>Data refreshed — Mon 20 Apr 2026, 06:00 CT</span>
+      <span>Vol. II · Issue 14</span>
+      <span>Champaign–Urbana, IL</span>
+    </div>
+    <div>Built by students · Not affiliated with UIUC</div>
+  </div>
+  <div class="masthead-main">
+    <nav class="nav">
+      <a data-route="home" class="active">Home</a>
+      <a data-route="search">Browse</a>
+      <a data-route="search">Neighborhoods</a>
+      <a data-route="home">Methodology</a>
+    </nav>
+    <div class="brand" data-route="home">Illini<span class="dot-orange">·</span>Nest</div>
+    <div class="masthead-right">
+      <button class="mh-search" data-route="search">Find a place →</button>
+    </div>
+  </div>
+</header>
+
+<!-- ================================================================
+     HOME
+================================================================ -->
+<main class="view active" id="view-home">
+  <div class="wrap">
+
+    <section class="hero">
+      <div class="hero-kicker">
+        <span class="tag">Field guide</span>
+        <span>A student-built research tool for UIUC housing</span>
+      </div>
+      <h1>
+        Finally, an apartment site<br/>
+        that <em>isn't</em> trying to <span class="strike">rent</span> sell you one.
+      </h1>
+
+      <div class="hero-lede">
+        <div class="byline">
+          <div><b>REPORTED BY</b></div>
+          <div>The IlliniNest team</div>
+          <div>7 undergrads, 1 grad</div>
+          <div style="margin-top:14px"><b>LAST UPDATE</b></div>
+          <div>Apr 20, 2026 · 06:00 CT</div>
+          <div style="margin-top:14px"><b>COVERAGE</b></div>
+          <div>412 buildings · 8,940 units</div>
+        </div>
+        <p><span class="drop">W</span>e scraped nine years of r/UIUC, parsed 41,200 Google reviews for synthetic patterns, pulled BTAA bus GPS traces, and trained a small regression on four years of Zillow and Redfin history. Then we threw out every building where the signal was too weak to say anything honest. What's left is the list below — the only one we'd show our younger siblings.</p>
+      </div>
+
+      <div class="stat-strip">
+        <div class="stat">
+          <div class="num">412<span class="unit">bldgs</span></div>
+          <div class="lbl">Apartment buildings within a 20-min walk of the Main Quad</div>
+        </div>
+        <div class="stat">
+          <div class="num">41.2K<span class="unit">rev.</span></div>
+          <div class="lbl">Google &amp; Reddit data points cross-referenced</div>
+        </div>
+        <div class="stat">
+          <div class="num">38<span class="unit">%</span></div>
+          <div class="lbl">Of reviews flagged as likely synthetic or astroturfed</div>
+        </div>
+        <div class="stat">
+          <div class="num">$41<span class="unit">/mo</span></div>
+          <div class="lbl">Median overpayment vs. our fair-price model (2026 leases)</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- HOW WE SCORE -->
+    <section class="section">
+      <div class="section-head">
+        <div>
+          <div class="kicker">§ 01 — The Trust Score</div>
+          <h2>Five inputs. No stars. No sponsorship.</h2>
+        </div>
+        <div class="blurb">Every building earns a score from 0–100 built from five weighted signals. No landlord can pay to move the number. The components, in order of weight:</div>
+      </div>
+
+      <div class="score-grid">
+        <div class="score-card hl">
+          <div class="n">01 · 28%</div>
+          <h3>Reddit sentiment</h3>
+          <p>Nine years of r/UIUC posts & comments, filtered to on-topic threads and scored by a fine-tuned classifier.</p>
+          <span class="chip">n = 14,882 posts</span>
+        </div>
+        <div class="score-card">
+          <div class="n">02 · 22%</div>
+          <h3>Google review integrity</h3>
+          <p>Burstiness, reviewer history, and language-model detection. We score the authenticity of the reviews — not the reviews themselves.</p>
+          <span class="chip">n = 41,212 reviews</span>
+        </div>
+        <div class="score-card hl">
+          <div class="n">03 · 20%</div>
+          <h3>Price fairness</h3>
+          <p>OLS regression on sqft, bed count, age, amenities, and walkshed. Rent is graded against its predicted price, not a neighborhood average.</p>
+          <span class="chip">adj. R² = 0.78</span>
+        </div>
+        <div class="score-card">
+          <div class="n">04 · 16%</div>
+          <h3>Lease red flags</h3>
+          <p>Parsed lease PDFs (when available) plus small-claims records for non-refunded deposits in Champaign County.</p>
+          <span class="chip">since 2017</span>
+        </div>
+        <div class="score-card hl">
+          <div class="n">05 · 14%</div>
+          <h3>Management responsiveness</h3>
+          <p>Median time-to-fix on reported maintenance issues, aggregated from anonymous student submissions.</p>
+          <span class="chip">n = 2,140 tickets</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- PULL QUOTES FROM REDDIT -->
+    <section class="pull">
+      <div class="pull-inner">
+        <div class="pull-meta">
+          <div class="mono">§ 02 — Signal from the noise</div>
+          <h3>What students actually said, before the landlord asked them to take it down.</h3>
+          <p>Four quotes sampled from our corpus. Sentiment and topic tags are applied by our classifier; usernames are hashed and permission requested before first publication.</p>
+        </div>
+        <div class="quotes">
+          <div class="quote neg">
+            <blockquote>"They raised rent 14% at renewal and told me the dishwasher 'wasn't part of the unit' even though it was in the listing photos."</blockquote>
+            <cite>u/h4sh-9281 · r/UIUC · Nov 2024 · topic: renewal</cite>
+          </div>
+          <div class="quote pos">
+            <blockquote>"Actually responsive. My heat broke at 2am in January and someone was there by 9. Worth every dollar."</blockquote>
+            <cite>u/h4sh-4410 · r/UIUC · Feb 2025 · topic: maintenance</cite>
+          </div>
+          <div class="quote neu">
+            <blockquote>"It's fine. It's not going to change your life. You will hear the MTD bus every 8 minutes. That's the deal."</blockquote>
+            <cite>u/h4sh-2203 · r/UIUC · Aug 2025 · topic: noise</cite>
+          </div>
+          <div class="quote neg">
+            <blockquote>"Do NOT sign without walking through. They show you the model unit. The actual units have the stain."</blockquote>
+            <cite>u/h4sh-7712 · r/UIUC · Mar 2025 · topic: leasing</cite>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- NEIGHBORHOODS + SCATTER -->
+    <section class="hood">
+      <div class="section-head">
+        <div>
+          <div class="kicker">§ 03 — By neighborhood</div>
+          <h2>Where the honest rent is.</h2>
+        </div>
+        <div class="blurb">Median trust score by neighborhood, plotted against median rent for a 2-bedroom. Orange buildings are "above the line" — their trust score beats what their rent would predict.</div>
+      </div>
+
+      <div class="hood-grid">
+        <div class="hood-list">
+          <!-- rows rendered by JS -->
+        </div>
+
+        <div class="chart-card">
+          <h4>Fig 3.1 — Trust vs. Rent</h4>
+          <p class="sub">Each dot is one building. Line is the predicted trust score.</p>
+          <div class="scatter" id="scatter">
+            <div class="axL">Trust score (0–100)</div>
+            <div class="axB">2BR median rent ($/mo)</div>
+          </div>
+          <div class="legend">
+            <span><i style="background:var(--orange)"></i>Above the line</span>
+            <span><i style="background:var(--blue)"></i>On the line</span>
+            <span><i style="background:var(--ink-4)"></i>Below the line</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- BROWSE MODES -->
+    <section class="browse">
+      <div class="section-head">
+        <div>
+          <div class="kicker">§ 04 — Start your search</div>
+          <h2>Three ways in.</h2>
+        </div>
+        <div class="blurb">We don't think there's one right apartment for every student. Pick the question that matters most to you, and the filters will start there.</div>
+      </div>
+      <div class="browse-grid">
+        <div class="browse-cell" data-route="search">
+          <div class="kn">Mode A</div>
+          <h3>By commute</h3>
+          <p>"I'm Materials Science. I'm in MSEB every day. Show me places where I'll never lose more than 12 minutes to winter."</p>
+          <span class="go">Browse by building →</span>
+        </div>
+        <div class="browse-cell" data-route="search">
+          <div class="kn">Mode B</div>
+          <h3>By price honesty</h3>
+          <p>"I have $1,150/mo. Don't show me places asking for that with a straight face. Show me the ones that deserve it."</p>
+          <span class="go">Browse by deal score →</span>
+        </div>
+        <div class="browse-cell" data-route="search">
+          <div class="kn">Mode C</div>
+          <h3>By trust</h3>
+          <p>"I don't care about the pool. I care that the landlord will return my security deposit. Sort by that."</p>
+          <span class="go">Browse by trust score →</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- METHOD -->
+    <section class="method">
+      <div class="section-head">
+        <div>
+          <div class="kicker">§ 05 — A note on methodology</div>
+          <h2>How we know what we know.</h2>
+        </div>
+        <div class="blurb">We built IlliniNest as a senior capstone. It isn't a business. Every signal below is reproducible; every pipeline is open. If we're wrong about your building, email us and we'll show you our work.</div>
+      </div>
+
+      <div class="method-body">
+        <div>
+          <h3>What we do</h3>
+          <p>We cross-reference four independent data sources so no single input — especially not the landlord — can shape what a listing looks like. A building with a gamed Google page still gets a low score if Reddit tells a different story. A building with fair reviews but a predatory lease still gets a warning.</p>
+          <p>Numbers are updated nightly. Reddit is scraped weekly under the public API. Google reviews are sampled monthly via Places. Commute times are pulled from BTAA real-time feeds at 7:45am and 5:15pm on weekdays.</p>
+        </div>
+        <div>
+          <h3>What we don't do</h3>
+          <ul>
+            <li><span>Accept money from landlords</span><b>Never</b></li>
+            <li><span>Accept money from brokers</span><b>Never</b></li>
+            <li><span>Hide negative reviews</span><b>Never</b></li>
+            <li><span>Auto-display newest listings first</span><b>Never</b></li>
+            <li><span>Recommend based on clicks</span><b>Never</b></li>
+            <li><span>Sell your search history</span><b>Never</b></li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+  </div>
+</main>
+
+<!-- ================================================================
+     SEARCH
+================================================================ -->
+<main class="view" id="view-search">
+  <div class="wrap">
+
+    <div class="search-head">
+      <div class="crumbs">§ Browse — Champaign–Urbana · 412 buildings indexed</div>
+      <h2 class="serif">What matters to you?</h2>
+    </div>
+
+    <div class="search-controls" id="filters">
+      <!-- injected by JS -->
+    </div>
+
+    <div class="search-body">
+      <div>
+        <div class="result-meta">
+          <div><b id="result-count">36</b> buildings · filtered from 412</div>
+          <div>Showing highest trust first</div>
+        </div>
+        <div id="cards"></div>
+      </div>
+
+      <aside class="map-rail">
+        <div class="map" id="map">
+          <div class="map-grid"></div>
+          <div class="map-street sL" style="top:22%"></div>
+          <div class="map-street sL" style="top:54%"></div>
+          <div class="map-street sL" style="top:78%"></div>
+          <div class="map-street sV" style="left:24%"></div>
+          <div class="map-street sV" style="left:52%"></div>
+          <div class="map-street sV" style="left:74%"></div>
+          <div class="map-campus"></div>
+          <!-- pins injected -->
+        </div>
+        <div class="map-legend">
+          <span>Fig 2.1 — Trust-weighted map</span>
+          <span class="legend-swatches">
+            <span><i style="background:var(--orange)"></i>80+</span>
+            <span><i style="background:var(--cream)"></i>60–79</span>
+            <span><i style="background:var(--ink-4)"></i>&lt; 60</span>
+          </span>
+        </div>
+      </aside>
+    </div>
+  </div>
+</main>
+
+<!-- ================================================================
+     DETAIL
+================================================================ -->
+<main class="view" id="view-detail">
+  <div class="wrap">
+    <div class="d-crumbs">
+      <a data-route="home">Home</a> &nbsp;/&nbsp; <a data-route="search">Browse</a> &nbsp;/&nbsp;
+      <span id="dc-hood">Campustown</span> &nbsp;/&nbsp; <b id="dc-name">The Suffolk</b>
+    </div>
+
+    <div class="d-head">
+      <div>
+        <div class="kicker" id="d-kicker">§ Building profile</div>
+        <h1 id="d-name">The Suffolk</h1>
+        <div class="addr" id="d-addr">206 E. Green St · Champaign · 4 floors · built 2014</div>
+      </div>
+      <div class="d-trust">
+        <div class="lbl">Trust Score</div>
+        <div class="big" id="d-trust-n">87<small>/100</small></div>
+        <div class="verdict" id="d-verdict">"Quiet winner. Reviews are real, rent is fair, management answers."</div>
+      </div>
+    </div>
+
+    <div class="d-gallery">
+      <div class="g"><span>Exterior · photo</span></div>
+      <div class="g"><span>Unit · kitchen</span></div>
+      <div class="g"><span>Unit · living</span></div>
+      <div class="g"><span>Floorplan</span></div>
+      <div class="g"><span>Lobby</span></div>
+    </div>
+
+    <div class="d-key">
+      <div class="k"><div class="v">$1,210<small>/bd</small></div><div class="l">Median 2BR · per bed</div></div>
+      <div class="k"><div class="v">−$48<small>/mo</small></div><div class="l">Vs. fair-price model</div></div>
+      <div class="k"><div class="v">11<small>min</small></div><div class="l">Walk to Main Quad</div></div>
+      <div class="k"><div class="v">8.4<small>hr</small></div><div class="l">Median maintenance reply</div></div>
+      <div class="k"><div class="v">92<small>%</small></div><div class="l">Deposits returned (n=112)</div></div>
+    </div>
+
+    <div class="d-grid">
+      <section>
+        <div class="tabs" id="tabs">
+          <button class="tab on" data-tab="trust">Trust breakdown</button>
+          <button class="tab" data-tab="reddit">Reddit signal</button>
+          <button class="tab" data-tab="commute">Commute</button>
+          <button class="tab" data-tab="price">Price</button>
+          <button class="tab" data-tab="flags">Red flags</button>
+        </div>
+
+        <div class="panel on" id="p-trust">
+          <p class="micro" style="margin-bottom:10px">Fig 4.1 — How the 87 was built</p>
+          <div class="breakdown" id="breakdown"></div>
+
+          <div class="reddit-block" style="margin-top:24px">
+            <h4>§ Reddit, at a glance</h4>
+            <p class="sub">312 on-topic mentions · nine-year window · classified.</p>
+            <div class="rb-sentiment">
+              <span class="pos" style="width:64%"></span>
+              <span class="neu" style="width:22%"></span>
+              <span class="neg" style="width:14%"></span>
+            </div>
+            <div class="rb-legend">
+              <span><i style="background:var(--green)"></i>Positive 64%</span>
+              <span><i style="background:var(--ink-4)"></i>Neutral 22%</span>
+              <span><i style="background:var(--red)"></i>Negative 14%</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="panel" id="p-reddit">
+          <p class="micro" style="margin-bottom:10px">Fig 4.2 — Top-cited threads, classifier-selected.</p>
+          <div class="rb-quotes">
+            <div class="quote pos">
+              <blockquote>"Lived here three years. Boring in the best way. Nothing broke that they didn't fix the same day."</blockquote>
+              <cite>u/h4sh-1882 · 2024 · +41 upvotes · pos · topic: maintenance</cite>
+            </div>
+            <div class="quote pos">
+              <blockquote>"Got $630 of my deposit back in 11 days. That shouldn't be notable but here we are."</blockquote>
+              <cite>u/h4sh-4402 · 2023 · +22 upvotes · pos · topic: deposit</cite>
+            </div>
+            <div class="quote neu">
+              <blockquote>"Thin walls if your neighbor is loud, but honestly the building is quiet."</blockquote>
+              <cite>u/h4sh-8824 · 2025 · +8 upvotes · neu · topic: noise</cite>
+            </div>
+            <div class="quote neg">
+              <blockquote>"Parking garage flooded twice my senior year. They gave a partial credit eventually."</blockquote>
+              <cite>u/h4sh-2081 · 2022 · +16 upvotes · neg · topic: parking</cite>
+            </div>
+          </div>
+        </div>
+
+        <div class="panel" id="p-commute">
+          <p class="micro" style="margin-bottom:10px">Fig 4.3 — Median door-to-class time · Tue/Thu 9:30am · Jan 2026.</p>
+          <div class="commute">
+            <div class="controls" id="commute-ctrls"></div>
+            <div class="commute-table" id="commute-table"></div>
+          </div>
+        </div>
+
+        <div class="panel" id="p-price">
+          <div class="price-card">
+            <h4>Fig 4.4 — Fair-price model</h4>
+            <p class="sub">Asking price vs. predicted, 2BR unit, 2021–2026.</p>
+            <div class="price-chart" id="price-chart"></div>
+            <div class="price-verdict">
+              <span>Current vs. model</span>
+              <b>−$48/mo · fairly priced</b>
+            </div>
+          </div>
+          <p class="micro" style="margin-top:12px;text-transform:none;letter-spacing:0;font-family:var(--sans);font-size:13px;color:var(--ink-2);line-height:1.5">
+            Our model predicts this unit should rent for $1,258/mo given its square footage (780 sqft), bedroom count, walkshed to the Main Quad, building age, and amenity bundle. It is currently listed at $1,210, about 4% under the modeled fair price — a gentle positive signal, not a steal.
+          </p>
+        </div>
+
+        <div class="panel" id="p-flags">
+          <div class="flags">
+            <div class="flag ok">
+              <div class="f-k">OK · 92% RETURNED</div>
+              <h5>Security deposit</h5>
+              <p>Of 112 former tenants surveyed, 92% received their full deposit within 30 days. Median return: $581.</p>
+            </div>
+            <div class="flag ok">
+              <div class="f-k">OK · NO SUITS</div>
+              <h5>Small-claims history</h5>
+              <p>No tenant-initiated suits in Champaign County against this landlord in the last 4 years.</p>
+            </div>
+            <div class="flag amber">
+              <div class="f-k">WATCH · CLAUSE 14(c)</div>
+              <h5>Subletting fee</h5>
+              <p>Lease requires a $300 administrative fee for sublet approval. Not illegal, but well above the Campustown median of $85.</p>
+            </div>
+            <div class="flag amber">
+              <div class="f-k">WATCH · RENEWAL</div>
+              <h5>Auto-renewal window</h5>
+              <p>Non-renewal notice is due 75 days before lease end. Set a reminder. Missing this auto-renews you for a full year.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <aside class="side">
+        <div class="side-card">
+          <h4>At a glance</h4>
+          <div class="kv"><span>Unit mix</span><b>Studios · 1BR · 2BR · 3BR</b></div>
+          <div class="kv"><span>Utilities</span><b>Water incl. · heat incl.</b></div>
+          <div class="kv"><span>Furnished</span><b>Optional (+$65/mo)</b></div>
+          <div class="kv"><span>Pet policy</span><b>Cats only</b></div>
+          <div class="kv"><span>Laundry</span><b>In-unit</b></div>
+          <div class="kv"><span>Parking</span><b>$95/mo covered</b></div>
+          <a class="btn">Email the current tenant</a>
+          <a class="btn ghost">See landlord portfolio →</a>
+        </div>
+
+        <div class="side-card">
+          <h4>Google reviews · verified</h4>
+          <div class="google-block">
+            <div class="gr-row"><span>Star average</span><b>4.1 / 5</b></div>
+            <div class="gr-row"><span>Total reviews</span><b>147</b></div>
+            <div class="gr-row"><span>Likely synthetic</span><b style="color:var(--red)">18% (low)</b></div>
+          </div>
+          <div style="margin-top:10px;font-family:var(--mono);font-size:10.5px;color:var(--ink-3);letter-spacing:.04em;text-transform:uppercase">Synthetic-review suspicion</div>
+          <div class="fake-meter"><i style="width:18%"></i></div>
+          <div style="font-size:12.5px;color:var(--ink-2);margin-top:10px;line-height:1.45">
+            Mostly clean. A cluster of 9 five-star reviews was posted in a 48-hour window in August 2023, which our classifier flags. The rest of the history reads plausibly human.
+          </div>
+        </div>
+
+        <div class="side-card">
+          <h4>Landlord</h4>
+          <div class="kv"><span>Operator</span><b>Suffolk Holdings LLC</b></div>
+          <div class="kv"><span>Portfolio</span><b>3 buildings · C-U</b></div>
+          <div class="kv"><span>Trust avg. (portfolio)</span><b>81 / 100</b></div>
+          <div class="kv"><span>Response to tenants</span><b>7.4 hr median</b></div>
+        </div>
+      </aside>
+    </div>
+  </div>
+</main>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="cols">
+    <div>
+      <div class="tagline">A student-built research tool. Not a brokerage. No one paid for placement. <span style="color:var(--orange)">·</span></div>
+    </div>
+    <div>
+      <h4>Project</h4>
+      <a>About</a><a>Methodology</a><a>Data sources</a><a>Changelog</a>
+    </div>
+    <div>
+      <h4>Get involved</h4>
+      <a>Submit a review</a><a>Flag a listing</a><a>Contribute data</a><a>Contact</a>
+    </div>
+    <div>
+      <h4>Open source</h4>
+      <a>GitHub</a><a>Scrapers</a><a>Models</a><a>Dataset card</a>
+    </div>
+  </div>
+  <div class="bottom">
+    <span>© 2026 IlliniNest · Built at UIUC · v2.14.0</span>
+    <span>Not affiliated with the University of Illinois Urbana-Champaign</span>
+  </div>
+</footer>
+
+<script>
+/* ==============================
+   ROUTING
+============================== */
+const views = {
+  home: document.getElementById('view-home'),
+  search: document.getElementById('view-search'),
+  detail: document.getElementById('view-detail'),
+};
+function goto(route, opts={}){
+  Object.values(views).forEach(v=>v.classList.remove('active'));
+  (views[route]||views.home).classList.add('active');
+  document.querySelectorAll('.nav a').forEach(a=>a.classList.toggle('active', a.dataset.route===route));
+  window.scrollTo({top:0,behavior:'instant'});
+  localStorage.setItem('illini-route', route);
+  if(route==='detail' && opts.bld){
+    loadDetail(opts.bld);
+    localStorage.setItem('illini-bld', opts.bld.id);
+  }
+}
+document.addEventListener('click', (e)=>{
+  const el = e.target.closest('[data-route]');
+  if(el){ e.preventDefault(); goto(el.dataset.route); }
+});
+
+/* ==============================
+   DATA
+============================== */
+const BUILDINGS = [
+  {id:'suffolk',     name:'The Suffolk',         addr:'206 E. Green St',    hood:'Campustown',   rent:1210, beds:2, sqft:780, trust:87, deal:'good', dealTxt:'−$48/mo · fair', blurb:'Quiet winner. Reviews real, rent fair.', redFlags:0, maintHr:8.4, walkMin:11, x:58, y:48, size:'hi', chips:[['good','Reviews: real'],['good','Rent: fair'],['good','Deposits: 92%']]},
+  {id:'jsm',         name:'JSM · Third & John',  addr:'302 S. Third St',    hood:'Campustown',   rent:945,  beds:2, sqft:720, trust:58, deal:'fair', dealTxt:'+$22/mo · fair', blurb:'Bus-route convenience; mixed Reddit.', redFlags:2, maintHr:31, walkMin:9,  x:46, y:58, size:'mid', chips:[['warn','Slow maintenance'],['bad','Deposit disputes']]},
+  {id:'lofts-309',   name:'Lofts at 309',        addr:'309 E. Green St',    hood:'Campustown',   rent:1480, beds:2, sqft:860, trust:72, deal:'bad',  dealTxt:'+$118/mo · high', blurb:'Nicely built, priced above its trust.', redFlags:1, maintHr:14, walkMin:10, x:61, y:50, size:'mid', chips:[['good','Responsive mgmt'],['bad','Overpriced']]},
+  {id:'hub',         name:'Hub on Campus',       addr:'308 E. Green St',    hood:'Campustown',   rent:1290, beds:2, sqft:710, trust:41, deal:'bad',  dealTxt:'+$205/mo · very high', blurb:'Cluster of synthetic reviews detected.', redFlags:3, maintHr:48, walkMin:8,  x:60, y:51, size:'lo', chips:[['bad','Synthetic reviews 42%'],['bad','Overpriced'],['warn','Noisy']]},
+  {id:'burnham-310', name:'Burnham 310',         addr:'310 E. Springfield', hood:'North End',    rent:1105, beds:2, sqft:790, trust:81, deal:'good', dealTxt:'−$62/mo · under', blurb:'Hidden gem. Boringly reliable.', redFlags:0, maintHr:10.1, walkMin:17, x:52, y:22, size:'hi', chips:[['good','Under model price'],['good','Quiet block']]},
+  {id:'orchard',     name:'Orchard Downs',       addr:'2051 Orchard St',    hood:'South Campus', rent:1020, beds:2, sqft:900, trust:76, deal:'good', dealTxt:'−$35/mo · under', blurb:'Grad-friendly. Slower bus, more sqft.', redFlags:0, maintHr:12, walkMin:22, x:42, y:82, size:'mid', chips:[['good','Fair price'],['good','Family-friendly']]},
+  {id:'greenst-510', name:'510 Green',           addr:'510 E. Green St',    hood:'Campustown',   rent:1395, beds:2, sqft:740, trust:64, deal:'fair', dealTxt:'+$18/mo · fair', blurb:'Popular for a reason; management uneven.', redFlags:1, maintHr:22, walkMin:9,  x:66, y:50, size:'mid', chips:[['good','Location'],['warn','Uneven mgmt']]},
+  {id:'armory',      name:'Armory House',        addr:'915 S. Locust',      hood:'South Campus', rent:1150, beds:2, sqft:820, trust:69, deal:'fair', dealTxt:'−$10/mo · fair', blurb:'Solid, if a little worn. Older build.', redFlags:1, maintHr:18, walkMin:14, x:38, y:62, size:'mid', chips:[['good','Deposits: 88%'],['warn','Older fixtures']]},
+  {id:'lincoln-ave', name:'Lincoln Ave Residence',addr:'1005 S. Lincoln',  hood:'Urbana',       rent:995,  beds:2, sqft:860, trust:74, deal:'good', dealTxt:'−$55/mo · under', blurb:'Closer to Urbana side; good for engineers.', redFlags:0, maintHr:11, walkMin:18, x:78, y:60, size:'hi', chips:[['good','Good MEB commute'],['good','Under price']]},
+  {id:'latta-green', name:'Latta Green',         addr:'812 W. Green St',    hood:'Urbana',       rent:1060, beds:2, sqft:780, trust:51, deal:'fair', dealTxt:'+$8/mo · fair',  blurb:'Review history is suspicious; price normal.', redFlags:2, maintHr:28, walkMin:21, x:82, y:48, size:'lo', chips:[['bad','Synthetic reviews 36%'],['warn','Mgmt slow']]},
+  {id:'highrise',    name:'Skyline 602',         addr:'602 E. Daniel',      hood:'Campustown',   rent:1580, beds:2, sqft:900, trust:55, deal:'bad',  dealTxt:'+$190/mo · very high', blurb:'Amenity-heavy; priced well above trust.', redFlags:2, maintHr:26, walkMin:11, x:60, y:55, size:'lo', chips:[['warn','Amenities heavy'],['bad','Overpriced']]},
+  {id:'vista',       name:'Vista at Fourth',     addr:'411 E. White St',    hood:'North End',    rent:1130, beds:2, sqft:810, trust:78, deal:'good', dealTxt:'−$28/mo · under', blurb:'Newer build with unusually honest reviews.', redFlags:0, maintHr:9.5, walkMin:19, x:50, y:16, size:'hi', chips:[['good','Clean reviews'],['good','Fair mgmt']]},
+];
+
+const HOODS = [
+  {name:'Campustown',   trust:62, rent:1290, delta:+118},
+  {name:'North End',    trust:77, rent:1115, delta:-45},
+  {name:'Urbana',       trust:68, rent:1020, delta:-18},
+  {name:'South Campus', trust:72, rent:1050, delta:-32},
+  {name:'Savoy',        trust:71, rent:940,  delta:-55},
+  {name:'Downtown CHA', trust:66, rent:1240, delta:+65},
+];
+
+/* ==============================
+   HOME — hood list + scatter
+============================== */
+function renderHoods(){
+  const list = document.querySelector('.hood-list');
+  const max = Math.max(...HOODS.map(h=>h.trust));
+  list.innerHTML = HOODS.map((h,i)=>`
+    <div class="hood-row" data-route="search">
+      <div class="rank">${String(i+1).padStart(2,'0')}</div>
+      <div>
+        <div class="name">${h.name}</div>
+        <div class="bar"><i style="width:${(h.trust/max)*100}%"></i></div>
+      </div>
+      <div class="price">$${h.rent.toLocaleString()}<span class="micro"> /2BR</span></div>
+      <div class="price ${h.delta<0?'deltaN':'deltaP'}">${h.delta<0?'−':'+'}$${Math.abs(h.delta)}<span class="micro"> vs fair</span></div>
+    </div>
+  `).join('');
+}
+
+function renderScatter(){
+  const s = document.getElementById('scatter');
+  // x = rent 800–1700, y = trust 30–95
+  const pts = BUILDINGS.map(b=>{
+    const xP = ((b.rent-800)/(1700-800))*100;
+    const yP = ((b.trust-30)/(95-30))*100;
+    return {b, xP, yP};
+  });
+  // regression line approximated from our fake data
+  const svgNS='http://www.w3.org/2000/svg';
+  const svg = document.createElementNS(svgNS,'svg');
+  svg.setAttribute('class','line');
+  svg.setAttribute('viewBox','0 0 100 100');
+  svg.setAttribute('preserveAspectRatio','none');
+  const ln = document.createElementNS(svgNS,'line');
+  ln.setAttribute('x1','6'); ln.setAttribute('y1','76');  // low rent → high trust
+  ln.setAttribute('x2','94'); ln.setAttribute('y2','32'); // high rent → lower-ish
+  // (we're visually making rent-vs-trust negative for the C-U cluster; line inverted)
+  ln.setAttribute('stroke','var(--blue)');
+  ln.setAttribute('stroke-width','0.5');
+  ln.setAttribute('stroke-dasharray','1.5 1.5');
+  svg.appendChild(ln);
+  s.appendChild(svg);
+
+  pts.forEach(p=>{
+    const d = document.createElement('div');
+    d.className='pt';
+    d.style.left = p.xP+'%';
+    // scatter y: higher trust = closer to top (smaller bottom:100% - y)
+    d.style.bottom = (p.yP)+'%';
+    // classify vs line (crude)
+    const expected = 95 - (p.xP*0.55);
+    const diff = p.yP - expected;
+    if(diff>8) d.style.background='var(--orange)';
+    else if(diff<-8) d.style.background='var(--ink-4)';
+    else d.style.background='var(--blue)';
+    d.title = p.b.name+' · $'+p.b.rent+' · trust '+p.b.trust;
+    s.appendChild(d);
+  });
+}
+
+/* ==============================
+   SEARCH — filters, cards, map
+============================== */
+const FILTERS = [
+  {k:'price',    label:'Price · ≤ $1,200/mo',    on:false},
+  {k:'trust',    label:'Trust ≥ 70',             on:true},
+  {k:'fair',     label:'Fair price or better',   on:false},
+  {k:'hood',     label:'Campustown · Urbana · North End', on:false},
+  {k:'beds',     label:'2 bedrooms',             on:true},
+  {k:'commute',  label:'Commute · Siebel ≤ 15m', on:false},
+  {k:'flags',    label:'No red flags',           on:false},
+  {k:'synthetic',label:'Synthetic reviews < 25%',on:false},
+];
+
+function renderFilters(){
+  const root = document.getElementById('filters');
+  root.innerHTML = FILTERS.map(f=>`
+    <button class="filter ${f.on?'on':''}" data-k="${f.k}">
+      <span>${f.label}</span>
+      <span class="${f.on?'x':'caret'}">${f.on?'×':'▾'}</span>
+    </button>
+  `).join('') + `
+    <div class="sort">
+      <span class="micro">Sort:</span>
+      <select>
+        <option>Trust score · high → low</option>
+        <option>Fair price · best deal first</option>
+        <option>Commute · nearest to Main Quad</option>
+        <option>Rent · low → high</option>
+      </select>
+    </div>
+  `;
+  root.querySelectorAll('.filter').forEach(b=>{
+    b.addEventListener('click',()=>{
+      const f = FILTERS.find(x=>x.k===b.dataset.k);
+      f.on=!f.on;
+      renderFilters();
+      renderCards();
+    });
+  });
+}
+
+function renderCards(){
+  const host = document.getElementById('cards');
+  let list = [...BUILDINGS];
+  if(FILTERS.find(f=>f.k==='trust').on) list = list.filter(b=>b.trust>=70);
+  if(FILTERS.find(f=>f.k==='price').on) list = list.filter(b=>b.rent<=1200);
+  if(FILTERS.find(f=>f.k==='fair').on) list = list.filter(b=>b.deal!=='bad');
+  if(FILTERS.find(f=>f.k==='flags').on) list = list.filter(b=>b.redFlags===0);
+  list.sort((a,b)=>b.trust-a.trust);
+  document.getElementById('result-count').textContent = list.length;
+  host.innerHTML = list.map(b=>`
+    <article class="card" data-id="${b.id}">
+      <div class="ph"><span>${b.hood}</span></div>
+      <div class="body">
+        <h3>${b.name}</h3>
+        <div class="addr">${b.addr} · ${b.hood}</div>
+        <div class="chips">
+          ${b.chips.map(([c,t])=>`<span class="chip ${c}"><span class="d"></span>${t}</span>`).join('')}
+        </div>
+        <div class="signals">
+          <span><b>${b.beds}BR</b> · ${b.sqft} sqft</span>
+          <span><b>${b.walkMin}m</b> walk · Main Quad</span>
+          <span><b>${b.maintHr}h</b> median fix</span>
+        </div>
+      </div>
+      <div class="rail">
+        <div class="trust-badge">
+          <div class="t-n">${b.trust}<small>/100</small></div>
+          <div class="t-l">Trust</div>
+        </div>
+        <div class="rent">$${b.rent.toLocaleString()}<small>/mo</small></div>
+        <div class="deal ${b.deal}">${b.dealTxt}</div>
+      </div>
+    </article>
+  `).join('');
+  host.querySelectorAll('.card').forEach(c=>{
+    c.addEventListener('click',()=>{
+      const b = BUILDINGS.find(x=>x.id===c.dataset.id);
+      goto('detail',{bld:b});
+    });
+  });
+  renderMap(list);
+}
+
+function renderMap(list){
+  const map = document.getElementById('map');
+  // clear old pins + labels
+  map.querySelectorAll('.map-pin,.map-label').forEach(n=>n.remove());
+  list.forEach(b=>{
+    const p = document.createElement('div');
+    p.className = 'map-pin '+b.size;
+    p.style.left=b.x+'%';
+    p.style.top=b.y+'%';
+    p.textContent = b.trust;
+    p.title = b.name+' · trust '+b.trust;
+    p.addEventListener('click',()=>goto('detail',{bld:b}));
+    map.appendChild(p);
+  });
+  // campus building labels (reference points)
+  const refs = [
+    {x:46,y:52,t:'Siebel'},
+    {x:56,y:46,t:'Main Quad'},
+    {x:72,y:60,t:'MEB'},
+    {x:40,y:38,t:'Grainger'},
+  ];
+  refs.forEach(r=>{
+    const l = document.createElement('div');
+    l.className='map-label';
+    l.style.left=r.x+'%';
+    l.style.top=r.y+'%';
+    l.textContent=r.t;
+    map.appendChild(l);
+  });
+}
+
+/* ==============================
+   DETAIL
+============================== */
+const BREAKDOWN = [
+  {n:'01', name:'Reddit sentiment',       desc:'312 mentions · 64% positive', v:84, cls:'hi',  weight:28},
+  {n:'02', name:'Google review integrity',desc:'18% suspected synthetic',      v:79, cls:'hi',  weight:22},
+  {n:'03', name:'Price fairness',         desc:'−$48/mo vs. model',            v:88, cls:'hi',  weight:20},
+  {n:'04', name:'Lease red flags',        desc:'2 watch · 0 red',              v:72, cls:'mid', weight:16},
+  {n:'05', name:'Management responsiveness',desc:'8.4 hr median fix time',     v:92, cls:'hi',  weight:14},
+];
+
+function renderBreakdown(){
+  const root = document.getElementById('breakdown');
+  root.innerHTML = BREAKDOWN.map(b=>`
+    <div class="bd-row">
+      <div class="n">${b.n}</div>
+      <div>
+        <div class="name">${b.name}</div>
+        <div class="desc">${b.desc} · weight ${b.weight}%</div>
+      </div>
+      <div class="bd-bar ${b.cls}"><i style="width:${b.v}%"></i></div>
+      <div class="score">${b.v}</div>
+    </div>
+  `).join('');
+}
+
+/* commute */
+const MAJORS = ['Computer Sci · Siebel','Materials · MSEB','Mech Eng · MEB','Bus · Wohlers','LAS · English','Arch · Temple'];
+let currentMajor = 0;
+const COMMUTE_ROWS = [
+  {name:'Main Quad',           walk:11, bike:5,  bus:8,  drive:6},
+  {name:'Siebel Center',       walk:14, bike:6,  bus:9,  drive:7},
+  {name:'Grainger Library',    walk:13, bike:5,  bus:8,  drive:7},
+  {name:'MSEB',                walk:18, bike:8,  bus:12, drive:9},
+  {name:'MEB',                 walk:22, bike:9,  bus:14, drive:10},
+  {name:'ARC (gym)',           walk:17, bike:7,  bus:11, drive:8},
+  {name:'Green St. groceries', walk:4,  bike:2,  bus:6,  drive:4},
+];
+function renderCommute(){
+  const ctrls = document.getElementById('commute-ctrls');
+  ctrls.innerHTML = MAJORS.map((m,i)=>`
+    <button class="filter ${i===currentMajor?'on':''}" data-i="${i}">
+      <span>${m}</span>
+      <span class="${i===currentMajor?'x':'caret'}">${i===currentMajor?'✓':'+'}</span>
+    </button>
+  `).join('');
+  ctrls.querySelectorAll('.filter').forEach(b=>{
+    b.addEventListener('click',()=>{ currentMajor=+b.dataset.i; renderCommute(); });
+  });
+  const t = document.getElementById('commute-table');
+  t.innerHTML = `
+    <div class="h">Destination</div>
+    <div class="h">Walk</div>
+    <div class="h">Bike</div>
+    <div class="h">Bus</div>
+    <div class="h">Drive</div>
+  ` + COMMUTE_ROWS.map(r=>{
+    const best = Math.min(r.walk,r.bike,r.bus,r.drive);
+    const cell=(n)=>`<div class="r ${n===best?'best':''}">${n}<b> m</b></div>`;
+    return `
+      <div class="r first">${r.name}</div>
+      ${cell(r.walk)}${cell(r.bike)}${cell(r.bus)}${cell(r.drive)}
+    `;
+  }).join('');
+}
+
+/* price chart */
+function renderPriceChart(){
+  const root = document.getElementById('price-chart');
+  root.innerHTML='';
+  const svg = document.createElementNS('http://www.w3.org/2000/svg','svg');
+  svg.setAttribute('viewBox','0 0 600 160');
+  svg.setAttribute('preserveAspectRatio','none');
+  // axes
+  const axis = (x1,y1,x2,y2)=>`<line x1="${x1}" y1="${y1}" x2="${x2}" y2="${y2}" stroke="#1a1a1a" stroke-width="1"/>`;
+  // model line (predicted)
+  const model = [ [40,110],[140,100],[240,90],[340,85],[440,75],[540,68] ];
+  // actual asking
+  const actual = [ [40,118],[140,102],[240,92],[340,70],[440,62],[540,70] ];
+  const path = (pts,stroke,dash='')=>`<polyline fill="none" stroke="${stroke}" stroke-width="2" stroke-dasharray="${dash}" points="${pts.map(p=>p.join(',')).join(' ')}"/>`;
+  const dots = (pts,fill)=>pts.map(p=>`<circle cx="${p[0]}" cy="${p[1]}" r="3" fill="${fill}" stroke="#1a1a1a" stroke-width="1"/>`).join('');
+  const years = ['2021','2022','2023','2024','2025','2026'];
+  const labels = years.map((y,i)=>`<text x="${40+i*100}" y="150" text-anchor="middle" font-family="IBM Plex Mono" font-size="10" fill="#888">${y}</text>`).join('');
+  const yLabels = ['$800','$1,000','$1,200','$1,400'].map((t,i)=>`<text x="0" y="${130-i*24}" font-family="IBM Plex Mono" font-size="10" fill="#888">${t}</text>`).join('');
+  svg.innerHTML = `
+    ${axis(36,6,36,138)}${axis(36,138,560,138)}
+    ${yLabels}
+    ${path(model,'#13294b','4 3')}
+    ${path(actual,'#e84a27')}
+    ${dots(actual,'#e84a27')}
+    ${labels}
+    <text x="540" y="58" font-family="IBM Plex Mono" font-size="10" fill="#e84a27" text-anchor="end">asking</text>
+    <text x="540" y="80" font-family="IBM Plex Mono" font-size="10" fill="#13294b" text-anchor="end">predicted</text>
+  `;
+  root.appendChild(svg);
+}
+
+/* tabs */
+function bindTabs(){
+  document.querySelectorAll('#tabs .tab').forEach(t=>{
+    t.addEventListener('click',()=>{
+      document.querySelectorAll('#tabs .tab').forEach(x=>x.classList.remove('on'));
+      t.classList.add('on');
+      document.querySelectorAll('.panel').forEach(p=>p.classList.remove('on'));
+      document.getElementById('p-'+t.dataset.tab).classList.add('on');
+    });
+  });
+}
+
+function loadDetail(b){
+  document.getElementById('d-name').textContent = b.name;
+  document.getElementById('dc-name').textContent = b.name;
+  document.getElementById('dc-hood').textContent = b.hood;
+  document.getElementById('d-addr').textContent = b.addr+' · '+b.hood+' · 4 floors · built 2014';
+  document.getElementById('d-trust-n').innerHTML = b.trust+'<small>/100</small>';
+  document.getElementById('d-verdict').textContent = '"'+b.blurb+'"';
+  // reset tab to trust
+  document.querySelectorAll('#tabs .tab').forEach(x=>x.classList.remove('on'));
+  document.querySelector('#tabs .tab[data-tab="trust"]').classList.add('on');
+  document.querySelectorAll('.panel').forEach(p=>p.classList.remove('on'));
+  document.getElementById('p-trust').classList.add('on');
+}
+
+/* ==============================
+   INIT
+============================== */
+renderHoods();
+renderScatter();
+renderFilters();
+renderCards();
+renderBreakdown();
+renderCommute();
+renderPriceChart();
+bindTabs();
+
+/* restore last route */
+const savedRoute = localStorage.getItem('illini-route') || 'home';
+if(savedRoute && savedRoute!=='home'){
+  if(savedRoute==='detail'){
+    const id = localStorage.getItem('illini-bld');
+    const b = BUILDINGS.find(x=>x.id===id) || BUILDINGS[0];
+    goto('detail',{bld:b});
+  } else {
+    goto(savedRoute);
+  }
+}
+</script>
+</body>
+</html>
