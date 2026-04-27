@@ -1,8 +1,16 @@
 import requests
 import pandas as pd
 import time
+from pathlib import Path
 
 API_KEY = "AIzaSyBxHV4I6pRx77S5Qh4ZXeGxF5z6G5taMTk"
+OUTPUT_PATH = (
+    Path(__file__).resolve().parents[3]
+    / "data"
+    / "commute"
+    / "processed"
+    / "commute_matrix.csv"
+)
 
 apartments = {
     "HERE Champaign": "308 E Green St, Champaign, IL 61820",
@@ -62,5 +70,6 @@ for apt_name, apt_addr in apartments.items():
         print(f"✓ {apt_name} → {bld_name}")
 
 df = pd.DataFrame(rows)
-df.to_csv("commute_matrix.csv", index=False)
-print("완료! commute_matrix.csv 저장됨")
+OUTPUT_PATH.parent.mkdir(parents=True, exist_ok=True)
+df.to_csv(OUTPUT_PATH, index=False)
+print(f"완료! {OUTPUT_PATH} 저장됨")

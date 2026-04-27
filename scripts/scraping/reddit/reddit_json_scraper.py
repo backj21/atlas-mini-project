@@ -1,6 +1,7 @@
 import requests
 import csv
 import time
+from pathlib import Path
 
 # List of Reddit URLs you want to scrape
 # (Truncated here for brevity, add the rest of your links to this list)
@@ -57,6 +58,13 @@ headers = {
 
 # Prepare the data list with column headers
 extracted_data = [["Subreddit", "Post Title", "Original URL", "Author", "Comment Text"]]
+output_filename = (
+    Path(__file__).resolve().parents[3]
+    / "data"
+    / "reddit"
+    / "raw"
+    / "reddit_housing_raw_data.csv"
+)
 
 print("Starting scraper...")
 
@@ -106,7 +114,7 @@ for url in urls:
     time.sleep(2)
 
 # Save the extracted data to a CSV file
-output_filename = "reddit_housing_raw_data.csv"
+output_filename.parent.mkdir(parents=True, exist_ok=True)
 
 with open(output_filename, mode='w', newline='', encoding='utf-8') as file:
     writer = csv.writer(file)

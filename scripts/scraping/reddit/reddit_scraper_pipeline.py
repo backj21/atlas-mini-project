@@ -7,16 +7,16 @@ and comments, then resolves each mention to a canonical complex_id.
 Run this on your LOCAL MACHINE — Reddit blocks server/cloud environments.
 
 Usage:
-    python reddit_scraper.py
+    python scripts/scraping/reddit/reddit_scraper_pipeline.py
 
 Requirements:
     pip install requests pandas rapidfuzz tqdm
 
-Output files (saved to data/raw/reddit/):
+Output files (saved to data/reddit/raw/):
     reddit_posts_raw.csv     — raw post data
     reddit_comments_raw.csv  — raw comment data
 
-Output file (saved to data/outputs/):
+Output file (saved to data/reddit/outputs/):
     mentions.csv             — resolved, filtered mentions ready for NLP
 
 Methods tried in order (automatic fallback):
@@ -29,6 +29,7 @@ Methods tried in order (automatic fallback):
 import os
 import time
 import json
+from pathlib import Path
 import requests
 import pandas as pd
 from datetime import datetime, timedelta
@@ -57,8 +58,9 @@ MIN_WORD_COUNT = 10
 FUZZY_THRESHOLD = 75
 
 # Output directories
-RAW_DIR    = os.path.join("data", "raw", "reddit")
-OUTPUT_DIR = os.path.join("data", "outputs")
+PROJECT_ROOT = Path(__file__).resolve().parents[3]
+RAW_DIR    = PROJECT_ROOT / "data" / "reddit" / "raw"
+OUTPUT_DIR = PROJECT_ROOT / "data" / "reddit" / "outputs"
 
 # Request headers — always set a descriptive User-Agent
 HEADERS = {
@@ -534,8 +536,8 @@ def scrape_all(scraper_name, scraper):
 
 def save_raw(posts, comments):
     """Save raw data immediately — before any filtering or resolution."""
-    posts_path    = os.path.join(RAW_DIR, "reddit_posts_raw.csv")
-    comments_path = os.path.join(RAW_DIR, "reddit_comments_raw.csv")
+    posts_path    = RAW_DIR / "reddit_posts_raw.csv"
+    comments_path = RAW_DIR / "reddit_comments_raw.csv"
 
     pd.DataFrame(posts).to_csv(posts_path, index=False)
     pd.DataFrame(comments).to_csv(comments_path, index=False)
@@ -583,8 +585,8 @@ def build_mentions_csv(posts, comments):
             unresolved.append(row)
 
     # Save mentions.csv
-    mentions_path    = os.path.join(OUTPUT_DIR, "mentions.csv")
-    unresolved_path  = os.path.join(RAW_DIR, "unresolved_mentions.csv")
+    mentions_path    = OUTPUT_DIR / "mentions.csv"
+    unresolved_path  = RAW_DIR / "unresolved_mentions.csv"
 
     pd.DataFrame(resolved).to_csv(mentions_path, index=False)
     pd.DataFrame(unresolved).to_csv(unresolved_path, index=False)
@@ -624,7 +626,7 @@ def print_summary(resolved, unresolved):
         print(f"\nAverage upvotes per mention: {df['upvotes'].mean():.1f}")
         print(f"Average word count:          {df['word_count'].mean():.1f}")
 
-    output_path = os.path.join(OUTPUT_DIR, "mentions.csv")
+    output_path = OUTPUT_DIR / "mentions.csv"
     print(f"\nOutput saved to: {output_path}")
     print("=" * 50)
 
@@ -660,4 +662,4 @@ if __name__ == "__main__":
     # Print summary report
     print_summary(resolved, unresolved)
 
-    print("\nDone. Share data/outputs/mentions.csv with the team.")
+    print("\nDone. Share data/reddit/outputs/mentions.csv with the team.")

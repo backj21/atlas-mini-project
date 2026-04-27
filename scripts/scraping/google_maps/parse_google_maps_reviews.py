@@ -1,8 +1,23 @@
 import json
+from pathlib import Path
 import pandas as pd
+INPUT_PATH = (
+    Path(__file__).resolve().parents[3]
+    / "data"
+    / "google_reviews"
+    / "raw"
+    / "Jinu_GoogleMapsScraper_ALL.json"
+)
+OUTPUT_PATH = (
+    Path(__file__).resolve().parents[3]
+    / "data"
+    / "google_reviews"
+    / "processed"
+    / "google_maps_reviews_all.csv"
+)
 
 # JSON 파일 읽기
-with open("Jinu_GoogleMapsScraper_ALL.json", "r", encoding="utf-8") as f:
+with open(INPUT_PATH, "r", encoding="utf-8") as f:
     data = json.load(f)
 
 # 필요한 컬럼만 추출
@@ -30,5 +45,6 @@ print("\n아파트별 평균 별점:")
 print(df.groupby("apartment")["stars"].mean().sort_values(ascending=False).round(2))
 
 # CSV로 저장
-df.to_csv("Jinu_GoogleMapsScraper_ALL.csv", index=False, encoding="utf-8-sig")
-print("\n저장 완료: Jinu_GoogleMapsScraper_ALL.csv")
+OUTPUT_PATH.parent.mkdir(parents=True, exist_ok=True)
+df.to_csv(OUTPUT_PATH, index=False, encoding="utf-8-sig")
+print(f"\n저장 완료: {OUTPUT_PATH}")
