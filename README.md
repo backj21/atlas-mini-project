@@ -1,4 +1,21 @@
 # ATLAS STAT PROJECT
+## Motive
+
+## Objective
+
+## Current Apartments List
+1. HUB
+2. HERE
+3. Dean
+4. Icon
+5. Latitude
+6. Octave
+7. Seven07
+8. Tower At Third
+9. Yugo
+10. Armory 75
+11. Illini Manor
+
 ## Repository structure
 - `frontend/`: React/Vite UI application.
 - `backend/`: backend service scaffold (`database/`, `models/`, `routers/`, `schemas/`).
