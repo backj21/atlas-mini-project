@@ -1,7 +1,8 @@
 # ATLAS STAT PROJECT
-## Motive
+## Introduction
+Apartment hunting is one of the most difficult and stressful parts of student life. While many websites list available rental properties, most of them are designed to advertise apartments rather than evaluate them honestly. As a result, negative experiences can be hidden, filtered, or difficult to find, leaving students without a clear picture of what living in a specific apartment is actually like. Important information about property management, maintenance responsiveness, hidden fees, and lease conditions is also often scattered or overlooked.
 
-## Objective
+Our team aims to address this problem by building a data-driven website that presents a more candid view of apartments near the University of Illinois Urbana-Champaign. By collecting and analyzing data from Reddit, Google Reviews, apartment listing websites, and MTD commute information, we want to help students compare housing options based on both structured data and real student experiences. Our goal is to provide a transparent, evidence-based review of each apartment so students can make more informed housing decisions.
 
 ## Current Apartments List
 1. HUB
