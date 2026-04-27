@@ -1,4 +1,4 @@
-# atlas-mini-project
+# ATLAS STAT PROJECT
 ## Repository structure
 - `frontend/`: React/Vite UI application.
 - `backend/`: backend service scaffold (`database/`, `models/`, `routers/`, `schemas/`).
