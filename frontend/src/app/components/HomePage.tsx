@@ -408,7 +408,6 @@ export function HomePage({ onNavigateToMap }: HomePageProps) {
                 borderRight: i < arr.length - 1 ? '1px solid var(--rule)' : '0',
                 background: 'transparent',
                 border: 'none',
-                borderRight: i < arr.length - 1 ? '1px solid var(--rule)' : '0',
               }}
               onMouseEnter={(e) => {
                 e.currentTarget.style.background = 'var(--paper)';
