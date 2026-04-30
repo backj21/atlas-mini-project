@@ -1,6 +1,8 @@
 interface ApartmentComplex {
   id: string;
   name: string;
+  address: string;
+  city: string;
   lat: number;
   lng: number;
   trustScore: number;
@@ -133,7 +135,9 @@ export function ComplexList({
                 <b style={{ color: 'var(--ink)', fontWeight: 500 }}>{time} min</b> {transportMode}
               </span>
               <span style={{ color: 'var(--ink-4)' }}>·</span>
-              <span>Champaign</span>
+              <span>
+                {complex.address} · {complex.city}
+              </span>
             </div>
           </button>
         );

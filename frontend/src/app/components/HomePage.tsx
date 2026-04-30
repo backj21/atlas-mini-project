@@ -82,15 +82,15 @@ export function HomePage({ onNavigateToMap }: HomePageProps) {
               <b style={{ color: 'var(--ink)', fontWeight: 500 }}>REPORTED BY</b>
             </div>
             <div>The IlliniNest team</div>
-            <div>7 undergrads, 1 grad</div>
+            <div>UIUC student research project</div>
             <div style={{ marginTop: '14px' }}>
               <b style={{ color: 'var(--ink)', fontWeight: 500 }}>LAST UPDATE</b>
             </div>
-            <div>Apr 27, 2026 · 06:00 CT</div>
+            <div>Apr 30, 2026 · Prototype dataset</div>
             <div style={{ marginTop: '14px' }}>
               <b style={{ color: 'var(--ink)', fontWeight: 500 }}>COVERAGE</b>
             </div>
-            <div>412 buildings · 8,940 units</div>
+            <div>11 apartments · 12 scored records</div>
           </div>
 
           <p
@@ -115,11 +115,10 @@ export function HomePage({ onNavigateToMap }: HomePageProps) {
             >
               W
             </span>
-            e scraped nine years of r/UIUC, parsed 41,200 Google reviews for synthetic patterns,
-            pulled BTAA bus GPS traces, and trained a small regression on four years of Zillow and
-            Redfin history. Then we threw out every building where the signal was too weak to say
-            anything honest. What's left is the list below — the only one we'd show our younger
-            siblings.
+            e are building a focused UIUC housing dataset from Google Maps reviews, Reddit housing
+            discussions, apartment listing data, and campus commute times. The first demo narrows
+            the product to apartments where multiple sources overlap, so each score can point back
+            to real student-facing evidence instead of marketing copy.
           </p>
         </div>
 
@@ -133,10 +132,10 @@ export function HomePage({ onNavigateToMap }: HomePageProps) {
           }}
         >
           {[
-            { num: '412', unit: 'bldgs', label: 'Properties indexed across Champaign–Urbana' },
-            { num: '8,940', unit: 'units', label: 'Individual apartments & bedrooms tracked' },
-            { num: '41.2k', unit: 'reviews', label: 'Google reviews parsed for signal' },
-            { num: '9', unit: 'years', label: 'Of Reddit data scraped from r/UIUC' },
+            { num: '11', unit: 'apts', label: 'Apartment profiles with Google and commute data' },
+            { num: '911', unit: 'reviews', label: 'Google Maps reviews collected for analysis' },
+            { num: '960', unit: 'mentions', label: 'Reddit housing mentions resolved to complexes' },
+            { num: '121', unit: 'routes', label: 'Apartment-to-campus commute rows processed' },
           ].map((stat, i, arr) => (
             <div
               key={i}
@@ -186,6 +185,110 @@ export function HomePage({ onNavigateToMap }: HomePageProps) {
         </div>
       </section>
 
+      {/* Supported Apartments */}
+      <section className="pt-18 pb-0" style={{ paddingTop: '72px' }}>
+        <div className="grid gap-10 items-end mb-8" style={{ gridTemplateColumns: '1fr 2fr' }}>
+          <div>
+            <div
+              className="mb-3.5"
+              style={{
+                fontFamily: 'var(--mono)',
+                fontSize: '11px',
+                letterSpacing: '0.1em',
+                textTransform: 'uppercase',
+                color: 'var(--orange)',
+              }}
+            >
+              § 01 — Current coverage
+            </div>
+            <h2
+              className="m-0"
+              style={{
+                fontFamily: 'var(--serif)',
+                fontWeight: 500,
+                fontSize: '44px',
+                lineHeight: 1.05,
+                letterSpacing: '-0.02em',
+              }}
+            >
+              Apartments in this demo
+            </h2>
+          </div>
+          <div
+            className="ml-auto"
+            style={{
+              fontFamily: 'var(--serif)',
+              fontSize: '18px',
+              lineHeight: 1.55,
+              color: 'var(--ink-2)',
+              maxWidth: '560px',
+            }}
+          >
+            These are the apartments currently covered by the prototype dataset. We are prioritizing
+            buildings where Google reviews, commute data, pricing, amenities, or apartment-site
+            reviews can be connected through a shared apartment ID.
+          </div>
+        </div>
+
+        <div
+          className="grid"
+          style={{
+            gridTemplateColumns: 'repeat(4, 1fr)',
+            borderTop: '1px solid var(--ink)',
+            borderLeft: '1px solid var(--ink)',
+          }}
+        >
+          {[
+            'HERE Champaign',
+            'Hub on Campus Champaign',
+            'The Dean Campustown',
+            'ICON Apartments',
+            'Latitude Apartments',
+            'Octave',
+            'Seven07',
+            'The Tower at Third',
+            'Yugo Urbana Illinois',
+            '75 Armory',
+            'Illini Manor Apartments',
+          ].map((name, i) => (
+            <div
+              key={name}
+              className="px-5 py-5"
+              style={{
+                borderRight: '1px solid var(--ink)',
+                borderBottom: '1px solid var(--ink)',
+                background: i % 2 === 0 ? 'var(--cream)' : 'var(--paper)',
+                minHeight: '88px',
+              }}
+            >
+              <div
+                style={{
+                  fontFamily: 'var(--mono)',
+                  fontSize: '10.5px',
+                  letterSpacing: '0.08em',
+                  textTransform: 'uppercase',
+                  color: 'var(--ink-3)',
+                  marginBottom: '10px',
+                }}
+              >
+                {String(i + 1).padStart(2, '0')}
+              </div>
+              <div
+                style={{
+                  fontFamily: 'var(--serif)',
+                  fontSize: '22px',
+                  fontWeight: 500,
+                  lineHeight: 1.15,
+                  letterSpacing: '-0.01em',
+                }}
+              >
+                {name}
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
+
       {/* How We Score */}
       <section className="pt-18 pb-0" style={{ paddingTop: '72px' }}>
         <div className="grid gap-10 items-end mb-8" style={{ gridTemplateColumns: '1fr 2fr' }}>
@@ -200,7 +303,7 @@ export function HomePage({ onNavigateToMap }: HomePageProps) {
                 color: 'var(--orange)',
               }}
             >
-              § 01 — Trust scoring
+              § 02 — Trust scoring
             </div>
             <h2
               className="m-0"
@@ -225,8 +328,10 @@ export function HomePage({ onNavigateToMap }: HomePageProps) {
               maxWidth: '560px',
             }}
           >
-            A building's trust score reflects how likely we think it is to deliver what it promises.
-            We weight five signals, tuned over two years of student feedback.
+            The current demo score is intentionally simple and explainable. We combine review
+            sentiment, Reddit evidence, rent value, amenities, utilities, and commute data, then
+            keep the source counts visible so students can judge how much evidence supports each
+            result.
           </div>
         </div>
 
@@ -242,34 +347,34 @@ export function HomePage({ onNavigateToMap }: HomePageProps) {
           {[
             {
               n: '01',
-              title: 'Review honesty',
-              desc: 'Google review velocity, text patterns, verified stays.',
+              title: 'Google sentiment',
+              desc: 'Star ratings, review text, owner responses, and VADER sentiment.',
               chip: '35% weight',
               highlight: true,
             },
             {
               n: '02',
-              title: 'Lease clarity',
-              desc: 'Hidden fees, deposit history, sublease restrictions.',
-              chip: '25% weight',
+              title: 'Reddit signal',
+              desc: 'Resolved housing mentions and VADER-scored student comments.',
+              chip: '20% weight',
             },
             {
               n: '03',
-              title: 'Maintenance',
-              desc: 'Response time, Reddit mentions, work order patterns.',
+              title: 'Rent value',
+              desc: 'Pricing rows, per-person rent, unit mix, and value score.',
               chip: '20% weight',
             },
             {
               n: '04',
-              title: 'Value signal',
-              desc: 'Rent vs. comparable units, historic pricing trends.',
+              title: 'Amenities',
+              desc: 'Gym, pool, study space, parking, laundry, bike storage, and pets.',
               chip: '15% weight',
             },
             {
               n: '05',
-              title: 'Management',
-              desc: 'Turnover, Better Business Bureau, legal filings.',
-              chip: '5% weight',
+              title: 'Commute',
+              desc: 'Walking, biking, and transit time to common campus destinations.',
+              chip: '10% weight',
             },
           ].map((card, i, arr) => (
             <div
@@ -344,7 +449,7 @@ export function HomePage({ onNavigateToMap }: HomePageProps) {
                 color: 'var(--orange)',
               }}
             >
-              § 02 — Start your search
+              § 03 — Start your search
             </div>
             <h2
               className="m-0"
@@ -387,17 +492,17 @@ export function HomePage({ onNavigateToMap }: HomePageProps) {
             {
               mode: 'Mode A',
               title: 'By commute',
-              desc: '"I\'m Materials Science. I\'m in MSEB every day. Show me places where I\'ll never lose more than 12 minutes to winter."',
+              desc: '"I spend most days near Grainger or Siebel. Show me places where the walk will not become a daily tax."',
             },
             {
               mode: 'Mode B',
-              title: 'By price honesty',
-              desc: '"I have $1,150/mo. Don\'t show me places asking for that with a straight face. Show me the ones that deserve it."',
+              title: 'By value',
+              desc: '"I care about rent, but I also want to know what that rent actually includes."',
             },
             {
               mode: 'Mode C',
               title: 'By trust',
-              desc: '"I don\'t care about the pool. I care that the landlord will return my security deposit. Sort by that."',
+              desc: '"Do students sound satisfied after move-in, or do the reviews turn negative once management gets involved?"',
             },
           ].map((cell, i, arr) => (
             <button
@@ -466,143 +571,6 @@ export function HomePage({ onNavigateToMap }: HomePageProps) {
               </span>
             </button>
           ))}
-        </div>
-      </section>
-
-      {/* Methodology */}
-      <section className="pt-18 pb-0" style={{ paddingTop: '72px' }}>
-        <div className="grid gap-10 items-end mb-5.5" style={{ gridTemplateColumns: '1fr 2fr' }}>
-          <div>
-            <div
-              className="mb-3.5"
-              style={{
-                fontFamily: 'var(--mono)',
-                fontSize: '11px',
-                letterSpacing: '0.1em',
-                textTransform: 'uppercase',
-                color: 'var(--orange)',
-              }}
-            >
-              § 03 — A note on methodology
-            </div>
-            <h2
-              className="m-0"
-              style={{
-                fontFamily: 'var(--serif)',
-                fontWeight: 500,
-                fontSize: '44px',
-                lineHeight: 1.05,
-                letterSpacing: '-0.02em',
-              }}
-            >
-              How this was built
-            </h2>
-          </div>
-        </div>
-
-        <div
-          className="grid gap-14 pt-5.5"
-          style={{
-            gridTemplateColumns: '1fr 1fr',
-            borderTop: '1px solid var(--ink)',
-          }}
-        >
-          <div>
-            <h3
-              className="mb-3.5"
-              style={{
-                fontFamily: 'var(--serif)',
-                fontWeight: 500,
-                fontSize: '28px',
-                letterSpacing: '-0.01em',
-                margin: '0 0 14px',
-              }}
-            >
-              Data sources
-            </h3>
-            <p
-              style={{
-                fontSize: '14.5px',
-                lineHeight: 1.6,
-                color: 'var(--ink-2)',
-                margin: '0 0 14px',
-              }}
-            >
-              We pull from Google Maps reviews, r/UIUC archives (2016–present), Zillow rental
-              history, CUMTD bus GPS, and Better Business Bureau complaints. Everything is
-              re-scraped weekly except Reddit, which updates daily.
-            </p>
-            <ul
-              className="list-none p-0 mt-3.5"
-              style={{
-                fontFamily: 'var(--mono)',
-                fontSize: '11.5px',
-                color: 'var(--ink-3)',
-                letterSpacing: '0.02em',
-                textTransform: 'uppercase',
-                margin: '14px 0 0',
-              }}
-            >
-              {[
-                { label: 'Google reviews', val: '41,200 parsed' },
-                { label: 'Reddit posts', val: '2,847 analyzed' },
-                { label: 'Zillow listings', val: '4 years history' },
-                { label: 'Bus traces', val: '12mo GPS data' },
-              ].map((item, i) => (
-                <li
-                  key={i}
-                  className="flex justify-between py-2"
-                  style={{
-                    padding: '8px 0',
-                    borderTop: i === 0 ? '0' : '1px solid var(--rule)',
-                  }}
-                >
-                  <span>{item.label}</span>
-                  <b style={{ color: 'var(--ink)', fontWeight: 500 }}>{item.val}</b>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          <div>
-            <h3
-              className="mb-3.5"
-              style={{
-                fontFamily: 'var(--serif)',
-                fontWeight: 500,
-                fontSize: '28px',
-                letterSpacing: '-0.01em',
-                margin: '0 0 14px',
-              }}
-            >
-              Why we built this
-            </h3>
-            <p
-              style={{
-                fontSize: '14.5px',
-                lineHeight: 1.6,
-                color: 'var(--ink-2)',
-                margin: '0 0 14px',
-              }}
-            >
-              Every apartment site we found was pay-to-play. Landlords buy better placement. Reviews
-              disappear. Pricing is opaque. We got tired of it, so we built the tool we wish existed
-              when we were freshmen.
-            </p>
-            <p
-              style={{
-                fontSize: '14.5px',
-                lineHeight: 1.6,
-                color: 'var(--ink-2)',
-                margin: '0 0 14px',
-              }}
-            >
-              This is a research project. We don't take money from landlords, management companies,
-              or real estate platforms. Our code is open source. If you find a bug or want to
-              contribute data, email us at{' '}
-              <span style={{ fontFamily: 'var(--mono)' }}>hello@illininest.com</span>.
-            </p>
-          </div>
         </div>
       </section>
     </div>

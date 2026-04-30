@@ -1,0 +1,2003 @@
+{
+  "icon": {
+    "amenities": {
+      "gym": {
+        "label": "Gym",
+        "available": true
+      },
+      "pool": {
+        "label": "Pool",
+        "available": false
+      },
+      "study_lounge": {
+        "label": "Study lounge",
+        "available": true
+      },
+      "parking": {
+        "label": "Parking",
+        "available": true
+      },
+      "rooftopCourtyard": {
+        "label": "Rooftop / courtyard",
+        "available": true
+      },
+      "inUnitWasherDryer": {
+        "label": "In-unit washer/dryer",
+        "available": true
+      },
+      "elevator": {
+        "label": "Elevator",
+        "available": true
+      },
+      "bikeStorage": {
+        "label": "Bicycle storage",
+        "available": true
+      },
+      "petAllowed": {
+        "label": "Pet allowed",
+        "available": true
+      }
+    },
+    "scores": {
+      "amenityScore": 0.8125,
+      "petScore": 1.0,
+      "priceScore": 0.7779231575113172,
+      "valueBonus": 0.04375817761001159,
+      "totalScore": 0.741
+    },
+    "pricing": {
+      "minRent": 1500,
+      "maxRent": 1500,
+      "floorPlanCount": 5,
+      "perPerson": true,
+      "samplePlans": [
+        {
+          "beds": 0.0,
+          "baths": 1.0,
+          "sqft": 363,
+          "rent": 1500,
+          "perPerson": true,
+          "notes": "A1"
+        },
+        {
+          "beds": 0.0,
+          "baths": 1.0,
+          "sqft": 368,
+          "rent": 1500,
+          "perPerson": true,
+          "notes": "A2"
+        },
+        {
+          "beds": 0.0,
+          "baths": 1.0,
+          "sqft": 394,
+          "rent": 1500,
+          "perPerson": true,
+          "notes": "A3"
+        }
+      ]
+    },
+    "commute": [
+      {
+        "building": "Grainger Engineering Library",
+        "walkingMin": 10,
+        "bicyclingMin": 3,
+        "transitMin": 10
+      },
+      {
+        "building": "Siebel Center for CS",
+        "walkingMin": 15,
+        "bicyclingMin": 6,
+        "transitMin": 15
+      },
+      {
+        "building": "Illini Union",
+        "walkingMin": 13,
+        "bicyclingMin": 4,
+        "transitMin": 7
+      },
+      {
+        "building": "CRCE",
+        "walkingMin": 21,
+        "bicyclingMin": 5,
+        "transitMin": 13
+      },
+      {
+        "building": "ARC",
+        "walkingMin": 21,
+        "bicyclingMin": 5,
+        "transitMin": 13
+      },
+      {
+        "building": "Main Library",
+        "walkingMin": 17,
+        "bicyclingMin": 5,
+        "transitMin": 14
+      },
+      {
+        "building": "Wohlers Hall",
+        "walkingMin": 18,
+        "bicyclingMin": 5,
+        "transitMin": 14
+      },
+      {
+        "building": "Everitt Lab",
+        "walkingMin": 10,
+        "bicyclingMin": 3,
+        "transitMin": 8
+      },
+      {
+        "building": "Loomis Lab",
+        "walkingMin": 15,
+        "bicyclingMin": 5,
+        "transitMin": 9
+      },
+      {
+        "building": "Lincoln Hall",
+        "walkingMin": 15,
+        "bicyclingMin": 5,
+        "transitMin": 10
+      },
+      {
+        "building": "Krannert Art Center",
+        "walkingMin": 20,
+        "bicyclingMin": 5,
+        "transitMin": 19
+      }
+    ],
+    "reviews": {
+      "reddit": {
+        "positive": {
+          "text": "800 a MONTH?? For Green Street Realty?! Good location, but good luck trying to sell that, I think most people at this point have learned lessons about not signing on with apartments that have yet to open but promise the world in August.",
+          "author": "throwawaymcyeet",
+          "url": "https://www.reddit.com/r/UIUC/comments/m1zviu/icon_luxury_student_living_ready_august_2021/",
+          "score": 0.9271,
+          "postTitle": "ICON Luxury Student Living Ready AUGUST 2021"
+        },
+        "negative": null
+      },
+      "google": {
+        "positive": {
+          "text": "My daughter stayed at this apartment building for almost 3 years and had a truly wonderful experience. The property is well-maintained, safe, and in a great location, but what really sets it apart is the management\u2014especially Jordan. She is absolutely the best! Incredibly helpful, responsive, and genuinely caring, Jordan made sure everything ran smoothly and was always there when needed.",
+          "author": "Helen Deng",
+          "rating": 5.0,
+          "date": "2025-05-24T16:28:18.661Z",
+          "likesCount": 0,
+          "url": "https://www.google.com/maps/reviews/data=!4m8!14m7!1m6!2m5!1sChdDSUhNMG9nS0VNM2s5NEttcS1yWDJRRRAB!2m1!1s0x0:0xe5292e67b6dda3b6!3m1!1s2@1:CIHM0ogKEM3k94Kmq-rX2QE%7C%7C?hl=en"
+        },
+        "negative": {
+          "text": "If you are a lucky person and do not anticipate any substantial problems(such as mail theft, withheld deposit ,food theft or horrible neighbors), then I highly recommend this place. It's in a great location and the landlord is seemingly nice in their public announcements. Otherwise, I advise staying someplace else. I personally experienced all within the parentheses during my stay.",
+          "author": "ai \u201cazylexia\u201d s",
+          "rating": 1.0,
+          "date": "2023-03-07T15:59:46.979Z",
+          "likesCount": 3,
+          "url": "https://www.google.com/maps/reviews/data=!4m8!14m7!1m6!2m5!1sChdDSUhNMG9nS0VJQ0FnSUN1cGRMVW5nRRAB!2m1!1s0x0:0xe5292e67b6dda3b6!3m1!1s2@1:CIHM0ogKEICAgICupdLUngE%7C%7C?hl=en"
+        }
+      }
+    }
+  },
+  "latitude": {
+    "amenities": {
+      "gym": {
+        "label": "Gym",
+        "available": true
+      },
+      "pool": {
+        "label": "Pool",
+        "available": true
+      },
+      "study_lounge": {
+        "label": "Study lounge",
+        "available": true
+      },
+      "parking": {
+        "label": "Parking",
+        "available": true
+      },
+      "rooftopCourtyard": {
+        "label": "Rooftop / courtyard",
+        "available": true
+      },
+      "inUnitWasherDryer": {
+        "label": "In-unit washer/dryer",
+        "available": true
+      },
+      "elevator": {
+        "label": "Elevator",
+        "available": true
+      },
+      "bikeStorage": {
+        "label": "Bicycle storage",
+        "available": true
+      },
+      "petAllowed": {
+        "label": "Pet allowed",
+        "available": true
+      }
+    },
+    "scores": {
+      "amenityScore": 0.9,
+      "petScore": 0.0,
+      "priceScore": 0.7803443381840985,
+      "valueBonus": 0.02341033014552295,
+      "totalScore": 0.674
+    },
+    "pricing": {
+      "minRent": 989,
+      "maxRent": 1999,
+      "floorPlanCount": 5,
+      "perPerson": true,
+      "samplePlans": [
+        {
+          "beds": 4.0,
+          "baths": 4.0,
+          "sqft": 1604,
+          "rent": 989,
+          "perPerson": true,
+          "notes": null
+        },
+        {
+          "beds": 2.0,
+          "baths": 2.0,
+          "sqft": 898,
+          "rent": 1049,
+          "perPerson": true,
+          "notes": null
+        },
+        {
+          "beds": 1.0,
+          "baths": 1.0,
+          "sqft": 507,
+          "rent": 1579,
+          "perPerson": true,
+          "notes": null
+        }
+      ]
+    },
+    "commute": [
+      {
+        "building": "Grainger Engineering Library",
+        "walkingMin": 9,
+        "bicyclingMin": 3,
+        "transitMin": 8
+      },
+      {
+        "building": "Siebel Center for CS",
+        "walkingMin": 10,
+        "bicyclingMin": 3,
+        "transitMin": 10
+      },
+      {
+        "building": "Illini Union",
+        "walkingMin": 14,
+        "bicyclingMin": 4,
+        "transitMin": 9
+      },
+      {
+        "building": "CRCE",
+        "walkingMin": 31,
+        "bicyclingMin": 8,
+        "transitMin": 9
+      },
+      {
+        "building": "ARC",
+        "walkingMin": 31,
+        "bicyclingMin": 8,
+        "transitMin": 9
+      },
+      {
+        "building": "Main Library",
+        "walkingMin": 19,
+        "bicyclingMin": 6,
+        "transitMin": 9
+      },
+      {
+        "building": "Wohlers Hall",
+        "walkingMin": 22,
+        "bicyclingMin": 6,
+        "transitMin": 9
+      },
+      {
+        "building": "Everitt Lab",
+        "walkingMin": 11,
+        "bicyclingMin": 4,
+        "transitMin": 7
+      },
+      {
+        "building": "Loomis Lab",
+        "walkingMin": 15,
+        "bicyclingMin": 6,
+        "transitMin": 10
+      },
+      {
+        "building": "Lincoln Hall",
+        "walkingMin": 16,
+        "bicyclingMin": 6,
+        "transitMin": 10
+      },
+      {
+        "building": "Krannert Art Center",
+        "walkingMin": 26,
+        "bicyclingMin": 7,
+        "transitMin": 14
+      }
+    ],
+    "reviews": {
+      "reddit": {
+        "positive": {
+          "text": "I live there right now. The people are definitely very nice and maintenance is super responsive but the buildings do seem to have a disproportionately high number of issues. I know they\u2019ve had tons of HVAC/AC/Heating issues over the years in the buildings and some individual units, and my unit has had quite a few more issues than my previous apartments (although maintenace is usually pretty quick to help out).",
+          "author": "keeanuchungus",
+          "url": "https://www.reddit.com/r/UIUC/comments/1hjb3bj/living_at_latitude/",
+          "score": 0.9828,
+          "postTitle": "living at latitude"
+        },
+        "negative": {
+          "text": "Avoid Campus Circle. They're basically the same thing. There once was a trail of dog diarrhea in the elevator down a hallway. It was there for three solid days Don't even get me started on the smoke alarms. Loud as fuck and triggered very easily. Fuck that place, fuck these \"luxury\" apartments and fuck shitty pet owners.",
+          "author": "WriterWritingWorlds",
+          "url": "https://www.reddit.com/r/UIUC/comments/gxf6cg/latitude_apartments_the_last_housing_you_should/",
+          "score": -0.9577,
+          "postTitle": "Latitude Apartments -- the last housing you should consider at UIUC"
+        }
+      },
+      "google": {
+        "positive": {
+          "text": "Latitude Apartments has been an incredible place to live, offering top-tier amenities and a welcoming community. The staff are always friendly and go above and beyond to assist residents, creating a positive and supportive environment. The gym is well-equipped and convenient for maintaining an active lifestyle, and the package management system makes handling deliveries effortless.",
+          "author": "Andrew Linerode",
+          "rating": 5.0,
+          "date": "2025-02-06T20:20:05.512Z",
+          "likesCount": 1,
+          "url": "https://www.google.com/maps/reviews/data=!4m8!14m7!1m6!2m5!1sChdDSUhNMG9nS0VJQ0FnTURBMlBISTFRRRAB!2m1!1s0x0:0x98a040c70ac2b493!3m1!1s2@1:CIHM0ogKEICAgMDA2PHI1QE%7C%7C?hl=en"
+        },
+        "negative": {
+          "text": "Honestly, this place is a scam. Management will find every possible way to keep your money. The \u201csecurity deposit\u201d is basically two months of rent you\u2019ll never get back, and if you try to sublease, get ready to lose around three months\u2019 rent in total. Their renewal deals are a joke \u2014 the \u201cbonus\u201d changes all the time with no clear rule. If you renew early, you might miss out on over $1,000 compared to people who wait.",
+          "author": "Nicole Tang",
+          "rating": 1.0,
+          "date": "2025-10-27T20:24:07.429Z",
+          "likesCount": 1,
+          "url": "https://www.google.com/maps/reviews/data=!4m8!14m7!1m6!2m5!1sCi9DQUlRQUNvZENodHljRjlvT201cWJYRkVjbGRyZEdvNFNXcHNjM056T0RsU2NYYxAB!2m1!1s0x0:0x98a040c70ac2b493!3m1!1s2@1:CAIQACodChtycF9oOm5qbXFEcldrdGo4SWpsc3NzODlScXc%7C%7C?hl=en"
+        }
+      }
+    }
+  },
+  "yugo": {
+    "amenities": {
+      "gym": {
+        "label": "Gym",
+        "available": true
+      },
+      "pool": {
+        "label": "Pool",
+        "available": true
+      },
+      "study_lounge": {
+        "label": "Study lounge",
+        "available": true
+      },
+      "parking": {
+        "label": "Parking",
+        "available": true
+      },
+      "rooftopCourtyard": {
+        "label": "Rooftop / courtyard",
+        "available": true
+      },
+      "inUnitWasherDryer": {
+        "label": "In-unit washer/dryer",
+        "available": true
+      },
+      "elevator": {
+        "label": "Elevator",
+        "available": true
+      },
+      "bikeStorage": {
+        "label": "Bicycle storage",
+        "available": true
+      },
+      "petAllowed": {
+        "label": "Pet allowed",
+        "available": true
+      }
+    },
+    "scores": {
+      "amenityScore": 0.9,
+      "petScore": 0.587,
+      "priceScore": 0.5945351004677244,
+      "valueBonus": 0.017836053014031728,
+      "totalScore": 0.658
+    },
+    "pricing": {
+      "minRent": 795,
+      "maxRent": 1999,
+      "floorPlanCount": 7,
+      "perPerson": true,
+      "samplePlans": [
+        {
+          "beds": 4.0,
+          "baths": 2.0,
+          "sqft": null,
+          "rent": 795,
+          "perPerson": true,
+          "notes": null
+        },
+        {
+          "beds": 2.0,
+          "baths": 2.0,
+          "sqft": null,
+          "rent": 1079,
+          "perPerson": true,
+          "notes": "Classic"
+        },
+        {
+          "beds": 2.0,
+          "baths": 2.0,
+          "sqft": null,
+          "rent": 1089,
+          "perPerson": true,
+          "notes": "Corner"
+        }
+      ]
+    },
+    "commute": [
+      {
+        "building": "Grainger Engineering Library",
+        "walkingMin": 17,
+        "bicyclingMin": 6,
+        "transitMin": 14
+      },
+      {
+        "building": "Siebel Center for CS",
+        "walkingMin": 10,
+        "bicyclingMin": 2,
+        "transitMin": 10
+      },
+      {
+        "building": "Illini Union",
+        "walkingMin": 20,
+        "bicyclingMin": 6,
+        "transitMin": 14
+      },
+      {
+        "building": "CRCE",
+        "walkingMin": 41,
+        "bicyclingMin": 11,
+        "transitMin": 19
+      },
+      {
+        "building": "ARC",
+        "walkingMin": 41,
+        "bicyclingMin": 11,
+        "transitMin": 19
+      },
+      {
+        "building": "Main Library",
+        "walkingMin": 29,
+        "bicyclingMin": 8,
+        "transitMin": 17
+      },
+      {
+        "building": "Wohlers Hall",
+        "walkingMin": 32,
+        "bicyclingMin": 8,
+        "transitMin": 15
+      },
+      {
+        "building": "Everitt Lab",
+        "walkingMin": 19,
+        "bicyclingMin": 5,
+        "transitMin": 13
+      },
+      {
+        "building": "Loomis Lab",
+        "walkingMin": 15,
+        "bicyclingMin": 4,
+        "transitMin": 10
+      },
+      {
+        "building": "Lincoln Hall",
+        "walkingMin": 25,
+        "bicyclingMin": 8,
+        "transitMin": 13
+      },
+      {
+        "building": "Krannert Art Center",
+        "walkingMin": 37,
+        "bicyclingMin": 9,
+        "transitMin": 20
+      }
+    ],
+    "reviews": {
+      "reddit": {
+        "positive": {
+          "text": "Its a great place to live honestly. But, that too depends on the type of apartment you plan on living in. I live in a 2b2b corner unit, and i can say that its one of the better apartments here. Have not had any problems with management/maintenance as of such, every request was handled in an appropriate timeline. Winters are comfortable as well.",
+          "author": "Lumpy-Clothes1547",
+          "url": "https://www.reddit.com/r/UIUC/comments/1g51nty/thoughts_on_yugo_urbana/",
+          "score": 0.9476,
+          "postTitle": "Thoughts on Yugo urbana?"
+        },
+        "negative": {
+          "text": "Just moved out in July. They withheld security deposit after we left the place spotless. Claimed 'smoke damage on walls required repainting\". No smoking in the unit all year (that is what the balcony is for). No fire. No smoke damage to cloth furniture or beds, but somehow smoke damage on walls? Threatened credit damage if the balance was not paid.",
+          "author": "Acceptable_Mine_9581",
+          "url": "https://www.reddit.com/r/UIUC/comments/13qs9em/yugo_apartments/",
+          "score": -0.9305,
+          "postTitle": "Yugo Apartments"
+        }
+      },
+      "google": {
+        "positive": {
+          "text": "Just moved here from Florida, and I a pleasantly surprised and the amount of ease Yugo\u2019s staff made the move-in for me. The apartment itself is very clean and have very modern feels to it. Amenities are great, especially the gym for me. The maintenance is superb, taking care of everything in a timely manner. If you are looking for a place to live in Champaign-Urbana these apartments do not disappoint.",
+          "author": "Edgar Rizo",
+          "rating": 5.0,
+          "date": "2023-04-19T19:31:24.371Z",
+          "likesCount": 0,
+          "url": "https://www.google.com/maps/reviews/data=!4m8!14m7!1m6!2m5!1sChZDSUhNMG9nS0VJQ0FnSURSN0x6b2VREAE!2m1!1s0x0:0x848bfd79b8beb3a8!3m1!1s2@1:CIHM0ogKEICAgIDR7LzoeQ%7C%7C?hl=en"
+        },
+        "negative": {
+          "text": "If you want to live in a place that forgets to furnish your apartment, Gather is the place for you. My friend has been expected to pay her full rent amount for her unit which still doesn\u2019t have a mattress and she\u2019s lived at the building for over a month! Parking is also an issue at Gather. My friend paid for a spot and consistently cannot park at the building due to a lack of available spaces.",
+          "author": "Jacob Schab",
+          "rating": 1.0,
+          "date": "2021-09-04T02:56:31.536Z",
+          "likesCount": 19,
+          "url": "https://www.google.com/maps/reviews/data=!4m8!14m7!1m6!2m5!1sChdDSUhNMG9nS0VJQ0FnSUM2NXYyR2l3RRAB!2m1!1s0x0:0x848bfd79b8beb3a8!3m1!1s2@1:CIHM0ogKEICAgIC65v2GiwE%7C%7C?hl=en"
+        }
+      }
+    }
+  },
+  "octave": {
+    "amenities": {
+      "gym": {
+        "label": "Gym",
+        "available": true
+      },
+      "pool": {
+        "label": "Pool",
+        "available": true
+      },
+      "study_lounge": {
+        "label": "Study lounge",
+        "available": true
+      },
+      "parking": {
+        "label": "Parking",
+        "available": true
+      },
+      "rooftopCourtyard": {
+        "label": "Rooftop / courtyard",
+        "available": true
+      },
+      "inUnitWasherDryer": {
+        "label": "In-unit washer/dryer",
+        "available": true
+      },
+      "elevator": {
+        "label": "Elevator",
+        "available": true
+      },
+      "bikeStorage": {
+        "label": "Bicycle storage",
+        "available": true
+      },
+      "petAllowed": {
+        "label": "Pet allowed",
+        "available": true
+      }
+    },
+    "scores": {
+      "amenityScore": 0.9,
+      "petScore": 0.6,
+      "priceScore": 0.4864760945963055,
+      "valueBonus": 0.014594282837889161,
+      "totalScore": 0.616
+    },
+    "pricing": {
+      "minRent": 1065,
+      "maxRent": 1849,
+      "floorPlanCount": 9,
+      "perPerson": true,
+      "samplePlans": [
+        {
+          "beds": 4.0,
+          "baths": 4.0,
+          "sqft": 1423,
+          "rent": 1065,
+          "perPerson": true,
+          "notes": "D1"
+        },
+        {
+          "beds": 4.0,
+          "baths": 4.0,
+          "sqft": 1436,
+          "rent": 1080,
+          "perPerson": true,
+          "notes": "D3"
+        },
+        {
+          "beds": 4.0,
+          "baths": 4.0,
+          "sqft": 1506,
+          "rent": 1090,
+          "perPerson": true,
+          "notes": "D4"
+        }
+      ]
+    },
+    "commute": [
+      {
+        "building": "Grainger Engineering Library",
+        "walkingMin": 11,
+        "bicyclingMin": 4,
+        "transitMin": 9
+      },
+      {
+        "building": "Siebel Center for CS",
+        "walkingMin": 13,
+        "bicyclingMin": 5,
+        "transitMin": 10
+      },
+      {
+        "building": "Illini Union",
+        "walkingMin": 16,
+        "bicyclingMin": 5,
+        "transitMin": 7
+      },
+      {
+        "building": "CRCE",
+        "walkingMin": 25,
+        "bicyclingMin": 7,
+        "transitMin": 15
+      },
+      {
+        "building": "ARC",
+        "walkingMin": 25,
+        "bicyclingMin": 7,
+        "transitMin": 15
+      },
+      {
+        "building": "Main Library",
+        "walkingMin": 20,
+        "bicyclingMin": 6,
+        "transitMin": 12
+      },
+      {
+        "building": "Wohlers Hall",
+        "walkingMin": 21,
+        "bicyclingMin": 6,
+        "transitMin": 12
+      },
+      {
+        "building": "Everitt Lab",
+        "walkingMin": 13,
+        "bicyclingMin": 4,
+        "transitMin": 8
+      },
+      {
+        "building": "Loomis Lab",
+        "walkingMin": 17,
+        "bicyclingMin": 6,
+        "transitMin": 7
+      },
+      {
+        "building": "Lincoln Hall",
+        "walkingMin": 18,
+        "bicyclingMin": 6,
+        "transitMin": 8
+      },
+      {
+        "building": "Krannert Art Center",
+        "walkingMin": 24,
+        "bicyclingMin": 7,
+        "transitMin": 12
+      }
+    ],
+    "reviews": {
+      "reddit": {
+        "positive": {
+          "text": "Ooh, something I can help with! I work part-time in the Champaign-Urbana apartment industry, and can help explain what this is. Most of the \"luxury\" properties around here will change their prices based on demand; the more people sign, the higher they go up. It's not a \"bidding\" system. You and others have pointed out that the lease you signed had not been countersigned by the property, and so was not guaranteed.",
+          "author": "RebelPilot51",
+          "url": "https://www.reddit.com/r/UIUC/comments/1o58pw4/beware_octave_apartments_lease_and_switch/",
+          "score": 0.8376,
+          "postTitle": "Beware Octave Apartments: Lease and Switch"
+        },
+        "negative": {
+          "text": "I dont think there's anything wrong with octave, they are just expensive",
+          "author": "PlatWinston",
+          "url": "https://www.reddit.com/r/UIUC/comments/1o01vpr/thoughts_on_octave_apartments/",
+          "score": -0.4767,
+          "postTitle": "Thoughts on Octave Apartments?"
+        }
+      },
+      "google": {
+        "positive": {
+          "text": "Living at Octave has been a great experience so far! The amenities and location are fantastic, but what truly stands out is the incredible staff. Zack deserves a special mention\u2014he\u2019s always so helpful, approachable, and quick to assist with anything we need. It\u2019s clear he genuinely cares about the residents, which makes a big difference. Brayden, Kian, Lilly, and Rudy are also amazing.",
+          "author": "adarsh jaju",
+          "rating": 5.0,
+          "date": "2025-01-24T22:04:41.250Z",
+          "likesCount": 0,
+          "url": "https://www.google.com/maps/reviews/data=!4m8!14m7!1m6!2m5!1sChZDSUhNMG9nS0VJQ0FnSURfa2VqdFdBEAE!2m1!1s0x0:0xbcd9082d79002839!3m1!1s2@1:CIHM0ogKEICAgID_kejtWA%7C%7C?hl=en"
+        },
+        "negative": {
+          "text": "Building two has no amenities since they have restricted access to the study rooms to office hours only. This is extremely difficult as finals season is here and I occasionally used the study spaces as a safe space to work late at night. Sidewalks are also not cleared, and are a hazard to walk on.",
+          "author": "Hridaanshu Gusain",
+          "rating": 1.0,
+          "date": "2025-12-04T04:49:27.214Z",
+          "likesCount": 0,
+          "url": "https://www.google.com/maps/reviews/data=!4m8!14m7!1m6!2m5!1sCi9DQUlRQUNvZENodHljRjlvT25kVFNuVjJVbGhvWXkxbVdtNU9kVGN0V2tGc2FVRRAB!2m1!1s0x0:0xbcd9082d79002839!3m1!1s2@1:CAIQACodChtycF9oOndTSnV2UlhoYy1mWm5OdTctWkFsaUE%7C%7C?hl=en"
+        }
+      }
+    }
+  },
+  "armory_75": {
+    "amenities": {
+      "gym": {
+        "label": "Gym",
+        "available": false
+      },
+      "pool": {
+        "label": "Pool",
+        "available": false
+      },
+      "study_lounge": {
+        "label": "Study lounge",
+        "available": false
+      },
+      "parking": {
+        "label": "Parking",
+        "available": true
+      },
+      "rooftopCourtyard": {
+        "label": "Rooftop / courtyard",
+        "available": true
+      },
+      "inUnitWasherDryer": {
+        "label": "In-unit washer/dryer",
+        "available": true
+      },
+      "elevator": {
+        "label": "Elevator",
+        "available": true
+      },
+      "bikeStorage": {
+        "label": "Bicycle storage",
+        "available": true
+      },
+      "petAllowed": {
+        "label": "Pet allowed",
+        "available": false
+      }
+    },
+    "scores": {
+      "amenityScore": 0.525,
+      "petScore": 0.0,
+      "priceScore": 0.8927461603645975,
+      "valueBonus": 0.12721632785195514,
+      "totalScore": 0.58
+    },
+    "pricing": {
+      "minRent": 900,
+      "maxRent": 1040,
+      "floorPlanCount": 6,
+      "perPerson": true,
+      "samplePlans": [
+        {
+          "beds": 4.0,
+          "baths": 2.0,
+          "sqft": 983,
+          "rent": 900,
+          "perPerson": true,
+          "notes": "B"
+        },
+        {
+          "beds": 4.0,
+          "baths": 3.0,
+          "sqft": 1030,
+          "rent": 915,
+          "perPerson": true,
+          "notes": "A"
+        },
+        {
+          "beds": 3.0,
+          "baths": 2.0,
+          "sqft": 858,
+          "rent": 935,
+          "perPerson": true,
+          "notes": "C"
+        }
+      ]
+    },
+    "commute": [
+      {
+        "building": "Grainger Engineering Library",
+        "walkingMin": 24,
+        "bicyclingMin": 6,
+        "transitMin": 13
+      },
+      {
+        "building": "Siebel Center for CS",
+        "walkingMin": 30,
+        "bicyclingMin": 8,
+        "transitMin": 12
+      },
+      {
+        "building": "Illini Union",
+        "walkingMin": 20,
+        "bicyclingMin": 5,
+        "transitMin": 10
+      },
+      {
+        "building": "CRCE",
+        "walkingMin": 9,
+        "bicyclingMin": 3,
+        "transitMin": 4
+      },
+      {
+        "building": "ARC",
+        "walkingMin": 9,
+        "bicyclingMin": 3,
+        "transitMin": 4
+      },
+      {
+        "building": "Main Library",
+        "walkingMin": 12,
+        "bicyclingMin": 3,
+        "transitMin": 7
+      },
+      {
+        "building": "Wohlers Hall",
+        "walkingMin": 14,
+        "bicyclingMin": 4,
+        "transitMin": 9
+      },
+      {
+        "building": "Everitt Lab",
+        "walkingMin": 21,
+        "bicyclingMin": 5,
+        "transitMin": 11
+      },
+      {
+        "building": "Loomis Lab",
+        "walkingMin": 25,
+        "bicyclingMin": 8,
+        "transitMin": 11
+      },
+      {
+        "building": "Lincoln Hall",
+        "walkingMin": 14,
+        "bicyclingMin": 4,
+        "transitMin": 7
+      },
+      {
+        "building": "Krannert Art Center",
+        "walkingMin": 14,
+        "bicyclingMin": 4,
+        "transitMin": 7
+      }
+    ],
+    "reviews": {
+      "reddit": {
+        "positive": {
+          "text": "It\u2019s a really nice building and management is pretty friendly from my experience. The other nice thing about the building (kinda random) but you can buzz people in from your phone instead of going up and down to get guests. The only issue I would look into is water/electric caps. The lease says that everything is covered except for electricity but sometimes there is fine text that mentions a cap on water.",
+          "author": "swerwyy",
+          "url": "https://www.reddit.com/r/UIUC/comments/nh6msa/75_armory/",
+          "score": 0.4933,
+          "postTitle": "75 Armory"
+        },
+        "negative": {
+          "text": "The utilities get ridiculous in the winter. You will always go over electric and water, so be prepared to pay. For February of this year, I alone paid $56 plus my regular rent and I lived with 2 other girls so in total we went over $168 when supposedly utilities were included.....theyre basically not.",
+          "author": "serenityforeva3",
+          "url": "https://www.reddit.com/r/UIUC/comments/nh6msa/75_armory/",
+          "score": -0.4062,
+          "postTitle": "75 Armory"
+        }
+      },
+      "google": {
+        "positive": {
+          "text": "I've ran into some of the leasing staff on the street and they were always nice and asked how my stay was which really made my experience. The washer and dryer are a little small, but compared to other places I've liked at they aren't that different. Maintenance was always really nice too and answered any of the questions I had.",
+          "author": "Jake Lewis",
+          "rating": 5.0,
+          "date": "2018-12-31T22:23:52.861Z",
+          "likesCount": 0,
+          "url": "https://www.google.com/maps/reviews/data=!4m8!14m7!1m6!2m5!1sChZDSUhNMG9nS0VJQ0FnSURJMm96N0d3EAE!2m1!1s0x0:0x9980ad9ff70d03e6!3m1!1s2@1:CIHM0ogKEICAgIDI2oz7Gw%7C%7C?hl=en"
+        },
+        "negative": {
+          "text": "My advice is to never rent from this property company or any of their locations. Early on in my lease I woke up to maggots covering my entire living room from a dead bird stuck on the balcony above me. Eventually maintenance workers came and told me to keep killing the maggots myself. Orkin came but that did not resolve the problem. I killed as many as I could but the maggots later turned into a fly problem.",
+          "author": "Tyler Goldberg",
+          "rating": 1.0,
+          "date": "2022-09-01T15:06:21.540Z",
+          "likesCount": 7,
+          "url": "https://www.google.com/maps/reviews/data=!4m8!14m7!1m6!2m5!1sChdDSUhNMG9nS0VJQ0FnSUR1ejZuNHlBRRAB!2m1!1s0x0:0x9980ad9ff70d03e6!3m1!1s2@1:CIHM0ogKEICAgIDuz6n4yAE%7C%7C?hl=en"
+        }
+      }
+    }
+  },
+  "illini_manor": {
+    "amenities": {
+      "gym": {
+        "label": "Gym",
+        "available": false
+      },
+      "pool": {
+        "label": "Pool",
+        "available": false
+      },
+      "study_lounge": {
+        "label": "Study lounge",
+        "available": false
+      },
+      "parking": {
+        "label": "Parking",
+        "available": false
+      },
+      "rooftopCourtyard": {
+        "label": "Rooftop / courtyard",
+        "available": true
+      },
+      "inUnitWasherDryer": {
+        "label": "In-unit washer/dryer",
+        "available": false
+      },
+      "elevator": {
+        "label": "Elevator",
+        "available": true
+      },
+      "bikeStorage": {
+        "label": "Bicycle storage",
+        "available": true
+      },
+      "petAllowed": {
+        "label": "Pet allowed",
+        "available": false
+      }
+    },
+    "scores": {
+      "amenityScore": 0.275,
+      "petScore": 0.0,
+      "priceScore": 1.0,
+      "valueBonus": 0.2,
+      "totalScore": 0.53
+    },
+    "pricing": {
+      "minRent": 815,
+      "maxRent": 985,
+      "floorPlanCount": 6,
+      "perPerson": true,
+      "samplePlans": [
+        {
+          "beds": 0.0,
+          "baths": 1.0,
+          "sqft": 177,
+          "rent": 815,
+          "perPerson": true,
+          "notes": "B Standard"
+        },
+        {
+          "beds": 0.0,
+          "baths": 1.0,
+          "sqft": 177,
+          "rent": 815,
+          "perPerson": true,
+          "notes": "C Standard"
+        },
+        {
+          "beds": 0.0,
+          "baths": 1.0,
+          "sqft": 182,
+          "rent": 835,
+          "perPerson": true,
+          "notes": "Corner"
+        }
+      ]
+    },
+    "commute": [
+      {
+        "building": "Grainger Engineering Library",
+        "walkingMin": 15,
+        "bicyclingMin": 4,
+        "transitMin": 9
+      },
+      {
+        "building": "Siebel Center for CS",
+        "walkingMin": 20,
+        "bicyclingMin": 5,
+        "transitMin": 9
+      },
+      {
+        "building": "Illini Union",
+        "walkingMin": 10,
+        "bicyclingMin": 2,
+        "transitMin": 7
+      },
+      {
+        "building": "CRCE",
+        "walkingMin": 12,
+        "bicyclingMin": 3,
+        "transitMin": 8
+      },
+      {
+        "building": "ARC",
+        "walkingMin": 12,
+        "bicyclingMin": 3,
+        "transitMin": 8
+      },
+      {
+        "building": "Main Library",
+        "walkingMin": 7,
+        "bicyclingMin": 1,
+        "transitMin": 4
+      },
+      {
+        "building": "Wohlers Hall",
+        "walkingMin": 8,
+        "bicyclingMin": 2,
+        "transitMin": 8
+      },
+      {
+        "building": "Everitt Lab",
+        "walkingMin": 11,
+        "bicyclingMin": 3,
+        "transitMin": 8
+      },
+      {
+        "building": "Loomis Lab",
+        "walkingMin": 15,
+        "bicyclingMin": 5,
+        "transitMin": 8
+      },
+      {
+        "building": "Lincoln Hall",
+        "walkingMin": 5,
+        "bicyclingMin": 2,
+        "transitMin": 5
+      },
+      {
+        "building": "Krannert Art Center",
+        "walkingMin": 11,
+        "bicyclingMin": 3,
+        "transitMin": 11
+      }
+    ],
+    "reviews": {
+      "reddit": {
+        "positive": {
+          "text": "Hi! I just moved out of Illini Manor after graduating. For the rent (which includes water and electricity) it\u2019s pretty decent. However, the studio is small. I lived with JSM before with roommates so this apartment isn\u2019t as nice as the other apartment. I like to cook so it was slightly inconvenient to cook without a range hood to filter the smell and oil, so I usually would prop open the window.",
+          "author": "quacksonfan",
+          "url": "https://www.reddit.com/r/UIUC/comments/v63xcl/illini_manor_is_it_a_good_apartment/",
+          "score": 0.867,
+          "postTitle": "Illini Manor -- Is it a good apartment?"
+        },
+        "negative": null
+      },
+      "google": {
+        "positive": {
+          "text": "I lived in this building last year and it went very well! From the touring to giving my keys back everything went smoothly. The staff was always helpful and maintenance was fast (I advise going in person whenever you have a request it always makes things easier). Honestly, your experience depends on your neighbors because the units are not soundproof so you can hear them sometimes.",
+          "author": "Cl\u00e9a Causs\u00e9",
+          "rating": 5.0,
+          "date": "2024-02-18T15:51:34.829Z",
+          "likesCount": 0,
+          "url": "https://www.google.com/maps/reviews/data=!4m8!14m7!1m6!2m5!1sChZDSUhNMG9nS0VJQ0FnSUNkMjhPSmRnEAE!2m1!1s0x0:0x2acd06029dc07d21!3m1!1s2@1:CIHM0ogKEICAgICd28OJdg%7C%7C?hl=en"
+        },
+        "negative": {
+          "text": "They will fully tour your apartment with no real notice as to when. Additionally, my microwave caught fire because it was old, broken, and needed to be replaced and jsm took a week to send maintenance (no complaints about the maintenance team. They are very nice and professional folks) to replace it and tried to make me pay for it. Customer service is horrible.",
+          "author": "Sorin Pollock",
+          "rating": 1.0,
+          "date": "2023-09-27T02:31:50.463Z",
+          "likesCount": 2,
+          "url": "https://www.google.com/maps/reviews/data=!4m8!14m7!1m6!2m5!1sChdDSUhNMG9nS0VJQ0FnSURaZ3JtOHNnRRAB!2m1!1s0x0:0x2acd06029dc07d21!3m1!1s2@1:CIHM0ogKEICAgIDZgrm8sgE%7C%7C?hl=en"
+        }
+      }
+    }
+  },
+  "seven07": {
+    "amenities": {
+      "gym": {
+        "label": "Gym",
+        "available": true
+      },
+      "pool": {
+        "label": "Pool",
+        "available": true
+      },
+      "study_lounge": {
+        "label": "Study lounge",
+        "available": true
+      },
+      "parking": {
+        "label": "Parking",
+        "available": true
+      },
+      "rooftopCourtyard": {
+        "label": "Rooftop / courtyard",
+        "available": true
+      },
+      "inUnitWasherDryer": {
+        "label": "In-unit washer/dryer",
+        "available": true
+      },
+      "elevator": {
+        "label": "Elevator",
+        "available": true
+      },
+      "bikeStorage": {
+        "label": "Bicycle storage",
+        "available": true
+      },
+      "petAllowed": {
+        "label": "Pet allowed",
+        "available": true
+      }
+    },
+    "scores": {
+      "amenityScore": 0.9,
+      "petScore": 0.307,
+      "priceScore": 0.2650695641277371,
+      "valueBonus": 0.00795208692383211,
+      "totalScore": 0.498
+    },
+    "pricing": {
+      "minRent": 1089,
+      "maxRent": 2049,
+      "floorPlanCount": 12,
+      "perPerson": true,
+      "samplePlans": [
+        {
+          "beds": 4.0,
+          "baths": 2.0,
+          "sqft": 1228,
+          "rent": 1089,
+          "perPerson": true,
+          "notes": null
+        },
+        {
+          "beds": 4.0,
+          "baths": 4.0,
+          "sqft": 1228,
+          "rent": 1129,
+          "perPerson": true,
+          "notes": "TYPE 2"
+        },
+        {
+          "beds": 4.0,
+          "baths": 4.0,
+          "sqft": 1228,
+          "rent": 1159,
+          "perPerson": true,
+          "notes": "TYPE 3"
+        }
+      ]
+    },
+    "commute": [
+      {
+        "building": "Grainger Engineering Library",
+        "walkingMin": 11,
+        "bicyclingMin": 3,
+        "transitMin": 8
+      },
+      {
+        "building": "Siebel Center for CS",
+        "walkingMin": 17,
+        "bicyclingMin": 5,
+        "transitMin": 13
+      },
+      {
+        "building": "Illini Union",
+        "walkingMin": 10,
+        "bicyclingMin": 3,
+        "transitMin": 5
+      },
+      {
+        "building": "CRCE",
+        "walkingMin": 16,
+        "bicyclingMin": 3,
+        "transitMin": 10
+      },
+      {
+        "building": "ARC",
+        "walkingMin": 16,
+        "bicyclingMin": 3,
+        "transitMin": 10
+      },
+      {
+        "building": "Main Library",
+        "walkingMin": 12,
+        "bicyclingMin": 3,
+        "transitMin": 8
+      },
+      {
+        "building": "Wohlers Hall",
+        "walkingMin": 13,
+        "bicyclingMin": 3,
+        "transitMin": 11
+      },
+      {
+        "building": "Everitt Lab",
+        "walkingMin": 8,
+        "bicyclingMin": 2,
+        "transitMin": 8
+      },
+      {
+        "building": "Loomis Lab",
+        "walkingMin": 12,
+        "bicyclingMin": 4,
+        "transitMin": 6
+      },
+      {
+        "building": "Lincoln Hall",
+        "walkingMin": 10,
+        "bicyclingMin": 3,
+        "transitMin": 8
+      },
+      {
+        "building": "Krannert Art Center",
+        "walkingMin": 15,
+        "bicyclingMin": 4,
+        "transitMin": 13
+      }
+    ],
+    "reviews": {
+      "reddit": {
+        "positive": {
+          "text": "Dang my last two apartments (cpm for 300 a month and jsj for 375 a month) really pulled through in having hot water lmao. Couldn\u2019t imagine paying $1000 a month and having to share two showers with everyone in the building \ud83e\udd74",
+          "author": "danillia2",
+          "url": "https://www.reddit.com/r/UIUC/comments/sm59zv/fuck_707/",
+          "score": 0.7269,
+          "postTitle": "fuck 707"
+        },
+        "negative": {
+          "text": "Whenever these dorks start to complain about how they hate living with us as 707 I\u2019m just so confused. The maids I hired leave everything spotless, my mother comes and boils water for my bath if the water is never hot enough for my liking, and if the internet ever lags while I\u2019m gaming I call my uncle who works at Microsoft to get the lobby banned for hacking.",
+          "author": "navysealassulter",
+          "url": "https://www.reddit.com/r/UIUC/comments/smflrj/707_is_the_best_apartment_complex_on_campus/",
+          "score": -0.9168,
+          "postTitle": "707 is the best apartment complex on campus"
+        }
+      },
+      "google": {
+        "positive": {
+          "text": "Front desk staff is very helpful. Maintenance team responds quickly to requests. Amenities are nice and the location is very convenient. Only complaint about the building is that the elevators can be slow\u2026",
+          "author": "Christopher Kontalonis",
+          "rating": 5.0,
+          "date": "2026-03-23T20:09:50.222Z",
+          "likesCount": 0,
+          "url": "https://www.google.com/maps/reviews/data=!4m8!14m7!1m6!2m5!1sCi9DQUlRQUNvZENodHljRjlvT21wTE1UUmtlRFZ6ZG0xdmJtVkRaRk4xWWxOc1FXYxAB!2m1!1s0x0:0xaa84911bcbf86e1e!3m1!1s2@1:CAIQACodChtycF9oOmpLMTRkeDVzdm1vbmVDZFN1YlNsQWc%7C%7C?hl=en"
+        },
+        "negative": {
+          "text": "The property management here is extremely irresponsible. I often see homeless people staying overnight inside the apartment complex, and management never takes any action it feels unsafe. What\u2019s even more ridiculous is that I\u2019ve already paid for my parking spot, but the parking tag they gave me often doesn\u2019t work, so I can\u2019t even get into the garage.",
+          "author": "Wen Ellen",
+          "rating": 1.0,
+          "date": "2026-03-29T03:24:33.507Z",
+          "likesCount": 0,
+          "url": "https://www.google.com/maps/reviews/data=!4m8!14m7!1m6!2m5!1sCi9DQUlRQUNvZENodHljRjlvT2xveFJGVmplRk5VVUdka1ZqZG1jV2xmUVRWWGQxRRAB!2m1!1s0x0:0xaa84911bcbf86e1e!3m1!1s2@1:CAIQACodChtycF9oOloxRFVjeFNUUGdkVjdmcWlfQTVXd1E%7C%7C?hl=en"
+        }
+      }
+    }
+  },
+  "tower_at_third": {
+    "amenities": {
+      "gym": {
+        "label": "Gym",
+        "available": true
+      },
+      "pool": {
+        "label": "Pool",
+        "available": false
+      },
+      "study_lounge": {
+        "label": "Study lounge",
+        "available": true
+      },
+      "parking": {
+        "label": "Parking",
+        "available": true
+      },
+      "rooftopCourtyard": {
+        "label": "Rooftop / courtyard",
+        "available": false
+      },
+      "inUnitWasherDryer": {
+        "label": "In-unit washer/dryer",
+        "available": false
+      },
+      "elevator": {
+        "label": "Elevator",
+        "available": true
+      },
+      "bikeStorage": {
+        "label": "Bicycle storage",
+        "available": true
+      },
+      "petAllowed": {
+        "label": "Pet allowed",
+        "available": false
+      }
+    },
+    "scores": {
+      "amenityScore": 0.475,
+      "petScore": 0.0,
+      "priceScore": 0.6752895752895753,
+      "valueBonus": 0.10635810810810811,
+      "totalScore": 0.471
+    },
+    "pricing": {
+      "minRent": 969,
+      "maxRent": 1594,
+      "floorPlanCount": 6,
+      "perPerson": true,
+      "samplePlans": [
+        {
+          "beds": 2.0,
+          "baths": 1.0,
+          "sqft": null,
+          "rent": 969,
+          "perPerson": true,
+          "notes": "Bath D"
+        },
+        {
+          "beds": 3.0,
+          "baths": 1.0,
+          "sqft": null,
+          "rent": 969,
+          "perPerson": true,
+          "notes": null
+        },
+        {
+          "beds": 2.0,
+          "baths": 1.0,
+          "sqft": null,
+          "rent": 984,
+          "perPerson": true,
+          "notes": "Bath C"
+        }
+      ]
+    },
+    "commute": [
+      {
+        "building": "Grainger Engineering Library",
+        "walkingMin": 14,
+        "bicyclingMin": 4,
+        "transitMin": 10
+      },
+      {
+        "building": "Siebel Center for CS",
+        "walkingMin": 20,
+        "bicyclingMin": 6,
+        "transitMin": 11
+      },
+      {
+        "building": "Illini Union",
+        "walkingMin": 12,
+        "bicyclingMin": 3,
+        "transitMin": 8
+      },
+      {
+        "building": "CRCE",
+        "walkingMin": 15,
+        "bicyclingMin": 4,
+        "transitMin": 7
+      },
+      {
+        "building": "ARC",
+        "walkingMin": 15,
+        "bicyclingMin": 4,
+        "transitMin": 7
+      },
+      {
+        "building": "Main Library",
+        "walkingMin": 13,
+        "bicyclingMin": 3,
+        "transitMin": 7
+      },
+      {
+        "building": "Wohlers Hall",
+        "walkingMin": 15,
+        "bicyclingMin": 4,
+        "transitMin": 9
+      },
+      {
+        "building": "Everitt Lab",
+        "walkingMin": 11,
+        "bicyclingMin": 3,
+        "transitMin": 9
+      },
+      {
+        "building": "Loomis Lab",
+        "walkingMin": 15,
+        "bicyclingMin": 5,
+        "transitMin": 9
+      },
+      {
+        "building": "Lincoln Hall",
+        "walkingMin": 11,
+        "bicyclingMin": 3,
+        "transitMin": 6
+      },
+      {
+        "building": "Krannert Art Center",
+        "walkingMin": 16,
+        "bicyclingMin": 4,
+        "transitMin": 11
+      }
+    ],
+    "reviews": {
+      "reddit": {
+        "positive": {
+          "text": "I recommend ICON. It\u2019s definitely on the high end but the manager is super nice and responsive. The building is new and modern.",
+          "author": "Good_Distribution_37",
+          "url": "https://www.reddit.com/r/UIUC/comments/1cr3hx6/do_not_live_at_tower_at_third/",
+          "score": 0.9423,
+          "postTitle": "DO NOT LIVE AT TOWER AT THIRD"
+        },
+        "negative": {
+          "text": "I second this. I have developed anxiety from the fire alarms, i literally couldn\u2019t sleep bc I\u2019d be scared of having to wake up at 4am and go down 20 flights of stairs. The windows don\u2019t open and it\u2019s not something I realized I needed until it was too late. We got charged for a bunch of damages we didn\u2019t cause. We had a leak in our apt for monthsss.",
+          "author": "rainbowgirl144",
+          "url": "https://www.reddit.com/r/UIUC/comments/1cr3hx6/do_not_live_at_tower_at_third/",
+          "score": -0.9217,
+          "postTitle": "DO NOT LIVE AT TOWER AT THIRD"
+        }
+      },
+      "google": {
+        "positive": {
+          "text": "This place is the best. Simply put some of the best living on campus. The best part has got to be the amenities and staff. Between the parking lot, weight room, and lobby events, they provide so much! Kyler Daulton was a particularly nice and helpful young man while I was there. If it weren\u2019t for him the entire operation would be lost.",
+          "author": "Vincent Sennello",
+          "rating": 5.0,
+          "date": "2024-03-26T21:17:55.405Z",
+          "likesCount": 0,
+          "url": "https://www.google.com/maps/reviews/data=!4m8!14m7!1m6!2m5!1sChdDSUhNMG9nS0VJQ0FnSUNEcXJUMDFRRRAB!2m1!1s0x0:0x5fd72fc4875ca8a2!3m1!1s2@1:CIHM0ogKEICAgICDqrT01QE%7C%7C?hl=en"
+        },
+        "negative": {
+          "text": "Yes, the staff are helpful. Etc. Etc. Beyond that, the Tower at Third is an impressive feat of industrial engineering and nothing more. I\u2019m not quite sure where to even begin. Let's start with the fact that, in my apartment, there was furniture missing from the photos and layouts that were presented to me online as truthful \u2013 or was I to assume to bring my own coat rack, shelves, and bed drawers?",
+          "author": "Drew Levitt",
+          "rating": 1.0,
+          "date": "2025-05-04T05:06:38.783Z",
+          "likesCount": 1,
+          "url": "https://www.google.com/maps/reviews/data=!4m8!14m7!1m6!2m5!1sChZDSUhNMG9nS0VJQ0FnTUNvcWJ6R2FREAE!2m1!1s0x0:0x5fd72fc4875ca8a2!3m1!1s2@1:CIHM0ogKEICAgMCoqbzGaQ%7C%7C?hl=en"
+        }
+      }
+    }
+  },
+  "here": {
+    "amenities": {
+      "gym": {
+        "label": "Gym",
+        "available": true
+      },
+      "pool": {
+        "label": "Pool",
+        "available": true
+      },
+      "study_lounge": {
+        "label": "Study lounge",
+        "available": true
+      },
+      "parking": {
+        "label": "Parking",
+        "available": true
+      },
+      "rooftopCourtyard": {
+        "label": "Rooftop / courtyard",
+        "available": true
+      },
+      "inUnitWasherDryer": {
+        "label": "In-unit washer/dryer",
+        "available": true
+      },
+      "elevator": {
+        "label": "Elevator",
+        "available": true
+      },
+      "bikeStorage": {
+        "label": "Bicycle storage",
+        "available": true
+      },
+      "petAllowed": {
+        "label": "Pet allowed",
+        "available": false
+      }
+    },
+    "scores": {
+      "amenityScore": 0.9,
+      "petScore": 0.0,
+      "priceScore": 0.26545034690541813,
+      "valueBonus": 0.007963510407162542,
+      "totalScore": 0.467
+    },
+    "pricing": {
+      "minRent": 1089,
+      "maxRent": 1729,
+      "floorPlanCount": 9,
+      "perPerson": true,
+      "samplePlans": [
+        {
+          "beds": 4.0,
+          "baths": 2.0,
+          "sqft": 1315,
+          "rent": 1089,
+          "perPerson": true,
+          "notes": "4x2 Terrace"
+        },
+        {
+          "beds": 4.0,
+          "baths": 2.0,
+          "sqft": 1315,
+          "rent": 1119,
+          "perPerson": true,
+          "notes": "4x2 Aerial"
+        },
+        {
+          "beds": 4.0,
+          "baths": 2.0,
+          "sqft": 1315,
+          "rent": 1154,
+          "perPerson": true,
+          "notes": "4x2 Penthouse"
+        }
+      ]
+    },
+    "commute": [
+      {
+        "building": "Grainger Engineering Library",
+        "walkingMin": 11,
+        "bicyclingMin": 3,
+        "transitMin": 7
+      },
+      {
+        "building": "Siebel Center for CS",
+        "walkingMin": 16,
+        "bicyclingMin": 5,
+        "transitMin": 15
+      },
+      {
+        "building": "Illini Union",
+        "walkingMin": 10,
+        "bicyclingMin": 3,
+        "transitMin": 4
+      },
+      {
+        "building": "CRCE",
+        "walkingMin": 17,
+        "bicyclingMin": 4,
+        "transitMin": 11
+      },
+      {
+        "building": "ARC",
+        "walkingMin": 17,
+        "bicyclingMin": 4,
+        "transitMin": 11
+      },
+      {
+        "building": "Main Library",
+        "walkingMin": 14,
+        "bicyclingMin": 4,
+        "transitMin": 10
+      },
+      {
+        "building": "Wohlers Hall",
+        "walkingMin": 15,
+        "bicyclingMin": 4,
+        "transitMin": 12
+      },
+      {
+        "building": "Everitt Lab",
+        "walkingMin": 7,
+        "bicyclingMin": 2,
+        "transitMin": 7
+      },
+      {
+        "building": "Loomis Lab",
+        "walkingMin": 12,
+        "bicyclingMin": 4,
+        "transitMin": 6
+      },
+      {
+        "building": "Lincoln Hall",
+        "walkingMin": 12,
+        "bicyclingMin": 4,
+        "transitMin": 9
+      },
+      {
+        "building": "Krannert Art Center",
+        "walkingMin": 17,
+        "bicyclingMin": 4,
+        "transitMin": 14
+      }
+    ],
+    "reviews": {
+      "reddit": {
+        "positive": {
+          "text": "here is the only flaw I had with ugroup they care way more about their incoming tenant than the outgoing tenant I moved in to an immaculate (clean as fuck) apartment and received same day maintenance all 5 times I used their portal but then I moved out, left the unit at least cleanish, and the bills were huge my mistake I suppose, but I guess that is why my unit was so clean when I moved in.",
+          "author": "EstablishmentIll412",
+          "url": "https://www.reddit.com/r/UIUC/comments/16mb5lj/leasing_company_tier_list/",
+          "score": 0.9774,
+          "postTitle": "Leasing Company Tier List"
+        },
+        "negative": {
+          "text": "Wrote this in my notes last week at 3am after suffering through yet another cold shower. Hope if you sign that you don't experience these issues. (Note: reddit keeps complaining I'm over the character limit when I'm not, so this will be a multi-parter.) \u2014 I'm gonna start this off by saying: you probably don't want to lease here. It's been two months since move-in.",
+          "author": "imaginealpha",
+          "url": "https://www.reddit.com/r/UIUC/comments/y6pm5a/is_tower_at_3rd_worth_it_do_any_pros_outweigh_the/",
+          "score": -0.9966,
+          "postTitle": "Is Tower at 3rd Worth It? Do any Pros outweigh the Cons?"
+        }
+      },
+      "google": {
+        "positive": {
+          "text": "The apartment is beautiful and the units are large and spacious and worth the price of rent. The staff is helpful and the amenities are great, especially the study lounge. There are lots of big windows and the natural light is wonderful. Sometimes the elevators crap out. I'd recommend living HERE though!!",
+          "author": "Anna Bartelt",
+          "rating": 5.0,
+          "date": "2024-02-18T17:51:06.061Z",
+          "likesCount": 1,
+          "url": "https://www.google.com/maps/reviews/data=!4m8!14m7!1m6!2m5!1sChdDSUhNMG9nS0VJQ0FnSUNkZzlXZTJnRRAB!2m1!1s0x0:0x308afe7f7713b7cd!3m1!1s2@1:CIHM0ogKEICAgICdg9We2gE%7C%7C?hl=en"
+        },
+        "negative": {
+          "text": "B tier Staff for so-called luxury housing. Elevators are slow, and it\u2019s not uncommon for one to be broken\u2014same with basically all the amenities. Great maintenance crew though. Overall, the living experience at here is not equivalent to paying equivalent rent to a Wicker Park apartment.",
+          "author": "Keith Bogan's Burner",
+          "rating": 1.0,
+          "date": "2023-08-30T16:51:19.062Z",
+          "likesCount": 2,
+          "url": "https://www.google.com/maps/reviews/data=!4m8!14m7!1m6!2m5!1sChZDSUhNMG9nS0VJQ0FnSURwNTlhY093EAE!2m1!1s0x0:0x308afe7f7713b7cd!3m1!1s2@1:CIHM0ogKEICAgIDp59acOw%7C%7C?hl=en"
+        }
+      }
+    }
+  },
+  "hub": {
+    "amenities": {
+      "gym": {
+        "label": "Gym",
+        "available": true
+      },
+      "pool": {
+        "label": "Pool",
+        "available": true
+      },
+      "study_lounge": {
+        "label": "Study lounge",
+        "available": true
+      },
+      "parking": {
+        "label": "Parking",
+        "available": true
+      },
+      "rooftopCourtyard": {
+        "label": "Rooftop / courtyard",
+        "available": true
+      },
+      "inUnitWasherDryer": {
+        "label": "In-unit washer/dryer",
+        "available": true
+      },
+      "elevator": {
+        "label": "Elevator",
+        "available": true
+      },
+      "bikeStorage": {
+        "label": "Bicycle storage",
+        "available": true
+      },
+      "petAllowed": {
+        "label": "Pet allowed",
+        "available": true
+      }
+    },
+    "scores": {
+      "amenityScore": 0.9,
+      "petScore": 0.6,
+      "priceScore": 0.03164556962025317,
+      "valueBonus": 0.0009493670886075948,
+      "totalScore": 0.433
+    },
+    "pricing": {
+      "minRent": 924,
+      "maxRent": 2355,
+      "floorPlanCount": 28,
+      "perPerson": true,
+      "samplePlans": [
+        {
+          "beds": 4.0,
+          "baths": 2.0,
+          "sqft": 1197,
+          "rent": 924,
+          "perPerson": true,
+          "notes": "4X2 SUITE"
+        },
+        {
+          "beds": 4.0,
+          "baths": 2.0,
+          "sqft": 1129,
+          "rent": 1094,
+          "perPerson": true,
+          "notes": "4X2 SUITE VIP"
+        },
+        {
+          "beds": 4.0,
+          "baths": 4.0,
+          "sqft": 1287,
+          "rent": 1150,
+          "perPerson": true,
+          "notes": "4X4"
+        }
+      ]
+    },
+    "commute": [
+      {
+        "building": "Grainger Engineering Library",
+        "walkingMin": 10,
+        "bicyclingMin": 3,
+        "transitMin": 7
+      },
+      {
+        "building": "Siebel Center for CS",
+        "walkingMin": 15,
+        "bicyclingMin": 4,
+        "transitMin": 8
+      },
+      {
+        "building": "Illini Union",
+        "walkingMin": 5,
+        "bicyclingMin": 1,
+        "transitMin": 5
+      },
+      {
+        "building": "CRCE",
+        "walkingMin": 17,
+        "bicyclingMin": 5,
+        "transitMin": 6
+      },
+      {
+        "building": "ARC",
+        "walkingMin": 17,
+        "bicyclingMin": 5,
+        "transitMin": 6
+      },
+      {
+        "building": "Main Library",
+        "walkingMin": 6,
+        "bicyclingMin": 2,
+        "transitMin": 6
+      },
+      {
+        "building": "Wohlers Hall",
+        "walkingMin": 7,
+        "bicyclingMin": 2,
+        "transitMin": 7
+      },
+      {
+        "building": "Everitt Lab",
+        "walkingMin": 6,
+        "bicyclingMin": 2,
+        "transitMin": 6
+      },
+      {
+        "building": "Loomis Lab",
+        "walkingMin": 10,
+        "bicyclingMin": 4,
+        "transitMin": 7
+      },
+      {
+        "building": "Lincoln Hall",
+        "walkingMin": 3,
+        "bicyclingMin": 1,
+        "transitMin": 3
+      },
+      {
+        "building": "Krannert Art Center",
+        "walkingMin": 12,
+        "bicyclingMin": 3,
+        "transitMin": 6
+      }
+    ],
+    "reviews": {
+      "reddit": {
+        "positive": {
+          "text": "It's nice, but super expensive, you can find perfectly good places for about 650/750, college apts don't need to be luxury. If you have unlimited money, go for it. Location is good, but again, other places that are within walking distance of campus are also good too.",
+          "author": "oknowwhat00",
+          "url": "https://www.reddit.com/r/UIUC/comments/165zi45/any_thoughts_on_hub/",
+          "score": 0.979,
+          "postTitle": "Any thoughts on HUB?"
+        },
+        "negative": {
+          "text": "both are crazy overpriced, especially the hub but the dean is just as bad. my friend says the dean is overrated\u2014 they were considering living there but thinks it was quite shitty especially for the price after touring.",
+          "author": "haveauser",
+          "url": "https://www.reddit.com/r/UIUC/comments/1l0b45y/dean_vs_hub/",
+          "score": -0.8171,
+          "postTitle": "Dean vs Hub"
+        }
+      },
+      "google": {
+        "positive": {
+          "text": "Great apartment in a really good location. The amenities are super nice and staff is very helpful",
+          "author": "Mariya Bajwa",
+          "rating": 5.0,
+          "date": "2024-12-11T00:17:59.655Z",
+          "likesCount": 0,
+          "url": "https://www.google.com/maps/reviews/data=!4m8!14m7!1m6!2m5!1sChdDSUhNMG9nS0VJQ0FnSUN2anZxUV9BRRAB!2m1!1s0x0:0xb243d636d4f4697!3m1!1s2@1:CIHM0ogKEICAgICvjvqQ_AE%7C%7C?hl=en"
+        },
+        "negative": {
+          "text": "I am a cosignor to a student that lives here for 2 years. Initially chose Hub because of the proximity to campus, but dealing with management is a pain. They will charge you $500+ in move out fees with no proof. I tried asking management for pictures of these damages but they take WEEKS to respond and still fail to provide pictures to this day. The front desk staff are rude to students and unhelpful to parents.",
+          "author": "Arabelle Siahaan",
+          "rating": 1.0,
+          "date": "2025-09-16T21:40:36.111Z",
+          "likesCount": 1,
+          "url": "https://www.google.com/maps/reviews/data=!4m8!14m7!1m6!2m5!1sCi9DQUlRQUNvZENodHljRjlvT2pFM2RqTnNkR05qVkdVemJteExRbVZ6YzJWeVkzYxAB!2m1!1s0x0:0xb243d636d4f4697!3m1!1s2@1:CAIQACodChtycF9oOjE3djNsdGNjVGUzbmxLQmVzc2VyY3c%7C%7C?hl=en"
+        }
+      }
+    }
+  },
+  "dean": {
+    "amenities": {
+      "gym": {
+        "label": "Gym",
+        "available": true
+      },
+      "pool": {
+        "label": "Pool",
+        "available": true
+      },
+      "study_lounge": {
+        "label": "Study lounge",
+        "available": true
+      },
+      "parking": {
+        "label": "Parking",
+        "available": true
+      },
+      "rooftopCourtyard": {
+        "label": "Rooftop / courtyard",
+        "available": true
+      },
+      "inUnitWasherDryer": {
+        "label": "In-unit washer/dryer",
+        "available": true
+      },
+      "elevator": {
+        "label": "Elevator",
+        "available": true
+      },
+      "bikeStorage": {
+        "label": "Bicycle storage",
+        "available": true
+      },
+      "petAllowed": {
+        "label": "Pet allowed",
+        "available": false
+      }
+    },
+    "scores": {
+      "amenityScore": 0.9,
+      "petScore": 0.0,
+      "priceScore": 0.16549030507746124,
+      "valueBonus": 0.004964709152323835,
+      "totalScore": 0.427
+    },
+    "pricing": {
+      "minRent": 1100,
+      "maxRent": 2280,
+      "floorPlanCount": 14,
+      "perPerson": true,
+      "samplePlans": [
+        {
+          "beds": 4.0,
+          "baths": 4.0,
+          "sqft": 1118,
+          "rent": 1100,
+          "perPerson": true,
+          "notes": "D1"
+        },
+        {
+          "beds": 4.0,
+          "baths": 2.0,
+          "sqft": 1134,
+          "rent": 1115,
+          "perPerson": true,
+          "notes": "D2"
+        },
+        {
+          "beds": 4.0,
+          "baths": 4.0,
+          "sqft": 1297,
+          "rent": 1145,
+          "perPerson": true,
+          "notes": "D3"
+        }
+      ]
+    },
+    "commute": [
+      {
+        "building": "Grainger Engineering Library",
+        "walkingMin": 8,
+        "bicyclingMin": 4,
+        "transitMin": 8
+      },
+      {
+        "building": "Siebel Center for CS",
+        "walkingMin": 13,
+        "bicyclingMin": 5,
+        "transitMin": 9
+      },
+      {
+        "building": "Illini Union",
+        "walkingMin": 6,
+        "bicyclingMin": 2,
+        "transitMin": 6
+      },
+      {
+        "building": "CRCE",
+        "walkingMin": 19,
+        "bicyclingMin": 5,
+        "transitMin": 8
+      },
+      {
+        "building": "ARC",
+        "walkingMin": 19,
+        "bicyclingMin": 5,
+        "transitMin": 8
+      },
+      {
+        "building": "Main Library",
+        "walkingMin": 8,
+        "bicyclingMin": 2,
+        "transitMin": 8
+      },
+      {
+        "building": "Wohlers Hall",
+        "walkingMin": 10,
+        "bicyclingMin": 2,
+        "transitMin": 8
+      },
+      {
+        "building": "Everitt Lab",
+        "walkingMin": 4,
+        "bicyclingMin": 3,
+        "transitMin": 4
+      },
+      {
+        "building": "Loomis Lab",
+        "walkingMin": 9,
+        "bicyclingMin": 4,
+        "transitMin": 9
+      },
+      {
+        "building": "Lincoln Hall",
+        "walkingMin": 6,
+        "bicyclingMin": 2,
+        "transitMin": 6
+      },
+      {
+        "building": "Krannert Art Center",
+        "walkingMin": 14,
+        "bicyclingMin": 3,
+        "transitMin": 8
+      }
+    ],
+    "reviews": {
+      "reddit": {
+        "positive": {
+          "text": "I am a resident, and I'll just entail everything good(questionable) and bad off the top of my head about this place because I have a lot to rant about. The good (kind of): \\-The amenities are pretty nice. This is probably their biggest advertising point, besides offering things like \"free $500 gift card and utilities\" etc. for signing, but the amenities are maintained pretty well.",
+          "author": "uiuc_corn_is_spicy",
+          "url": "https://www.reddit.com/r/UIUC/comments/l3ne0n/is_the_dean_actually_that_bad/",
+          "score": 0.9992,
+          "postTitle": "Is the Dean actually that bad?"
+        },
+        "negative": {
+          "text": "Dean needs to be lower. overpriced, the furniture within the apartment is bad quality/cheap for the rent price, elevator and amenities always breaking, building fire alarm always going off, maintenance is clueless, and overall management just sucks. I could go on but I\u2019m trying to keep it brief \ud83e\udee0",
+          "author": "Elegant-Bench-7026",
+          "url": "https://www.reddit.com/r/UIUC/comments/16mb5lj/leasing_company_tier_list/",
+          "score": -0.775,
+          "postTitle": "Leasing Company Tier List"
+        }
+      },
+      "google": {
+        "positive": {
+          "text": "The Dean Campustown is the best place to live when you go to UIUC. The location and the price is absolutely perfect not to far from campus and not to far from restaurants and bars. The staff is extremely nice and very easy to talk to if you need help or any information same with the maintenance staff. If you need to sign a lease for the upcoming semesters I would do it quickly because they go fast. P.S.",
+          "author": "Jack Lebo",
+          "rating": 5.0,
+          "date": "2023-01-07T02:07:13.138Z",
+          "likesCount": 1,
+          "url": "https://www.google.com/maps/reviews/data=!4m8!14m7!1m6!2m5!1sChZDSUhNMG9nS0VJQ0FnSUNCdC12QUp3EAE!2m1!1s0x0:0x360d6f786d635e1a!3m1!1s2@1:CIHM0ogKEICAgICBt-vAJw%7C%7C?hl=en"
+        },
+        "negative": {
+          "text": "Living at the Dean has been a real disappointment. Initially, the management seemed hospitable, but once you're in, their attitude changes drastically. They resort to personal targeting if you don't renew your lease with them. Moreover, the amenities, which are often dysfunctional, become a sore point. Any attempt to address these issues is met with hostility.",
+          "author": "Pushti Vora",
+          "rating": 1.0,
+          "date": "2024-05-02T20:38:39.771Z",
+          "likesCount": 20,
+          "url": "https://www.google.com/maps/reviews/data=!4m8!14m7!1m6!2m5!1sChdDSUhNMG9nS0VJQ0FnSURqMXJDZnBnRRAB!2m1!1s0x0:0x360d6f786d635e1a!3m1!1s2@1:CIHM0ogKEICAgIDj1rCfpgE%7C%7C?hl=en"
+        }
+      }
+    }
+  }
+}

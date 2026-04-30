@@ -1,13 +1,28 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
+import { divIcon } from 'leaflet';
+import type { LatLngBoundsExpression, LatLngExpression } from 'leaflet';
+import { CircleMarker, MapContainer, Marker, Polyline, Popup, TileLayer, Tooltip, useMap } from 'react-leaflet';
 
 interface ApartmentComplex {
   id: string;
   name: string;
+  address: string;
+  city: string;
   lat: number;
   lng: number;
   trustScore: number;
   walkTime: number;
   bikeTime: number;
+}
+
+interface NearbySchoolBuilding {
+  building: string;
+  lat: number;
+  lng: number;
+  walkingMin: number | null;
+  bicyclingMin: number | null;
+  isWalkable: boolean;
+  isBikeable: boolean;
 }
 
 interface MapViewProps {
@@ -17,197 +32,268 @@ interface MapViewProps {
   campusBuilding: { lat: number; lng: number; name: string };
   transportMode: 'walk' | 'bike';
   isDarkMode: boolean;
+  nearbySchoolBuildingsByComplexId: Record<string, NearbySchoolBuilding[]>;
+}
+
+function FitMapToPoints({
+  bounds,
+  selectedPoint,
+}: {
+  bounds: LatLngBoundsExpression;
+  selectedPoint: LatLngExpression | null;
+}) {
+  const map = useMap();
+
+  useEffect(() => {
+    map.fitBounds(bounds, { padding: [26, 26], maxZoom: 15 });
+  }, [bounds, map]);
+
+  useEffect(() => {
+    if (selectedPoint) {
+      map.panTo(selectedPoint, { animate: true, duration: 0.45 });
+    }
+  }, [map, selectedPoint]);
+
+  return null;
 }
 
 export function MapView({
   complexes,
   selectedComplexId,
   onComplexSelect,
+  campusBuilding,
   transportMode,
   isDarkMode,
+  nearbySchoolBuildingsByComplexId,
 }: MapViewProps) {
-  // Convert real coordinates to abstract map positions (0-100 scale)
-  const normalizePosition = (lat: number, lng: number) => {
-    // UIUC approximate bounds
-    const latMin = 40.104;
-    const latMax = 40.121;
-    const lngMin = -88.235;
-    const lngMax = -88.218;
+  const [focusedComplexId, setFocusedComplexId] = useState<string | null>(null);
+  const isFocused = focusedComplexId !== null;
+  const selectedComplex = complexes.find((complex) => complex.id === selectedComplexId);
+  const focusedComplex = focusedComplexId ? complexes.find((complex) => complex.id === focusedComplexId) : null;
+  const activeComplex = focusedComplex ?? selectedComplex;
+  const campusPoint: [number, number] = [campusBuilding.lat, campusBuilding.lng];
+  const selectedPoint: LatLngExpression | null = activeComplex ? [activeComplex.lat, activeComplex.lng] : null;
+  const selectedNearbySchoolBuildings = activeComplex
+    ? nearbySchoolBuildingsByComplexId[activeComplex.id] ?? []
+    : [];
+  const focusedSchoolBuildings = isFocused ? selectedNearbySchoolBuildings : [];
+  const visibleComplexes = isFocused && activeComplex ? [activeComplex] : complexes;
+  const walkableSchoolIcon = useMemo(
+    () =>
+      divIcon({
+        className: 'atlas-map-school-div-icon atlas-map-school-div-icon-walk',
+        html: '<span class="atlas-map-school-ping"></span><span class="atlas-map-school-dot"></span>',
+        iconAnchor: [16, 16],
+        iconSize: [32, 32],
+      }),
+    [],
+  );
+  const bikeableSchoolIcon = useMemo(
+    () =>
+      divIcon({
+        className: 'atlas-map-school-div-icon atlas-map-school-div-icon-bike',
+        html: '<span class="atlas-map-school-ping"></span><span class="atlas-map-school-dot"></span>',
+        iconAnchor: [16, 16],
+        iconSize: [32, 32],
+      }),
+    [],
+  );
+  const focusedApartmentIcon = useMemo(
+    () =>
+      divIcon({
+        className: 'atlas-map-focused-apartment-div-icon',
+        html: [
+          '<span class="atlas-map-apartment-ring"></span>',
+          '<span class="atlas-map-apartment-ring"></span>',
+          '<span class="atlas-map-apartment-core"></span>',
+        ].join(''),
+        iconAnchor: [34, 34],
+        iconSize: [68, 68],
+      }),
+    [],
+  );
+  const bounds = useMemo<LatLngBoundsExpression>(
+    () => [
+      ...visibleComplexes.map((complex) => [complex.lat, complex.lng] as [number, number]),
+      ...focusedSchoolBuildings.map((building) => [building.lat, building.lng] as [number, number]),
+      campusPoint,
+    ],
+    [campusBuilding.lat, campusBuilding.lng, focusedSchoolBuildings, visibleComplexes],
+  );
 
-    const x = ((lng - lngMin) / (lngMax - lngMin)) * 100;
-    const y = ((latMax - lat) / (latMax - latMin)) * 100;
-
-    return { x: Math.max(0, Math.min(100, x)), y: Math.max(0, Math.min(100, y)) };
-  };
-
-  const getTrustColorClass = (score: number) => {
-    if (score >= 8) return 'hi';
-    if (score >= 6) return 'mid';
-    return 'lo';
-  };
+  useEffect(() => {
+    if (focusedComplexId && selectedComplexId && focusedComplexId !== selectedComplexId) {
+      setFocusedComplexId(selectedComplexId);
+    }
+  }, [focusedComplexId, selectedComplexId]);
 
   return (
     <div>
-      {/* Map Container */}
       <div
-        className="relative overflow-hidden"
+        className={isFocused ? 'atlas-map-shell atlas-map-shell-focused' : 'atlas-map-shell'}
         style={{
           background: 'var(--paper)',
-          border: '1px solid var(--ink)',
-          aspectRatio: '1 / 1.05',
+          border: '1px solid var(--rule)',
+          aspectRatio: '16 / 12',
         }}
       >
-        {/* Grid background */}
-        <div
-          className="absolute inset-0"
-          style={{
-            backgroundImage:
-              'linear-gradient(var(--rule-2) 1px, transparent 1px), linear-gradient(90deg, var(--rule-2) 1px, transparent 1px)',
-            backgroundSize: '40px 40px',
-            opacity: 0.7,
-          }}
-        />
+        {isFocused ? (
+          <button className="atlas-map-focus-reset" onClick={() => setFocusedComplexId(null)}>
+            Show all apartments
+          </button>
+        ) : null}
 
-        {/* Campus area (Main Quad) */}
-        <div
-          className="absolute"
-          style={{
-            left: '30%',
-            top: '40%',
-            width: '34%',
-            height: '28%',
-            background: isDarkMode ? 'rgba(90, 127, 168, 0.12)' : 'rgba(19, 41, 75, 0.06)',
-            border: '1px dashed var(--blue)',
-          }}
+        <MapContainer
+          center={[40.1108, -88.2306]}
+          zoom={14}
+          scrollWheelZoom
+          className={isDarkMode ? 'atlas-map atlas-map-dark' : 'atlas-map'}
         >
-          <div
-            className="absolute"
-            style={{
-              top: '50%',
-              left: '50%',
-              transform: 'translate(-50%, -50%)',
-              fontFamily: 'var(--mono)',
-              fontSize: '10px',
-              color: 'var(--blue)',
-              letterSpacing: '0.12em',
-              textAlign: 'center',
-            }}
-          >
-            MAIN QUAD
-          </div>
-        </div>
+          <TileLayer
+            attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> &copy; <a href="https://carto.com/attributions">CARTO</a>'
+            url={
+              isDarkMode
+                ? 'https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png'
+                : 'https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png'
+            }
+          />
+          <FitMapToPoints bounds={bounds} selectedPoint={selectedPoint} />
 
-        {/* Street lines */}
-        <div
-          className="absolute left-0 right-0"
-          style={{ top: '22%', height: '1.5px', background: 'var(--rule)' }}
-        />
-        <div
-          className="absolute left-0 right-0"
-          style={{ top: '54%', height: '1.5px', background: 'var(--rule)' }}
-        />
-        <div
-          className="absolute left-0 right-0"
-          style={{ top: '78%', height: '1.5px', background: 'var(--rule)' }}
-        />
-        <div
-          className="absolute top-0 bottom-0"
-          style={{ left: '24%', width: '1.5px', background: 'var(--rule)' }}
-        />
-        <div
-          className="absolute top-0 bottom-0"
-          style={{ left: '52%', width: '1.5px', background: 'var(--rule)' }}
-        />
-        <div
-          className="absolute top-0 bottom-0"
-          style={{ left: '74%', width: '1.5px', background: 'var(--rule)' }}
-        />
+          {isFocused && activeComplex
+            ? focusedSchoolBuildings.map((building) => (
+                <Polyline
+                  key={`${focusedComplexId}-${building.building}-line`}
+                  positions={[
+                    [activeComplex.lat, activeComplex.lng],
+                    [building.lat, building.lng],
+                  ]}
+                  pathOptions={{
+                    color: building.isWalkable ? 'var(--green)' : 'var(--blue)',
+                    className: 'atlas-map-route-line',
+                    dashArray: '4 7',
+                    opacity: 0.42,
+                    weight: 1.5,
+                  }}
+                />
+              ))
+            : null}
 
-        {/* Apartment pins */}
-        {complexes.map((complex) => {
-          const pos = normalizePosition(complex.lat, complex.lng);
-          const trustClass = getTrustColorClass(complex.trustScore);
-          const isSelected = complex.id === selectedComplexId;
+          {isFocused && activeComplex ? (
+            <Marker
+              key={`${focusedComplexId}-focused-apartment`}
+              position={[activeComplex.lat, activeComplex.lng]}
+              icon={focusedApartmentIcon}
+              zIndexOffset={380}
+            >
+              <Tooltip direction="top" offset={[0, -24]} permanent>
+                {activeComplex.name}
+              </Tooltip>
+              <Popup>
+                <div className="atlas-map-popup">
+                  <strong>{activeComplex.name}</strong>
+                  <span>
+                    {activeComplex.address}, {activeComplex.city}
+                  </span>
+                  <span>Trust score: {activeComplex.trustScore.toFixed(1)} / 10</span>
+                </div>
+              </Popup>
+            </Marker>
+          ) : null}
 
-          return (
-            <button
-              key={complex.id}
-              onClick={() => onComplexSelect(complex.id)}
-              className="absolute transition-transform cursor-pointer"
-              style={{
-                left: `${pos.x}%`,
-                top: `${pos.y}%`,
-                transform: 'translate(-50%, -50%)',
-                width: '28px',
-                height: '28px',
-                borderRadius: '50%',
-                border: isSelected ? '1.5px solid var(--ink)' : '1.5px solid var(--ink)',
-                background:
-                  trustClass === 'hi'
-                    ? 'var(--orange)'
-                    : trustClass === 'mid'
-                      ? 'var(--cream)'
-                      : 'var(--ink-4)',
-                color: trustClass === 'hi' ? '#fff' : trustClass === 'mid' ? 'var(--ink)' : '#fff',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                fontFamily: 'var(--mono)',
-                fontSize: '11px',
-                fontWeight: 600,
-                boxShadow: isSelected ? '0 0 0 3px var(--orange)' : 'none',
-                zIndex: isSelected ? 10 : 1,
-              }}
-              onMouseEnter={(e) => {
-                e.currentTarget.style.transform = 'translate(-50%, -50%) scale(1.15)';
-                e.currentTarget.style.zIndex = '5';
-              }}
-              onMouseLeave={(e) => {
-                e.currentTarget.style.transform = 'translate(-50%, -50%)';
-                e.currentTarget.style.zIndex = isSelected ? '10' : '1';
+          {!isFocused ? (
+            <CircleMarker
+              center={campusPoint}
+              radius={6}
+              pathOptions={{
+                color: 'var(--blue)',
+                fillColor: 'var(--blue)',
+                fillOpacity: 0.75,
+                weight: 2,
               }}
             >
-              {Math.round(complex.trustScore * 10)}
-            </button>
-          );
-        })}
-      </div>
+              <Tooltip direction="top" offset={[0, -8]}>
+                {campusBuilding.name}
+              </Tooltip>
+            </CircleMarker>
+          ) : null}
 
-      {/* Map legend */}
-      <div
-        className="flex items-center justify-between pt-2.5"
-        style={{
-          fontFamily: 'var(--mono)',
-          fontSize: '10.5px',
-          textTransform: 'uppercase',
-          letterSpacing: '0.06em',
-          color: 'var(--ink-3)',
-        }}
-      >
-        <span>Fig 2.1 — Trust-weighted map</span>
-        <div className="flex items-center" style={{ gap: '14px' }}>
-          <span className="flex items-center" style={{ gap: '5px' }}>
-            <i
-              className="inline-block w-2.5 h-2.5 rounded-full"
-              style={{ background: 'var(--orange)', border: '1px solid var(--ink)' }}
-            />
-            80+
-          </span>
-          <span className="flex items-center" style={{ gap: '5px' }}>
-            <i
-              className="inline-block w-2.5 h-2.5 rounded-full"
-              style={{ background: 'var(--cream)', border: '1px solid var(--ink)' }}
-            />
-            60–79
-          </span>
-          <span className="flex items-center" style={{ gap: '5px' }}>
-            <i
-              className="inline-block w-2.5 h-2.5 rounded-full"
-              style={{ background: 'var(--ink-4)', border: '1px solid var(--ink)' }}
-            />
-            &lt; 60
-          </span>
-        </div>
+          {focusedSchoolBuildings.map((building) => {
+            const preferredTime = transportMode === 'walk' ? building.walkingMin : building.bicyclingMin;
+
+            return (
+              <Marker
+                key={`${focusedComplexId}-nearby-${building.building}`}
+                position={[building.lat, building.lng]}
+                icon={building.isWalkable ? walkableSchoolIcon : bikeableSchoolIcon}
+                zIndexOffset={320}
+              >
+                <Tooltip direction="top" offset={[0, -9]}>
+                  {building.building}
+                </Tooltip>
+                <Popup>
+                  <div className="atlas-map-popup atlas-map-popup-school">
+                    <strong>{building.building}</strong>
+                    <span>
+                      {building.walkingMin ?? 'N/A'} min walk · {building.bicyclingMin ?? 'N/A'} min bike
+                    </span>
+                    <span>
+                      {preferredTime ?? 'N/A'} min by selected mode from {activeComplex?.name}
+                    </span>
+                  </div>
+                </Popup>
+              </Marker>
+            );
+          })}
+
+          {!isFocused ? complexes.map((complex) => {
+            const isSelected = complex.id === selectedComplexId;
+            const commuteTime = transportMode === 'walk' ? complex.walkTime : complex.bikeTime;
+
+            return (
+              <CircleMarker
+                key={complex.id}
+                center={[complex.lat, complex.lng]}
+                radius={isSelected ? 10 : 6}
+                pathOptions={{
+                  color: isSelected ? 'var(--orange)' : 'var(--paper)',
+                  className: 'atlas-map-apartment-marker',
+                  fillColor: isSelected ? 'var(--orange)' : 'var(--ink)',
+                  fillOpacity: isSelected ? 0.95 : 0.72,
+                  opacity: 1,
+                  weight: isSelected ? 4 : 1.5,
+                }}
+                eventHandlers={{
+                  click: () => {
+                    setFocusedComplexId(complex.id);
+                    onComplexSelect(complex.id);
+                  },
+                }}
+              >
+                {isSelected ? (
+                  <Tooltip key={`${complex.id}-selected`} direction="top" offset={[0, -10]} permanent>
+                    {complex.name}
+                  </Tooltip>
+                ) : (
+                  <Tooltip key={`${complex.id}-hover`} direction="top" offset={[0, -10]}>
+                    {complex.name}
+                  </Tooltip>
+                )}
+                <Popup>
+                  <div className="atlas-map-popup">
+                    <strong>{complex.name}</strong>
+                    <span>
+                      {complex.address}, {complex.city}
+                    </span>
+                    <span>Trust score: {complex.trustScore.toFixed(1)} / 10</span>
+                    <span>
+                      {commuteTime} min {transportMode} to {campusBuilding.name}
+                    </span>
+                  </div>
+                </Popup>
+              </CircleMarker>
+            );
+          }) : null}
+        </MapContainer>
       </div>
     </div>
   );

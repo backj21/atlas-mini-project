@@ -3,8 +3,8 @@ import { Moon, Sun } from 'lucide-react';
 interface MastheadProps {
   isDark: boolean;
   onToggleDark: () => void;
-  currentRoute: 'home' | 'map';
-  onNavigate: (route: 'home' | 'map') => void;
+  currentRoute: 'home' | 'browse' | 'map' | 'methodology';
+  onNavigate: (route: 'home' | 'browse' | 'map' | 'methodology') => void;
 }
 
 export function Masthead({ isDark, onToggleDark, currentRoute, onNavigate }: MastheadProps) {
@@ -34,9 +34,9 @@ export function Masthead({ isDark, onToggleDark, currentRoute, onNavigate }: Mas
               className="inline-block w-1.5 h-1.5 rounded-full mr-1.5"
               style={{ background: 'var(--orange)', verticalAlign: '1px' }}
             />
-            Data refreshed — Mon 27 Apr 2026, 06:00 CT
+            Dataset snapshot — Thu 30 Apr 2026
           </span>
-          <span>Vol. II · Issue 14</span>
+          <span>Prototype demo</span>
           <span>Champaign–Urbana, IL</span>
         </div>
         <div className="flex items-center" style={{ gap: '16px' }}>
@@ -64,13 +64,15 @@ export function Masthead({ isDark, onToggleDark, currentRoute, onNavigate }: Mas
         <nav className="flex" style={{ gap: '22px' }}>
           {[
             { label: 'Home', route: 'home' as const },
-            { label: 'Browse', route: 'map' as const },
+            { label: 'Browse', route: 'browse' as const },
             { label: 'Map', route: 'map' as const },
-            { label: 'Methodology', route: 'home' as const },
+            { label: 'Methodology', route: 'methodology' as const },
           ].map((item) => {
             const isActive =
               (item.label === 'Home' && currentRoute === 'home') ||
-              ((item.label === 'Browse' || item.label === 'Map') && currentRoute === 'map');
+              (item.label === 'Browse' && currentRoute === 'browse') ||
+              (item.label === 'Map' && currentRoute === 'map') ||
+              (item.label === 'Methodology' && currentRoute === 'methodology');
 
             return (
               <button
@@ -126,7 +128,7 @@ export function Masthead({ isDark, onToggleDark, currentRoute, onNavigate }: Mas
         {/* Right */}
         <div className="flex justify-end">
           <button
-            onClick={() => onNavigate('map')}
+            onClick={() => onNavigate('browse')}
             className="px-2.5 py-1.5 cursor-pointer transition-colors"
             style={{
               fontFamily: 'var(--mono)',
