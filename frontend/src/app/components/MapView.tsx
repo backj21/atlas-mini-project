@@ -1,4 +1,4 @@
-import { Fragment, useEffect, useMemo, useState } from 'react';
+import { Fragment, useEffect, useMemo, useRef, useState } from 'react';
 import type { LatLngBoundsExpression, LatLngExpression } from 'leaflet';
 import { CircleMarker, MapContainer, Polyline, Popup, TileLayer, Tooltip, useMap } from 'react-leaflet';
 
@@ -66,6 +66,7 @@ export function MapView({
   nearbySchoolBuildingsByComplexId,
 }: MapViewProps) {
   const [focusedComplexId, setFocusedComplexId] = useState<string | null>(null);
+  const previousSelectedComplexId = useRef<string | null>(selectedComplexId);
   const isFocused = focusedComplexId !== null;
   const selectedComplex = complexes.find((complex) => complex.id === selectedComplexId);
   const focusedComplex = focusedComplexId ? complexes.find((complex) => complex.id === focusedComplexId) : null;
@@ -87,10 +88,12 @@ export function MapView({
   );
 
   useEffect(() => {
-    if (focusedComplexId && selectedComplexId && focusedComplexId !== selectedComplexId) {
+    if (previousSelectedComplexId.current !== selectedComplexId && selectedComplexId) {
       setFocusedComplexId(selectedComplexId);
     }
-  }, [focusedComplexId, selectedComplexId]);
+
+    previousSelectedComplexId.current = selectedComplexId;
+  }, [selectedComplexId]);
 
   return (
     <div>
@@ -192,7 +195,7 @@ export function MapView({
                   weight: 2,
                 }}
               >
-                <Tooltip direction="top" offset={[0, -9]}>
+                <Tooltip direction="top" offset={[0, -9]} permanent>
                   {building.building}
                 </Tooltip>
                 <Popup>
