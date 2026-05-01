@@ -245,18 +245,23 @@ export function MapView({
             );
           })}
 
-          {!isFocused ? complexes.map((complex) => {
+          {complexes.map((complex) => {
             const isSelected = complex.id === selectedComplexId;
             const commuteTime = transportMode === 'walk' ? complex.walkTime : complex.bikeTime;
+            const markerState = isFocused ? 'focused' : isSelected ? 'selected' : 'normal';
 
             return (
               <CircleMarker
-                key={complex.id}
+                key={`${complex.id}-${markerState}`}
                 center={[complex.lat, complex.lng]}
                 radius={isSelected ? 10 : 6}
                 pathOptions={{
                   color: isSelected ? 'var(--orange)' : 'var(--paper)',
-                  className: 'atlas-map-apartment-marker',
+                  className: isFocused
+                    ? 'atlas-map-apartment-marker atlas-map-apartment-marker-hidden'
+                    : isSelected
+                    ? 'atlas-map-apartment-marker atlas-map-focused-apartment-marker'
+                    : 'atlas-map-apartment-marker',
                   fillColor: isSelected ? 'var(--orange)' : 'var(--ink)',
                   fillOpacity: isSelected ? 0.95 : 0.72,
                   opacity: 1,
@@ -269,7 +274,7 @@ export function MapView({
                   },
                 }}
               >
-                {isSelected ? (
+                {isSelected && !isFocused ? (
                   <Tooltip key={`${complex.id}-selected`} direction="top" offset={[0, -10]} permanent>
                     {complex.name}
                   </Tooltip>
@@ -292,7 +297,7 @@ export function MapView({
                 </Popup>
               </CircleMarker>
             );
-          }) : null}
+          })}
         </MapContainer>
       </div>
     </div>
