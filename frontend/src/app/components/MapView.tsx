@@ -1,7 +1,6 @@
-import { useEffect, useMemo, useState } from 'react';
-import { divIcon } from 'leaflet';
+import { Fragment, useEffect, useMemo, useState } from 'react';
 import type { LatLngBoundsExpression, LatLngExpression } from 'leaflet';
-import { CircleMarker, MapContainer, Marker, Polyline, Popup, TileLayer, Tooltip, useMap } from 'react-leaflet';
+import { CircleMarker, MapContainer, Polyline, Popup, TileLayer, Tooltip, useMap } from 'react-leaflet';
 
 interface ApartmentComplex {
   id: string;
@@ -78,40 +77,6 @@ export function MapView({
     : [];
   const focusedSchoolBuildings = isFocused ? selectedNearbySchoolBuildings : [];
   const visibleComplexes = isFocused && activeComplex ? [activeComplex] : complexes;
-  const walkableSchoolIcon = useMemo(
-    () =>
-      divIcon({
-        className: 'atlas-map-school-div-icon atlas-map-school-div-icon-walk',
-        html: '<span class="atlas-map-school-ping"></span><span class="atlas-map-school-dot"></span>',
-        iconAnchor: [16, 16],
-        iconSize: [32, 32],
-      }),
-    [],
-  );
-  const bikeableSchoolIcon = useMemo(
-    () =>
-      divIcon({
-        className: 'atlas-map-school-div-icon atlas-map-school-div-icon-bike',
-        html: '<span class="atlas-map-school-ping"></span><span class="atlas-map-school-dot"></span>',
-        iconAnchor: [16, 16],
-        iconSize: [32, 32],
-      }),
-    [],
-  );
-  const focusedApartmentIcon = useMemo(
-    () =>
-      divIcon({
-        className: 'atlas-map-focused-apartment-div-icon',
-        html: [
-          '<span class="atlas-map-apartment-ring"></span>',
-          '<span class="atlas-map-apartment-ring"></span>',
-          '<span class="atlas-map-apartment-core"></span>',
-        ].join(''),
-        iconAnchor: [34, 34],
-        iconSize: [68, 68],
-      }),
-    [],
-  );
   const bounds = useMemo<LatLngBoundsExpression>(
     () => [
       ...visibleComplexes.map((complex) => [complex.lat, complex.lng] as [number, number]),
@@ -130,7 +95,7 @@ export function MapView({
   return (
     <div>
       <div
-        className={isFocused ? 'atlas-map-shell atlas-map-shell-focused' : 'atlas-map-shell'}
+        className="atlas-map-shell"
         style={{
           background: 'var(--paper)',
           border: '1px solid var(--rule)',
@@ -160,45 +125,39 @@ export function MapView({
           <FitMapToPoints bounds={bounds} selectedPoint={selectedPoint} />
 
           {isFocused && activeComplex
-            ? focusedSchoolBuildings.map((building) => (
-                <Polyline
-                  key={`${focusedComplexId}-${building.building}-line`}
-                  positions={[
-                    [activeComplex.lat, activeComplex.lng],
-                    [building.lat, building.lng],
-                  ]}
-                  pathOptions={{
-                    color: building.isWalkable ? 'var(--green)' : 'var(--blue)',
-                    className: 'atlas-map-route-line',
-                    dashArray: '4 7',
-                    opacity: 0.42,
-                    weight: 1.5,
-                  }}
-                />
-              ))
-            : null}
+            ? focusedSchoolBuildings.map((building) => {
+                const routePositions: [number, number][] = [
+                  [activeComplex.lat, activeComplex.lng],
+                  [building.lat, building.lng],
+                ];
+                const routeColor = building.isWalkable ? '#15803d' : '#1d4ed8';
 
-          {isFocused && activeComplex ? (
-            <Marker
-              key={`${focusedComplexId}-focused-apartment`}
-              position={[activeComplex.lat, activeComplex.lng]}
-              icon={focusedApartmentIcon}
-              zIndexOffset={380}
-            >
-              <Tooltip direction="top" offset={[0, -24]} permanent>
-                {activeComplex.name}
-              </Tooltip>
-              <Popup>
-                <div className="atlas-map-popup">
-                  <strong>{activeComplex.name}</strong>
-                  <span>
-                    {activeComplex.address}, {activeComplex.city}
-                  </span>
-                  <span>Trust score: {activeComplex.trustScore.toFixed(1)} / 10</span>
-                </div>
-              </Popup>
-            </Marker>
-          ) : null}
+                return (
+                  <Fragment key={`${focusedComplexId}-${building.building}-route`}>
+                    <Polyline
+                      positions={routePositions}
+                      pathOptions={{
+                        color: '#ffffff',
+                        dashArray: '10 9',
+                        lineCap: 'round',
+                        opacity: 0.95,
+                        weight: 6,
+                      }}
+                    />
+                    <Polyline
+                      positions={routePositions}
+                      pathOptions={{
+                        color: routeColor,
+                        dashArray: '10 9',
+                        lineCap: 'round',
+                        opacity: 0.92,
+                        weight: 3,
+                      }}
+                    />
+                  </Fragment>
+                );
+              })
+            : null}
 
           {!isFocused ? (
             <CircleMarker
@@ -221,11 +180,17 @@ export function MapView({
             const preferredTime = transportMode === 'walk' ? building.walkingMin : building.bicyclingMin;
 
             return (
-              <Marker
+              <CircleMarker
                 key={`${focusedComplexId}-nearby-${building.building}`}
-                position={[building.lat, building.lng]}
-                icon={building.isWalkable ? walkableSchoolIcon : bikeableSchoolIcon}
-                zIndexOffset={320}
+                center={[building.lat, building.lng]}
+                radius={7}
+                pathOptions={{
+                  color: 'var(--paper)',
+                  fillColor: building.isWalkable ? 'var(--green)' : 'var(--blue)',
+                  fillOpacity: 0.9,
+                  opacity: 1,
+                  weight: 2,
+                }}
               >
                 <Tooltip direction="top" offset={[0, -9]}>
                   {building.building}
@@ -241,27 +206,21 @@ export function MapView({
                     </span>
                   </div>
                 </Popup>
-              </Marker>
+              </CircleMarker>
             );
           })}
 
-          {complexes.map((complex) => {
+          {visibleComplexes.map((complex) => {
             const isSelected = complex.id === selectedComplexId;
             const commuteTime = transportMode === 'walk' ? complex.walkTime : complex.bikeTime;
-            const markerState = isFocused ? 'focused' : isSelected ? 'selected' : 'normal';
 
             return (
               <CircleMarker
-                key={`${complex.id}-${markerState}`}
+                key={complex.id}
                 center={[complex.lat, complex.lng]}
                 radius={isSelected ? 10 : 6}
                 pathOptions={{
                   color: isSelected ? 'var(--orange)' : 'var(--paper)',
-                  className: isFocused
-                    ? 'atlas-map-apartment-marker atlas-map-apartment-marker-hidden'
-                    : isSelected
-                    ? 'atlas-map-apartment-marker atlas-map-focused-apartment-marker'
-                    : 'atlas-map-apartment-marker',
                   fillColor: isSelected ? 'var(--orange)' : 'var(--ink)',
                   fillOpacity: isSelected ? 0.95 : 0.72,
                   opacity: 1,
@@ -274,7 +233,7 @@ export function MapView({
                   },
                 }}
               >
-                {isSelected && !isFocused ? (
+                {isSelected ? (
                   <Tooltip key={`${complex.id}-selected`} direction="top" offset={[0, -10]} permanent>
                     {complex.name}
                   </Tooltip>
